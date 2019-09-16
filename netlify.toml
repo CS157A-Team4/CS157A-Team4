@@ -1,0 +1,8 @@
+  command = "npm run build"
+  publish="tree/master/project/bookie"
+  base = "tree/master/project/"
+  
+  [[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

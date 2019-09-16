@@ -16,7 +16,7 @@ class SignUp extends React.Component {
             <header className="App-header">
               <img src={logo} className="App-logo" alt="logo" />
               <p>
-                Bookie's Temporary SignUp Page
+                Bookie's Temporary SignUp Page OOF
               </p>
               <button
                 className="App-link"

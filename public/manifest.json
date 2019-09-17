@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "SJSU Bookie",
+  "name": "SJSU Bookie - Buy and Sell Textbooks",
   "icons": [
     {
       "src": "favicon.ico",

@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { withRouter } from 'react-router-dom';
 import { thisExpression } from '@babel/types';
+import api from './backend/backend';
 
 class App extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class App extends React.Component {
   }
   componentDidMount() {
     console.log("hi");
-    fetch("http://localhost:9000/testapi/tables", {
+    fetch(api+"/testapi/tables", {
       method: "GET",
       headers: {
         'accept': 'application/json',

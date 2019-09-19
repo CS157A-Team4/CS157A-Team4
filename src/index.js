@@ -6,18 +6,21 @@ import * as serviceWorker from './serviceWorker';
 import{Router, Route,Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import Error from './error';
-import Login from './authentication/login';
-import SignUp from './authentication/signup';
-import Messages from './profile/messages';
-import ProfilePosts from './profile/posts';
-import Profile from './profile/profile';
-import Cancellation from './search/cancellation';
-import Confirmation from './search/confirmation';
-import Search from './search/search';
+import Login from './Pages/authentication/login';
+import SignUp from './Pages/authentication/signup';
+import Messages from './Pages/profile/messages';
+import ProfilePosts from './Pages/profile/posts';
+import Profile from './Pages/profile/profile';
+import Cancellation from './Pages/search/cancellation';
+import Confirmation from './Pages/search/confirmation';
+import Search from './Pages/search/search';
+import Header from './header';
+import Footer from './footer';
 const browserHistory = createBrowserHistory();
 ReactDOM.render(
     <Router path="/App" history={browserHistory}>
-    <div>
+    <div className="scrolling-touch">
+    <Header/>
         <Switch>
             <Route exact path = '/' component ={App}  />
             <Route exact path = '/login' component ={Login}  />
@@ -32,7 +35,9 @@ ReactDOM.render(
             <Route exact path = '/search/:params' component ={Search}  />
             <Route component={Error}/>
         </Switch>
+        <Footer className="md:hidden"/>
     </div>
+    
     </Router>, document.getElementById('root'));
     
 

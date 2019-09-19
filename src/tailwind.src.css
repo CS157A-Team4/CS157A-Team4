@@ -16,11 +16,38 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
       monospace;
 }
-
+.font-web{
+  font-family: 'Titillium Web', sans-serif;
+}
+.font-sans-pro{
+font-family: 'Source Sans Pro', sans-serif;
+}
 .dark-filter {
   filter: brightness(50%);
 }
 
 .light-filter {
   filter: brightness(70%);
+}
+
+.md\:h-14 {
+  height: 3.5rem;
+}
+.md\:w-14 {
+  width: 3.5rem;
+}
+.h-14 {
+  height: 3.5rem;
+}
+.w-14 {
+  width: 3.5rem;
+}
+
+.bg-blue-new{
+  background-color: #88C5CC;
+}
+.divider {
+  width: 1px;
+  margin: 6px 0;
+  background: #88C5CC;;
 }

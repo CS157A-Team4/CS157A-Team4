@@ -71,7 +71,7 @@ class Footer extends React.Component {
       oList.push(
         <p
           key={item}
-          className="font-sans-pro md:text-2xl text-lg font-bold mr-2 ml-2 cursor-pointer"
+          className="font-sans-pro md:text-2xl text-xl font-bold mr-2 ml-2 cursor-pointer"
           onClick={() => this.redirect(item.replace(/\s/g, "").toLowerCase())}
         >
           {item}

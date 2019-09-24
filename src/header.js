@@ -124,7 +124,7 @@ class Header extends React.Component {
             className="flex mr-8 ml-auto"
           >
             <div className="font-sans-pro text-2xl font-bold py-2 md:mr-4 md:cursor-default cursor-pointer">
-              Hi, Jonathan
+              Yu
             </div>
             <div className="ml-4 divider hidden md:flex"/>
             <td class="bg-blue-new w-px h-full  ml-4 "/>

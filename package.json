@@ -10,7 +10,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1"
   },
-  "homepage": ".",
+  "homepage": "http://.",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -34,5 +34,16 @@
   },
   "devDependencies": {
     "tailwindcss": "^1.0.0-beta.10"
+  },
+  "description": "DBMS Project",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CS157A-Team4/CS157A-Team4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CS157A-Team4/CS157A-Team4/issues"
   }
 }

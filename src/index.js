@@ -23,6 +23,7 @@ ReactDOM.render(
     <Router path="/App" history={browserHistory}>
     <div className="min-h-screen flex flex-col bg-blue-new scrolling-touch">
     <Header/>
+    <div className="pt-20"/>
         <Switch>
             <Route exact path = '/' component ={App}  />
             <Route exact path = '/login' component ={Login}  />

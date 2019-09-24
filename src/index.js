@@ -8,6 +8,8 @@ import { createBrowserHistory } from 'history';
 import Error from './error';
 import Login from './Pages/authentication/login';
 import SignUp from './Pages/authentication/signup';
+import Forget from './Pages/authentication/forget';
+import Reset from './Pages/authentication/reset';
 import Messages from './Pages/profile/messages';
 import ProfilePosts from './Pages/profile/posts';
 import Profile from './Pages/profile/profile';
@@ -24,6 +26,8 @@ ReactDOM.render(
         <Switch>
             <Route exact path = '/' component ={App}  />
             <Route exact path = '/login' component ={Login}  />
+            <Route exact path = '/forget' component ={Forget}  />
+            <Route exact path = '/reset' component ={Reset}  />
             <Route exact path = '/signup' component ={SignUp}  />
             <Route exact path = '/messages' component ={Messages}  />
             <Route exact path = '/messages/:params' component ={Messages}  />

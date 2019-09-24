@@ -8,8 +8,11 @@ Current Project Proposal:
 https://docs.google.com/document/d/1NbTtIF2xDePtYl5zj4VCOusULzU8NrjqBQLD32Sk6BI/edit
 
 
-09/22/2019
-Project Requirement Document:
+09/24/2019
+
+Our CS157A-4-Project-Requirement-Document is in the Documents folder.
+
+Also, the Project Requirement Document GoogleDocs:
 https://docs.google.com/document/d/1J9B9WtucvaSaEs8ERUnXksoQuwXSXGXEdXLJ8APQFMc/edit?usp=sharing
 
 

@@ -21,7 +21,7 @@ import Footer from './footer';
 const browserHistory = createBrowserHistory();
 ReactDOM.render(
     <Router path="/App" history={browserHistory}>
-    <div className="scrolling-touch">
+    <div className="min-h-screen flex flex-col bg-blue-new scrolling-touch">
     <Header/>
         <Switch>
             <Route exact path = '/' component ={App}  />
@@ -41,6 +41,8 @@ ReactDOM.render(
         </Switch>
         <Footer className="md:hidden"/>
     </div>
+        
+    
     
     </Router>, document.getElementById('root'));
     

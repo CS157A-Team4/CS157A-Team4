@@ -77,6 +77,7 @@ class Footer extends React.Component {
           {item}
         </p>
       )
+      
     );
     return oList;
   };
@@ -86,7 +87,7 @@ class Footer extends React.Component {
       !this.state.token &&
       <div className="md:hidden">
           <div style={phantom}></div>
-          <div className="flex items-center" style={style}>{this.createOptions()}
+          <div className="flex justify justify-between items-center h-full" style={style}>{this.createOptions()}
           </div>
       </div>
     

@@ -85,8 +85,8 @@ class App extends React.Component {
   
   
   render() {return (
-    <div className="App">
-      <header className="App-header">
+    <div className="text-center bg-blue-new h-screen">
+      <header className="overflow-hidden min-h-full bg-blue-new flex flex-col items-center justify text-center content-center justify-center">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Home page for Bookie WHYYY

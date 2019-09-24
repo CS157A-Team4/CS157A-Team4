@@ -78,7 +78,7 @@ class Header extends React.Component {
   render() {
     this.storageUpdated();
     return (
-      <div className="z-50 md:h-16 h-16 w-full bg-white border-b-2 flex items-center fixed">
+      <div className="z-50 md:h-20 h-16 w-full bg-white border-b-2 flex items-center fixed">
         <img
           src={logo}
           className="ml-8 md:w-14 md:h-14 h-4/5 cursor-pointer"
@@ -96,7 +96,7 @@ class Header extends React.Component {
         {window.innerWidth > 768 &&
         <div className="flex flex-auto">
         <input
-        className="md:text-xl md:w-auto md:h-14 shadow-md font-sans-pro text-grey-darker font-bold rounded text-center focus:shadow-inner"
+        className="md:text-xl md:w-auto md:h-14 shadow font-sans-pro text-grey-darker font-bold rounded text-center focus:shadow-inner"
          placeholder="Search by Name"
          id="bookname"
          type="text"
@@ -106,7 +106,7 @@ class Header extends React.Component {
      <div className ="md:ml-4 md:mr-4 md:pt-4 text-2xl leading-none font-sans-pro font-bold" >OR</div>
 
        <input
-       className="overflow-auto p-4 md:text-xl md:w-auto md:h-14 shadow-md  font-sans-pro text-grey-darker rounded font-bold text-center focus:shadow-inner"
+       className="overflow-auto p-4 md:text-xl md:w-auto md:h-14 shadow  font-sans-pro text-grey-darker rounded font-bold text-center focus:shadow-inner"
          placeholder="Search by Course"
          id ="course"
          value={this.state.course}

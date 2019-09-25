@@ -47,7 +47,7 @@ class Header extends React.Component {
     let oList = [];
     const options = [
       "Profile",
-      "Messages",
+      "Friends",
       "Posts",
       "Logout"
     ];

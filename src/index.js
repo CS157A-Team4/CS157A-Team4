@@ -18,6 +18,9 @@ import Confirmation from './Pages/search/confirmation';
 import Search from './Pages/search/search';
 import Header from './header';
 import Footer from './footer';
+import FriendsList from './Pages/friends/friendsList';
+import PasswordChange from './Pages/profile/profile';
+import FriendsRequest from './Pages/friends/friendsList';
 const browserHistory = createBrowserHistory();
 ReactDOM.render(
     <Router path="/App" history={browserHistory}>
@@ -38,6 +41,9 @@ ReactDOM.render(
             <Route exact path = '/confirmation/:params' component ={Confirmation}  />
             <Route exact path = '/search' component ={Search}  />
             <Route exact path = '/search/:params' component ={Search}  />
+            <Route exact path = '/friendsList' component ={FriendsList}  />
+            <Route exact path = '/friendsRequest' component ={FriendsRequest}  />
+            <Route exact path = '/passwordChange' component ={PasswordChange}  />
             <Route component={Error}/>
         </Switch>
         <Footer className="md:hidden"/>

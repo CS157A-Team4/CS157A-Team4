@@ -20,7 +20,7 @@ class App extends React.Component {
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     console.log("hi");
     fetch(api+"/testapi/tables", {
       method: "GET",

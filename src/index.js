@@ -24,7 +24,7 @@ import FriendsRequest from './Pages/friends/friendsList';
 const browserHistory = createBrowserHistory();
 ReactDOM.render(
     <Router path="/App" history={browserHistory}>
-    <div className="min-h-screen flex flex-col bg-blue-new scrolling-touch">
+    <div className="min-h-screen flex flex-col bg-blue-new scrolling-touch bg-blue-new">
     <Header/>
     <div className="pt-20"/>
         <Switch>

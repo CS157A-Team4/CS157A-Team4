@@ -3,7 +3,7 @@ import logo from '../../images/curious_cat.png';
 import aBook from '../../images/testbook.png';
 import bBook from '../../images/anotherbook.png';
 import api from '../../backend/backend';
-import {arrayBufferToBinaryString} from 'blob-util';
+import queryString from 'query-string';
 class Search extends React.Component {	
     constructor(props) {
         super(props);
@@ -20,8 +20,16 @@ class Search extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
     }
     UNSAFE_componentWillMount() {
+      console.log(this.props.location.pathname);
+      const values = queryString.parse(this.props.location.search);
+      let book = values.bname;
+      let course = values.course;
+      console.log(book + course);
       console.log("hi");
-      fetch(api+"/testapi/search", {
+      let querystring = `?bname=${book}`
+      +`&course=${course}`;
+      console.log(querystring);
+      fetch(api+"/testapi/search" +querystring, {
         method: "GET",
         headers: {
           'accept': 'application/json',
@@ -160,6 +168,12 @@ class Search extends React.Component {
             {this.state.loaded &&
               <div className="flex flex-wrap justify-center">
               {this.loadBoxes()}
+              </div>}
+              {this.state.loaded && this.state.message.length == 0 &&
+              <div className="flex flex-wrap justify-center">
+              <div className="md:w-1/2 w-full h-64 m-4 p-10 bg-white rounded shadow-xl font-bold items-center text-center justify-center">
+                <p className="text-red-500 text-xl font-bold font-sans-pro"> No search results loaded for your query. <br></br> Please try another search.</p>
+              </div>
               </div>}
             </div>  
           </div>

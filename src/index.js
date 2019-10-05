@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import{Router, Route,Switch } from 'react-router-dom';
+import{BrowserRouter, Route,Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import Error from './error';
 import Login from './Pages/authentication/login';
@@ -25,7 +25,7 @@ import Create from './Pages/search/create';
 
 const browserHistory = createBrowserHistory();
 ReactDOM.render(
-    <Router path="/App" history={browserHistory}>
+    <BrowserRouter path="/App" history={browserHistory}>
     <div className="min-h-screen flex flex-col bg-blue-new scrolling-touch bg-blue-new">
     <Header/>
     <div className="pt-20"/>
@@ -54,7 +54,7 @@ ReactDOM.render(
         
     
     
-    </Router>, document.getElementById('root'));
+    </BrowserRouter>, document.getElementById('root'));
     
 
 // If you want your app to work offline and load faster, you can change

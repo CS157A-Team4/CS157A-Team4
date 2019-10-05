@@ -6,6 +6,7 @@
     "blob-util": "^2.0.2",
     "docker": "^1.0.0",
     "history": "^4.9.0",
+    "query-string": "^6.8.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-native-base64": "0.0.2",

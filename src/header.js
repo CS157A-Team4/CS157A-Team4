@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import logo from './images/textbookicon.png';
-
+import queryString from 'query-string';
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +13,7 @@ class Header extends React.Component {
     this.storageUpdated = this.storageUpdated.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    
   }
   storageUpdated() {
     if (window.localStorage.getItem("token") !== this.state.token) {
@@ -21,6 +22,8 @@ class Header extends React.Component {
         user: JSON.parse(window.localStorage.getItem("currentUser"))
       });
     }
+
+
   }
 
   redirect(page) {
@@ -66,10 +69,15 @@ class Header extends React.Component {
   };
   
   search() {
+
     const bname = this.state.bookname;
     const course = this.state.course;
     if(bname || course) {
      this.props.history.push(`/search?bname=${bname}&course=${course}`);
+     if(this.props.location.pathname === '/search'){
+      window.location.reload();
+        }
+     
     } else {
       alert("Please fill at least the book name or course id.")
     }
@@ -77,6 +85,7 @@ class Header extends React.Component {
 
   render() {
     this.storageUpdated();
+
     return (
       <div className="z-50 md:h-20 h-16 w-full bg-white border-b-2 flex items-center fixed">
         <img
@@ -127,7 +136,7 @@ class Header extends React.Component {
               Yu
             </div>
             <div className="ml-4 divider hidden md:flex"/>
-            <div class="bg-blue-new w-px h-full  ml-4 "/>
+            <div  className="bg-blue-new w-px h-full  ml-4 "/>
             {
               <div className="hidden md:flex">
                 {this.createOptions()}

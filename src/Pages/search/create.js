@@ -38,7 +38,7 @@ class Create extends React.Component {
     }
 
     newSelect = (condition) => {
-        this.setState({ condition });
+        this.setState({ condition: condition.value });
         console.log(`Option selected:`, condition);
     }
     handleChange(event) {
@@ -55,6 +55,22 @@ class Create extends React.Component {
             this.setState({error:returns});
             return;
         }
+        var today = new Date();
+        var dd = today.getDate();
+
+        var mm = today.getMonth()+1; 
+        var yyyy = today.getFullYear();
+        if(dd<10) 
+        {
+            dd='0'+dd;
+        } 
+
+        if(mm<10) 
+        {
+            mm='0'+mm;
+        } 
+        today = +yyyy+'-'+mm+'-'+dd;
+        console.log(today);
         let newPost = {
             author: this.state.author,
             bookname: this.state.bookname,
@@ -63,15 +79,12 @@ class Create extends React.Component {
             description: this.state.description,
             image: this.state.image,
             price: this.state.price,
-            posterToken: 23
+            poster: 23,
+            date: today,
         };
 
         fetch(api + "/posts/create", {
             method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
             body: JSON.stringify(newPost)
           }).then(results => {
             return results.json();

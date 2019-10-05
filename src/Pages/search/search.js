@@ -80,8 +80,7 @@ class Search extends React.Component {
             <div className="w-full sm:w-full lg:w-full py-6 ">
                 <div className="bg-white w-64 shadow-2xl rounded-lg rounded">
                     <div className="bg-cover bg-center justify-center flex h-56 p-4 w-auto overflow-hidden">
-                      <img className="rounded h-full" src={this.state.message[i].image !== null? "data:image/png;base64, " + arrayBufferToBinaryString(this.state.message[i].image.data)
-:logo}></img>
+                      <img className="rounded h-full" src={this.state.message[i].image !== null?  this.state.message[i].image:logo}></img>
                     </div>
                     <div className="p-4 pt-0">
                         <p className="overflow-auto uppercase tracking-wide text-sm font-bold text-gray-700">{this.state.message[i].book}</p>

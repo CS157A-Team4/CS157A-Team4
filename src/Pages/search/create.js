@@ -106,20 +106,24 @@ class Create extends React.Component {
     } 
     
     handlePhoto(ev){
+        this.setState({error:"Uploading Image...."});
         ev.preventDefault();
-        let fileSelect = ev.currentTarget.files;
+        let fileSelect = ev.currentTarget.files[0];
+        console.log(fileSelect);
         const formData = new FormData();
         formData.append('image', fileSelect);
-        fetch("https://api.imgur.com/3/upload", {
+        fetch("https://api.imgur.com/3/image", {
             method: "POST",
             headers:{
-                'Authorization': 'Client-ID d98a3a1d451495d'
+                'Authorization': 'Client-ID 2175ee4b0324172',
                 },
             body: formData
           }).then(results => {
             return results.json();
           }).then(data => {
-                console.log(data);
+                console.log(data.data.link);
+                this.setState({image:data.data.link,error:''})
+
             }
           )
         }
@@ -173,7 +177,7 @@ class Create extends React.Component {
         <label for="image" className="block text-gray-00 font-bold font-medium">Optional: Upload a Photo of your Book</label>
         <input id="image" type="file" name="image" onChange= {(e) =>this.handlePhoto(e)} />
         </div>
-        <p className="w-full px-4 mt-4 text-center items-center block text-red-600 font-sans-pro text-2xl font-bold text-left justify-center mb-2">
+        <p className="w-full px-4 mt-4 text-center items-center block text-red-600 font-sans-pro text-2xl font-bold text-left justify-center">
             {this.state.error}
           </p>
       <button className="px-4 py-1 mt-4 md:mt-0 md:w-auto w-full text-white font-bold text-2xl tracking-wider md:w-1/4 hover:bg-teal-600 bg-blue-new rounded" type="submit">Post</button>

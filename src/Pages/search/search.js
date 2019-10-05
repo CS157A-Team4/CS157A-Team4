@@ -75,20 +75,20 @@ class Search extends React.Component {
 	let boxes = []
 	for (let i =0; i< 15; i++) {
 		boxes.push(
-        <div class="max-w-sm mx-auto md:mr-4 md:ml-4 rounded-lg font-bold ">
-            <div class="w-full sm:w-full lg:w-full py-6 ">
-                <div class="bg-white w-64 shadow-2xl rounded-lg rounded">
-                    <div class="bg-cover bg-center justify-center flex h-56 p-4 w-auto overflow-hidden">
+        <div className="max-w-sm mx-auto md:mr-4 md:ml-4 rounded-lg font-bold ">
+            <div className="w-full sm:w-full lg:w-full py-6 ">
+                <div className="bg-white w-64 shadow-2xl rounded-lg rounded">
+                    <div className="bg-cover bg-center justify-center flex h-56 p-4 w-auto overflow-hidden">
                       <img className="rounded h-full" src={i %2 == 0? aBook:logo}></img>
                     </div>
-                    <div class="p-4 pt-0">
-                        <p class="overflow-auto uppercase tracking-wide text-sm font-bold text-gray-700">{i %2 == 0? "Cracking the Coding Interview":"Cats Cats Cats"}</p>
-                        <p class="text-3xl text-gray-900">$35</p>
-                        <p class="text-gray-700"> By Josephine Adeline</p>
+                    <div className="p-4 pt-0">
+                        <p className="overflow-auto uppercase tracking-wide text-sm font-bold text-gray-700">{i %2 == 0? "Cracking the Coding Interview":"Cats Cats Cats"}</p>
+                        <p className="text-3xl text-gray-900">$35</p>
+                        <p className="text-gray-700"> By Josephine Adeline</p>
                     </div>
-                    <div class="flex p-2 border-t border-gray-300 text-gray-700">
-                        <div class="flex inline-flex items-center">
-                            <svg class="h-6 w-6 text-gray-600 fill-current mr-3"/>
+                    <div className="flex p-2 border-t border-gray-300 text-gray-700">
+                        <div className="flex inline-flex items-center">
+                            <svg className="h-6 w-6 text-gray-600 fill-current mr-3"/>
                             {
                             i % 2 == 0? 
                             <p className="text-black text-lg"> Lightly Used</p>
@@ -96,8 +96,8 @@ class Search extends React.Component {
                             <p className="text-black text-lg"> Written In</p>
                             }
                         </div>
-                        <div class="flex-1 inline-flex items-center">
-                            <svg class="h-6 w-6 text-gray-600 fill-current mr-3"/>
+                        <div className="flex-1 inline-flex items-center">
+                            <svg className="h-6 w-6 text-gray-600 fill-current mr-3"/>
                             {
                             i % 2 == 0? 
                             <p className="text-red-500 text-lg"> On Hold</p>
@@ -106,11 +106,11 @@ class Search extends React.Component {
                             }
                         </div>
                     </div>
-                    <div class="border-b rounded-lg rounded-t-none px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
-                        <div class="text-xs uppercase font-bold text-gray-600 tracking-wide">Seller</div>
-                        <div class="flex justify-center items-center pt-2">
+                    <div className="border-b rounded-lg rounded-t-none px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
+                        <div className="text-xs uppercase font-bold text-gray-600 tracking-wide">Seller</div>
+                        <div className="flex justify-center items-center pt-2">
                             <div>
-                                <p class="font-bold text-gray-900">Mike Wu</p>
+                                <p className="font-bold text-gray-900">Mike Wu</p>
                             </div>
                         </div>
                 </div>
@@ -131,7 +131,7 @@ class Search extends React.Component {
 	render() {
     	return (
         <div className="text-center items-center justify-center align-start flex font-sans-pro md:pl-10 md:pr-10">
-          <div class="md:w-full h-full">
+          <div className="md:w-full h-full">
           {window.innerWidth < 768 &&
           <div className="items-center justify-center flex">
         <div className="bg-white w-2/3 border rounded p-4">
@@ -160,7 +160,7 @@ class Search extends React.Component {
      </div>
 
     }
-            <div class="md:pt-10 ">
+            <div className="md:pt-10 ">
             {this.state.loaded &&
               <div className="flex flex-wrap justify-center">
               {this.loadBoxes()}

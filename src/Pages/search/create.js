@@ -66,7 +66,7 @@ class Create extends React.Component {
             posterToken: 23
         };
 
-        fetch(api + "/posts", {
+        fetch(api + "/posts/create", {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -94,47 +94,47 @@ class Create extends React.Component {
     <p className="text-gray-800 text-3xl text-center font-bold">Create a Post</p>
     <div className="md:flex md:justify-between ">
     <div className="w-full">
-      <label class=" block text-medium text-gray-00" for="bookname">Book Title</label>
-      <input class=" w-full block mr-auto px-5 py-1 h-12 text-gray-700 bg-gray-200 rounded"  onChange= {(e) =>this.handleChange(e)} id="bookname" name="bookname" type="text" required placeholder="Ex: Defense Against the Dark Arts" aria-label="Book"/>
+      <label className=" block text-medium text-gray-00" for="bookname">Book Title</label>
+      <input className=" w-full block mr-auto px-5 py-1 h-12 text-gray-700 bg-gray-200 rounded"  onChange= {(e) =>this.handleChange(e)} id="bookname" name="bookname" type="text" required placeholder="Ex: Defense Against the Dark Arts" aria-label="Book"/>
     </div>
     <div className="md:w-1/3 md:px-2 w-full">
-    <label class="block text-medium text-gray-00" for="author">Author</label>
-    <input class="block w-full md:w-auto ml-auto px-5 py-1 h-12 text-gray-700 bg-gray-200 rounded" onChange= {(e) =>this.handleChange(e)} id="author" name="author" type="text" required placeholder="Ex: J.K. Rowling" aria-label="Author"/>
+    <label className="block text-medium text-gray-00" for="author">Author</label>
+    <input className="block w-full md:w-auto ml-auto px-5 py-1 h-12 text-gray-700 bg-gray-200 rounded" onChange= {(e) =>this.handleChange(e)} id="author" name="author" type="text" required placeholder="Ex: J.K. Rowling" aria-label="Author"/>
     </div>
     </div>
-    <div class="rounded  justify-between w-full ">
-  <div class="md:flex md:justify-between w-full md:w-auto">
-    <div class="md:w-1/3 w-full flex-none">
-    <label class="block text-medium text-gray-00" for="condition">Condition</label>
-      <input onChange= {(e) =>this.handleChange(e)} name="condition" id="condition" class="hidden block bg-gray-200 h-12 w-full md:w-auto rounded px-5 py-1"></input>
+    <div className="rounded  justify-between w-full ">
+  <div className="md:flex md:justify-between w-full md:w-auto">
+    <div className="md:w-1/3 w-full flex-none">
+    <label className="block text-medium text-gray-00" for="condition">Condition</label>
+      <input onChange= {(e) =>this.handleChange(e)} name="condition" id="condition" className="hidden block bg-gray-200 h-12 w-full md:w-auto rounded px-5 py-1"></input>
       <Select required onChange={this.newSelect} autoFocus={true} name="condition" id="condition" className="col-md-8 col-offset-4 flex-none"options = {options} />
     </div>
-    <div class="md:w-1/3 md:px-2 w-full">
-    <label for="course" class=" block text-gray-00 font-bold font-medium">Course</label>
-      <input onChange= {(e) =>this.handleChange(e)} name="course" id="course" class="block bg-gray-200 h-12 w-full md:w-auto rounded px-5 py-1" ></input>
+    <div className="md:w-1/3 md:px-2 w-full">
+    <label for="course" className=" block text-gray-00 font-bold font-medium">Course</label>
+      <input onChange= {(e) =>this.handleChange(e)} name="course" id="course" className="block bg-gray-200 h-12 w-full md:w-auto rounded px-5 py-1" ></input>
     </div>
-    <div class="md:w-1/3 md:px-2 w-full">
-    <label for="price" class="block text-gray-00 font-bold font-medium">Price</label>
-      <input onChange= {(e) =>this.handleChange(e)} name="price" id="price"class="bg-gray-200 h-12 w-full md:w-auto rounded px-5 py-1" type="number" min="1" step="any"></input>
+    <div className="md:w-1/3 md:px-2 w-full">
+    <label for="price" className="block text-gray-00 font-bold font-medium">Price</label>
+      <input onChange= {(e) =>this.handleChange(e)} name="price" id="price"className="bg-gray-200 h-12 w-full md:w-auto rounded px-5 py-1" type="number" min="1" step="any"></input>
     </div>
   </div>
 </div>
     <div className="w-full">
-        <label for="description" class="block text-gray-00 font-bold font-medium">
+        <label for="description" className="block text-gray-00 font-bold font-medium">
             Description
         </label>
-        <textarea onChange= {(e) =>this.handleChange(e)} name="description" id="description" class="w-full px-5 py-1 align-text-top bg-gray-200 h-48 rounded text-justify"></textarea>
+        <textarea onChange= {(e) =>this.handleChange(e)} name="description" id="description" className="w-full px-5 py-1 align-text-top bg-gray-200 h-48 rounded text-justify"></textarea>
 
     </div>
-    <div class="mt-4 md:w-full md:flex md:justify-end">
+    <div className="mt-4 md:w-full md:flex md:justify-end">
         <div className="w-full">
-        <label for="image" class="block text-gray-00 font-bold font-medium">Optional: Upload a Photo of your Book</label>
+        <label for="image" className="block text-gray-00 font-bold font-medium">Optional: Upload a Photo of your Book</label>
         <input id="image" type="file" name="image" onChange= {(e) =>this.handleChange(e)} />
         </div>
         <p className="w-full px-4 mt-4 text-center items-center block text-red-600 font-sans-pro text-2xl font-bold text-left justify-center mb-2">
             {this.state.error}
           </p>
-      <button class="px-4 py-1 mt-4 md:mt-0 md:w-auto w-full text-white font-bold text-2xl tracking-wider md:w-1/4 hover:bg-teal-600 bg-blue-new rounded" type="submit">Post</button>
+      <button className="px-4 py-1 mt-4 md:mt-0 md:w-auto w-full text-white font-bold text-2xl tracking-wider md:w-1/4 hover:bg-teal-600 bg-blue-new rounded" type="submit">Post</button>
     </div>
   </form>
 </div>

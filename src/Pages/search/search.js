@@ -20,7 +20,7 @@ class Search extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
     }
     UNSAFE_componentWillMount() {
-      console.log(this.props.location.pathname);
+      
       const values = queryString.parse(this.props.location.search);
       let book = values.bname;
       let course = values.course;
@@ -134,8 +134,8 @@ class Search extends React.Component {
       }
 	render() {
     	return (
-        <div className="text-center items-center justify-center align-start flex font-sans-pro md:pl-10 md:pr-10">
-          <div className="md:w-full h-full">
+        <div className="text-center items-center justify-center align-start w-full flex font-sans-pro md:pl-10 md:pr-10">
+          <div className="w-full h-full">
           {window.innerWidth < 768 &&
           <div className="items-center justify-center flex">
         <div className="bg-white w-2/3 border rounded p-4">

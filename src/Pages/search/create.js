@@ -16,12 +16,17 @@ class Create extends React.Component {
         super(props);
       
       this.state = {
-        bookname:'',
-        course:'',
         message:[],
         image:logo,
         condition:'',
         error:null,
+        author: '',
+        bookname: '',
+        condition: '',
+        course: '',
+        description:'',
+        price: 0,
+        poster: 23,
       };
       this.storageUpdated = this.storageUpdated.bind(this);
       this.handleChange = this.handleChange.bind(this);
@@ -100,7 +105,28 @@ class Create extends React.Component {
           });
     } 
     
+    handlePhoto(ev){
+        let fileSelect = ev.currentTarget.files;
+        let entity={
+            'image':fileSelect,
+        }
+        fetch("https://api.imgur.com/3/upload", {
+            method: "POST",
+            headers:{
+                'Authorization': 'Client-ID d98a3a1d451495d'
+                },
+            body: entity
+          }).then(results => {
+            return results.json();
+          }).then(data => {
+                console.log(data);
+            }
+          )
+        }
     
+
+    
+
 	render() {
     	return (
         <div className="font-sans-pro md:pl-10 md:pr-10 md:pt-12">
@@ -145,7 +171,7 @@ class Create extends React.Component {
     <div className="mt-4 md:w-full md:flex md:justify-end">
         <div className="w-full">
         <label for="image" className="block text-gray-00 font-bold font-medium">Optional: Upload a Photo of your Book</label>
-        <input id="image" type="file" name="image" onChange= {(e) =>this.handleChange(e)} />
+        <input id="image" type="file" name="image" onChange= {(e) =>this.handlePhoto(e)} />
         </div>
         <p className="w-full px-4 mt-4 text-center items-center block text-red-600 font-sans-pro text-2xl font-bold text-left justify-center mb-2">
             {this.state.error}

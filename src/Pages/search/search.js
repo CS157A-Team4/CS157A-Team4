@@ -3,8 +3,7 @@ import logo from '../../images/curious_cat.png';
 import aBook from '../../images/testbook.png';
 import bBook from '../../images/anotherbook.png';
 import api from '../../backend/backend';
-import base64 from 'react-native-base64'
-
+import {arrayBufferToBinaryString} from 'blob-util';
 class Search extends React.Component {	
     constructor(props) {
         super(props);
@@ -43,6 +42,7 @@ class Search extends React.Component {
             console.log(data);
               this.setState({message:data});
               this.setState({loaded:true});
+              console.log(this.state);
           }
   
       }.bind(this));
@@ -73,36 +73,33 @@ class Search extends React.Component {
     loadBoxes(){
       console.log(this.state)
 	let boxes = []
-	for (let i =0; i< 15; i++) {
+	for (let i =0; i< this.state.message.length; i++) {
+
 		boxes.push(
         <div className="max-w-sm mx-auto md:mr-4 md:ml-4 rounded-lg font-bold ">
             <div className="w-full sm:w-full lg:w-full py-6 ">
                 <div className="bg-white w-64 shadow-2xl rounded-lg rounded">
                     <div className="bg-cover bg-center justify-center flex h-56 p-4 w-auto overflow-hidden">
-                      <img className="rounded h-full" src={i %2 == 0? aBook:logo}></img>
+                      <img className="rounded h-full" src={this.state.message[i].image !== null? "data:image/png;base64, " + arrayBufferToBinaryString(this.state.message[i].image.data)
+:logo}></img>
                     </div>
                     <div className="p-4 pt-0">
-                        <p className="overflow-auto uppercase tracking-wide text-sm font-bold text-gray-700">{i %2 == 0? "Cracking the Coding Interview":"Cats Cats Cats"}</p>
+                        <p className="overflow-auto uppercase tracking-wide text-sm font-bold text-gray-700">{this.state.message[i].book}</p>
                         <p className="text-3xl text-gray-900">$35</p>
-                        <p className="text-gray-700"> By Josephine Adeline</p>
+                        <p className="text-gray-700"> {this.state.message[i].author}</p>
                     </div>
                     <div className="flex p-2 border-t border-gray-300 text-gray-700">
                         <div className="flex inline-flex items-center">
                             <svg className="h-6 w-6 text-gray-600 fill-current mr-3"/>
-                            {
-                            i % 2 == 0? 
-                            <p className="text-black text-lg"> Lightly Used</p>
-                            :
-                            <p className="text-black text-lg"> Written In</p>
-                            }
+                            <p className="text-black text-lg"> {this.state.message[i].condition}</p>                     
                         </div>
                         <div className="flex-1 inline-flex items-center">
                             <svg className="h-6 w-6 text-gray-600 fill-current mr-3"/>
                             {
-                            i % 2 == 0? 
-                            <p className="text-red-500 text-lg"> On Hold</p>
-                            :
+                            this.state.message[i].hold == 0? 
                             <p className="text-green-500 text-lg"> Available</p>
+                            :
+                            <p className="text-red-500 text-lg"> On Hold</p>
                             }
                         </div>
                     </div>
@@ -110,7 +107,7 @@ class Search extends React.Component {
                         <div className="text-xs uppercase font-bold text-gray-600 tracking-wide">Seller</div>
                         <div className="flex justify-center items-center pt-2">
                             <div>
-                                <p className="font-bold text-gray-900">Mike Wu</p>
+                                <p className="font-bold text-gray-900">{this.state.message[i].firstname + " " + this.state.message[i].surname}</p>
                             </div>
                         </div>
                 </div>

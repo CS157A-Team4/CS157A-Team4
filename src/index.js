@@ -22,6 +22,7 @@ import FriendsList from './Pages/friends/friendsList';
 import PasswordChange from './Pages/profile/profile';
 import FriendsRequest from './Pages/friends/friendsList';
 import Create from './Pages/search/create';
+
 const browserHistory = createBrowserHistory();
 ReactDOM.render(
     <Router path="/App" history={browserHistory}>

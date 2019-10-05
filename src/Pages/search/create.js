@@ -106,16 +106,16 @@ class Create extends React.Component {
     } 
     
     handlePhoto(ev){
+        ev.preventDefault();
         let fileSelect = ev.currentTarget.files;
-        let entity={
-            'image':fileSelect,
-        }
+        const formData = new FormData();
+        formData.append('image', fileSelect);
         fetch("https://api.imgur.com/3/upload", {
             method: "POST",
             headers:{
                 'Authorization': 'Client-ID d98a3a1d451495d'
                 },
-            body: entity
+            body: formData
           }).then(results => {
             return results.json();
           }).then(data => {

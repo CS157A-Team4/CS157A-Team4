@@ -85,6 +85,9 @@ class Create extends React.Component {
 
         fetch(api + "/posts/create", {
             method: "POST",
+            headers:{
+                'Content-Type': 'application/json'
+                },
             body: JSON.stringify(newPost)
           }).then(results => {
             return results.json();

@@ -1922,7 +1922,9 @@ video {
 .border-black {
   border-color: #000;
 }
-
+.border-blue-new{
+  border-color: #88C5CC;
+}
 .border-white {
   border-color: #fff;
 }

@@ -51,3 +51,7 @@ font-family: 'Source Sans Pro', sans-serif;
   margin: 6px 0;
   background: #88C5CC;;
 }
+
+.border-color-blue-new{
+  border-color: #88C5CC;
+}

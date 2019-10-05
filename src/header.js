@@ -86,7 +86,7 @@ class Header extends React.Component {
           onClick={() => this.redirect("")}
         />
         <p
-          className="ml-3 md:mr-16 text-soft-blue hover:text-gray-600 font-web text-xl font-bold leading-none cursor-pointer"
+          className="ml-3 md:mr-16 hover:text-gray-600 font-web text-xl font-bold leading-none cursor-pointer"
           onClick={() => this.redirect("")}
         >
           SJSU
@@ -114,7 +114,7 @@ class Header extends React.Component {
          onChange={this.handleChange}
        />
      <div className="ml-4">
-     <div className=" bg-blue-new hover:bg-teal-600 h-14 text-2xl w-full hover:bg-blue text-white font-bold font-sans-pro py-2 px-4 rounded cursor-pointer" onClick={(e) => this.search(e)} value="Search">Search</div>
+     <div className=" bg-blue-new hover:bg-teal-600 h-14 text-2xl w-full  text-white font-bold font-sans-pro py-2 px-4 rounded cursor-pointer" onClick={(e) => this.search(e)} value="Search">Search</div>
      </div>
      </div>
     }
@@ -127,7 +127,7 @@ class Header extends React.Component {
               Yu
             </div>
             <div className="ml-4 divider hidden md:flex"/>
-            <td class="bg-blue-new w-px h-full  ml-4 "/>
+            <div class="bg-blue-new w-px h-full  ml-4 "/>
             {
               <div className="hidden md:flex">
                 {this.createOptions()}

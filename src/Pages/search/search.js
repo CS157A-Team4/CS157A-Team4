@@ -1,32 +1,171 @@
 import React from 'react';
-import logo from '../../logo.svg';
+import logo from '../../images/curious_cat.png';
+import aBook from '../../images/testbook.png';
+import bBook from '../../images/anotherbook.png';
+import api from '../../backend/backend';
+import base64 from 'react-native-base64'
 
 class Search extends React.Component {	
     constructor(props) {
         super(props);
+      
+      this.state = {
+        bookname:'',
+        course:'',
+        token:false,
+        loaded:false,
+        message:[],
+      };
+      this.storageUpdated = this.storageUpdated.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    UNSAFE_componentWillMount() {
+      console.log("hi");
+      fetch(api+"/testapi/search", {
+        method: "GET",
+        headers: {
+          'accept': 'application/json',
+        }
+      })
+      .then(function (response) {
+        console.log("hi");
+          return response.json();
+      })
+      .then(function (data) {
+          if (data["error"]) {
+              this.setState({
+                  error: data["message"]
+              });
+              console.log(data);
+          }
+          else {
+            console.log(data);
+              this.setState({message:data});
+              this.setState({loaded:true});
+          }
+  
+      }.bind(this));
       }
+    storageUpdated() {
+      if (window.localStorage.getItem("token") !== this.state.token) {
+        this.setState({
+          token: window.localStorage.getItem("token"),
+          user: JSON.parse(window.localStorage.getItem("currentUser"))
+        });
+      }
+    }
+  
+    handleChange(event) {
+      this.setState({
+        [event.target.id]: event.target.value
+      });
+    }
+    handleSubmit(event) {
+      event.preventDefault();
+      console.log(this.state.course);
+      console.log(this.state.bookname);
+    }
     goTo(event) {
         const value = event.target.value;
         this.props.history.push(`/${value}`);
       }
+    loadBoxes(){
+      console.log(this.state)
+	let boxes = []
+	for (let i =0; i< 15; i++) {
+		boxes.push(
+        <div class="max-w-sm mx-auto md:mr-4 md:ml-4 rounded-lg font-bold ">
+            <div class="w-full sm:w-full lg:w-full py-6 ">
+                <div class="bg-white w-64 shadow-2xl rounded-lg rounded">
+                    <div class="bg-cover bg-center justify-center flex h-56 p-4 w-auto overflow-hidden">
+                      <img className="rounded h-full" src={i %2 == 0? aBook:logo}></img>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <p class="overflow-auto uppercase tracking-wide text-sm font-bold text-gray-700">{i %2 == 0? "Cracking the Coding Interview":"Cats Cats Cats"}</p>
+                        <p class="text-3xl text-gray-900">$35</p>
+                        <p class="text-gray-700"> By Josephine Adeline</p>
+                    </div>
+                    <div class="flex p-2 border-t border-gray-300 text-gray-700">
+                        <div class="flex inline-flex items-center">
+                            <svg class="h-6 w-6 text-gray-600 fill-current mr-3"/>
+                            {
+                            i % 2 == 0? 
+                            <p className="text-black text-lg"> Lightly Used</p>
+                            :
+                            <p className="text-black text-lg"> Written In</p>
+                            }
+                        </div>
+                        <div class="flex-1 inline-flex items-center">
+                            <svg class="h-6 w-6 text-gray-600 fill-current mr-3"/>
+                            {
+                            i % 2 == 0? 
+                            <p className="text-red-500 text-lg"> On Hold</p>
+                            :
+                            <p className="text-green-500 text-lg"> Available</p>
+                            }
+                        </div>
+                    </div>
+                    <div class="border-b rounded-lg rounded-t-none px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
+                        <div class="text-xs uppercase font-bold text-gray-600 tracking-wide">Seller</div>
+                        <div class="flex justify-center items-center pt-2">
+                            <div>
+                                <p class="font-bold text-gray-900">Mike Wu</p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>)};
+    return boxes;
+      }
+      search() {
+        const bname = this.state.bookname;
+        const course = this.state.course;
+        if(bname || course) {
+         this.props.history.push(`/search?bname=${bname}&course=${course}`);
+        } else {
+          alert("Please fill at least the book name or course id.")
+        }
+      }
 	render() {
     	return (
-        <div>
-          <div className="text-center h-full">
-          <header className="overflow-hidden min-h-full bg-blue-new flex flex-col items-center justify text-center content-center justify-center">
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                Bookie's Temporary Search Page
-              </p>
-              <h2>{this.props.location.search}</h2>
-              <button
-                className="App-link"
-                value = ""
-                onClick={(e) => this.goTo(e)}
-              >
-                Click here to return home
-              </button>
-            </header>
+        <div className="text-center items-center justify-center align-start flex font-sans-pro md:pl-10 md:pr-10">
+          <div class="md:w-full h-full">
+          {window.innerWidth < 768 &&
+          <div className="items-center justify-center flex">
+        <div className="bg-white w-2/3 border rounded p-4">
+        <input
+        className="md:text-xl md:w-auto w-3/4 md:h-14 mb-2 shadow-xl font-sans-pro text-grey-darker border-2 border-blue-new font-bold rounded text-center focus:shadow-inner"
+         placeholder="Search by Name"
+         id="bookname"
+         type="text"
+         value={this.state.bookname}
+         onChange={this.handleChange}
+       />
+     <div className ="md:ml-4 md:mr-4 md:pt-4 mt-2 mb-2 text-2xl leading-none font-sans-pro font-bold" >OR</div>
+
+       <input
+       className="overflow-auto p-4 md:text-xl mt-2 md:w-auto md:h-14 shadow-xl  border-2 border-blue-new font-sans-pro text-grey-darker rounded font-bold text-center focus:shadow-inner"
+         placeholder="Search by Course"
+         id ="course"
+         value={this.state.course}
+         type="text"
+         onChange={this.handleChange}
+       />
+     <div className="mt-4 flex justify-center">
+     <div className="w-1/2 bg-blue-new hover:bg-teal-600 h-14 text-2xl hover:bg-blue text-white font-bold font-sans-pro py-2 px-4 rounded cursor-pointer" onClick={(e) => this.search(e)} value="Search">Search</div>
+     </div>
+     </div>
+     </div>
+
+    }
+            <div class="md:pt-10 ">
+            {this.state.loaded &&
+              <div className="flex flex-wrap justify-center">
+              {this.loadBoxes()}
+              </div>}
+            </div>  
           </div>
         </div>
 		)	

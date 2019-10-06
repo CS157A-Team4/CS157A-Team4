@@ -20,40 +20,13 @@ class Search extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
     }
     UNSAFE_componentWillMount() {
-      
-      const values = queryString.parse(this.props.location.search);
+      this.getParams();
+      }
+      getParams(){
+        const values = queryString.parse(this.props.location.search);
       let book = values.bname;
       let course = values.course;
-      console.log(book + course);
-      console.log("hi");
-      let querystring = `?bname=${book}`
-      +`&course=${course}`;
-      console.log(querystring);
-      fetch(api+"/testapi/search" +querystring, {
-        method: "GET",
-        headers: {
-          'accept': 'application/json',
-        }
-      })
-      .then(function (response) {
-        console.log("hi");
-          return response.json();
-      })
-      .then(function (data) {
-          if (data["error"]) {
-              this.setState({
-                  error: data["message"]
-              });
-              console.log(data);
-          }
-          else {
-            console.log(data);
-              this.setState({message:data});
-              this.setState({loaded:true});
-              console.log(this.state);
-          }
-  
-      }.bind(this));
+      this.setState({bookname:book,course:course},() => this.search());
       }
     storageUpdated() {
       if (window.localStorage.getItem("token") !== this.state.token) {
@@ -127,7 +100,36 @@ class Search extends React.Component {
         const bname = this.state.bookname;
         const course = this.state.course;
         if(bname || course) {
-         this.props.history.push(`/search?bname=${bname}&course=${course}`);
+        this.props.history.push(`/search?bname=${bname}&course=${course}`);
+        let querystring = `?bname=${bname}`
+        +`&course=${course}`;
+        console.log(querystring);
+        fetch(api+"/testapi/search" +querystring, {
+          method: "GET",
+          headers: {
+            'accept': 'application/json',
+          }
+        })
+        .then(function (response) {
+          console.log("hi");
+            return response.json();
+        })
+        .then(function (data) {
+            if (data["error"]) {
+                this.setState({
+                    error: data["message"]
+                });
+                console.log(data);
+            }
+            else {
+              console.log(data);
+                this.setState({message:data});
+                this.setState({loaded:true});
+                console.log(this.state);
+            }
+    
+        }.bind(this));
+         
         } else {
           alert("Please fill at least the book name or course id.")
         }
@@ -158,7 +160,7 @@ class Search extends React.Component {
          onChange={this.handleChange}
        />
      <div className="mt-4 flex justify-center">
-     <div className="w-1/2 bg-blue-new hover:bg-teal-600 h-14 text-2xl hover:bg-blue text-white font-bold font-sans-pro py-2 px-4 rounded cursor-pointer" onClick={(e) => this.search(e)} value="Search">Search</div>
+     <div className="w-1/2 bg-blue-new hover:bg-teal-600 h-14 text-2xl hover:bg-blue text-white font-bold font-sans-pro py-2 px-4 rounded cursor-pointer" onClick={() => this.search()} value="Search">Search</div>
      </div>
      </div>
      </div>

@@ -25,12 +25,12 @@ import Create from './Pages/search/create';
 
 const browserHistory = createBrowserHistory();
 ReactDOM.render(
-    <BrowserRouter className="bg-blue-new" path="/App" history={browserHistory}>
+    <BrowserRouter path="/App" history={browserHistory}>
     <div className="bg-blue-new min-h-screen">
     <Header/>
     <Footer/>
 
-    <div className="scrolling-touch bg-blue-new md:scrolling-auto"/>
+    <div className="md:pt-20 pt-16 scrolling-touch bg-blue-new md:scrolling-auto"/>
         <Switch>
             <Route exact path = '/' component ={App}  />
             <Route exact path = '/login' component ={Login}  />

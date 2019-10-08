@@ -97,11 +97,14 @@ class Search extends React.Component {
     return boxes;
       }
       search() {
-        const bname = this.state.bookname === undefined? '':this.state.bookname;
-        console.log(bname);
-        const course = this.state.course === undefined? '':this.state.course;
-        if(bname || course) {
+        const bname = this.state.bookname === undefined? '':this.state.bookname.replace(/\s/g, '');
+        const course = this.state.course === undefined? '':this.state.course.replace(/\s/g, '');
+        this.setState({message:[],loaded:false});
         this.props.history.push(`/search?bname=${bname}&course=${course}`);
+
+        if(bname || course) {
+          console.log(bname);
+          console.log(course);
         let querystring = `?bname=${bname}`
         +`&course=${course}`;
         console.log(querystring);
@@ -131,9 +134,7 @@ class Search extends React.Component {
     
         }.bind(this));
          
-        } else {
-          alert("Please fill at least the book name or course id.")
-        }
+        } 
       }
 	render() {
     	return (

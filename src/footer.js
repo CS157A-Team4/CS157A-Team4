@@ -85,8 +85,11 @@ class Footer extends React.Component {
     const options = [
       "Profile",
       "Messages",
+      "Create Post",
       "Posts",
-      "Logout"
+      "Search",
+      "Logout",
+      
     ];
     options.map(item =>
       oList.push(

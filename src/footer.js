@@ -28,6 +28,9 @@ var burgerStuff = {
   bmCross: {
     background: '#bdc3c7'
   },
+  bmBurgerBars: {
+    background: '#88C5CC'
+  },
 }
 var phantom = {
 display: 'block',
@@ -124,7 +127,7 @@ class Footer extends React.Component {
       <Menu styles={burgerStuff} isOpen={this.state.menuOpen} onStateChange={(state) => this.handleStateChange(state)} width={ '40%' } right slide disableAutoFocus className="z-40 bg-white border-l-2 items-center h-full text-center font-bold justify-center text-bold txt-xl w-full right-0 font-sans-pro">
         <div className=" mt-8">
         <div className="h-10 text-2xl p-1 w-full">
-            Menu
+            Jonathan
         </div>
         <div className="justify-center flex ">
           <hr className="w-1/3 border-b border-blue-new"/>

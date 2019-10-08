@@ -153,7 +153,7 @@ class Header extends React.Component {
           <div 
             className="flex mr-8 ml-auto"
           >
-            <div className="font-sans-pro md:pointer-events-none text-2xl font-bold py-2 md:mr-4 md:cursor-default cursor-pointer">
+            <div className="font-sans-pro hidden md:flex md:pointer-events-none text-2xl font-bold py-2 md:mr-4 md:cursor-default cursor-pointer">
               Yu
             </div>
 

@@ -85,7 +85,7 @@ class App extends React.Component {
 }
 
   render() {return (
-    <div></div>
+    <div className="z-40 static"></div>
   );
 }
 }

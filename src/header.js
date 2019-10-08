@@ -144,7 +144,7 @@ class Header extends React.Component {
          onChange={this.handleChange}
        />
      <div className="ml-4">
-     <div className=" bg-blue-new hover:bg-teal-600 h-14 text-2xl w-full  text-white font-bold font-sans-pro py-2 px-4 rounded cursor-pointer" onClick={(e) => this.search(e)} value="Search">Search</div>
+     <div className=" bg-blue-new hover:bg-teal-600 h-14 text-2xl w-full  text-center text-white font-bold font-sans-pro py-4 px-4 rounded cursor-pointer" onClick={(e) => this.search(e)} value="Search">Search</div>
      </div>
      </div>
     }
@@ -153,8 +153,13 @@ class Header extends React.Component {
           <div 
             className="flex mr-8 ml-auto"
           >
+            <div>
+              <div>
             <div className="font-sans-pro hidden md:flex md:pointer-events-none text-2xl font-bold py-2 md:mr-4 md:cursor-default cursor-pointer">
               Yu
+            </div>
+            
+            </div>
             </div>
 
             <div className="ml-4 divider hidden md:flex"/>

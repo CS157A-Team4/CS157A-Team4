@@ -85,7 +85,17 @@ class App extends React.Component {
 }
 
   render() {return (
-    <div className=""><div className="w-full overflow-hidden">HELP</div></div>
+    <div className="App">
+        <div className="w-full overflow-hidden ">
+          <div className="absolute ml-8 mt-1/10 w-full-w/o-margins mt-24">
+            <p className="md:text-4xl lg:text-5xl text-lg text-white font-sans font-bold mb-4 md:mb-12">
+              Find deals to experience the world
+            </p>
+            <div className="flex flex-wrap -m-2">
+            </div>
+        </div>
+      </div>
+      </div>
   );
 }
 }

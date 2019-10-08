@@ -137,7 +137,7 @@ class Search extends React.Component {
       }
 	render() {
     	return (
-        <div className="text-center items-center justify-center align-start w-full flex font-sans-pro md:pl-10 md:pr-10">
+        <div className="text-center items-center justify-center align-start w-full flex font-sans-pro pt-4 md:pl-10 md:pr-10">
           <div className="w-full h-full">
           {window.innerWidth < 768 &&
           <div className="items-center justify-center flex">

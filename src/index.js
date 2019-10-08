@@ -26,9 +26,10 @@ import Create from './Pages/search/create';
 const browserHistory = createBrowserHistory();
 ReactDOM.render(
     <BrowserRouter path="/App" history={browserHistory}>
-    <div className="min-h-screen flex flex-col bg-blue-new scrolling-touch bg-blue-new">
+    <div className="min-h-screen flex relative flex-col h-full overflow-auto bg-blue-new scrolling-touch bg-blue-new">
+
     <Header/>
-    <div className="pt-20"/>
+    <div className="md:pt-20 pt-16"/>
         <Switch>
             <Route exact path = '/' component ={App}  />
             <Route exact path = '/login' component ={Login}  />
@@ -49,11 +50,8 @@ ReactDOM.render(
             <Route exact path = '/passwordChange' component ={PasswordChange}  />
             <Route component={Error}/>
         </Switch>
-        <Footer className="md:hidden"/>
+    <Footer/>
     </div>
-        
-    
-    
     </BrowserRouter>, document.getElementById('root'));
     
 

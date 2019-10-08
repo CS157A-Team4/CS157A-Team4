@@ -85,7 +85,7 @@ class App extends React.Component {
 }
 
   render() {return (
-    <div className="App "><div>HELP</div></div>
+    <div className="App "><div className="w-full overflow-hidden">HELP</div></div>
   );
 }
 }

@@ -153,7 +153,7 @@ class Create extends React.Component {
     <div className="md:w-1/3 w-full flex-none">
     <label className="block text-medium text-gray-00" for="condition">Condition</label>
       <input onChange= {(e) =>this.handleChange(e)} name="condition" id="condition" className="hidden block bg-gray-200 h-12 w-full md:w-auto rounded px-5 py-1"></input>
-      <Select required onChange={this.newSelect} autoFocus={true} name="condition" id="condition" className="col-md-8 col-offset-4 flex-none"options = {options} />
+      <Select required onChange={this.newSelect} name="condition" id="condition" className="col-md-8 col-offset-4 flex-none"options = {options} />
     </div>
     <div className="md:w-1/3 md:px-2 w-full">
     <label for="course" className=" block text-gray-00 font-bold font-medium">Course</label>

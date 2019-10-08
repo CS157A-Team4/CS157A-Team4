@@ -30,7 +30,7 @@ ReactDOM.render(
     <Header/>
     <Footer/>
 
-    <div className=" min-h-full scrolling-touch bg-blue-new md:scrolling-auto"/>
+    <div className="scrolling-touch bg-blue-new md:scrolling-auto"/>
         <Switch>
             <Route exact path = '/' component ={App}  />
             <Route exact path = '/login' component ={Login}  />

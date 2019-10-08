@@ -162,7 +162,7 @@ class Search extends React.Component {
          onChange={this.handleChange}
        />
      <div className="mt-4 flex justify-center">
-     <div className="w-1/2 bg-blue-new hover:bg-teal-600 h-14 text-2xl hover:bg-blue text-white font-bold font-sans-pro py-2 px-4 rounded cursor-pointer" onClick={() => this.search()} value="Search">Search</div>
+     <div className="w-1/2 bg-blue-new hover:bg-teal-600 h-14 text-2xl hover:bg-blue text-white font-bold font-sans-pro py-4 px-4 rounded cursor-pointer" onClick={() => this.search()} value="Search">Search</div>
      </div>
      </div>
      </div>

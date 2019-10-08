@@ -26,7 +26,7 @@ import Create from './Pages/search/create';
 const browserHistory = createBrowserHistory();
 ReactDOM.render(
     <BrowserRouter path="/App" history={browserHistory}>
-    <div className="min-h-screen flex flex-col h-full overflow-auto bg-blue-new scrolling-touch bg-blue-new">
+    <div className="flex flex-col h-full overflow-auto bg-blue-new scrolling-touch bg-blue-new">
 
     <Header/>
     <Footer/>

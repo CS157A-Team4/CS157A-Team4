@@ -26,12 +26,12 @@ import Create from './Pages/search/create';
 const browserHistory = createBrowserHistory();
 ReactDOM.render(
     <BrowserRouter path="/App" history={browserHistory}>
-    <div className="flex flex-col h-full overflow-auto bg-blue-new scrolling-touch bg-blue-new">
+    <div className="flex flex-col h-screen overflow-auto  bg-blue-new">
 
     <Header/>
     <Footer/>
 
-    <div className="md:pt-20 pt-16"/>
+    <div className="md:pt-20 pt-16 scrolling-touch bg-blue-new h-full"/>
         <Switch>
             <Route exact path = '/' component ={App}  />
             <Route exact path = '/login' component ={Login}  />

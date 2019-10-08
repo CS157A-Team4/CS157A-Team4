@@ -16,4 +16,12 @@ Also, the Project Requirement Document GoogleDocs:
 https://docs.google.com/document/d/1J9B9WtucvaSaEs8ERUnXksoQuwXSXGXEdXLJ8APQFMc/edit?usp=sharing
 
 
+10/07/2019
+
+Our DB Design Description file, which includes our E/R Diagram, is under the Documents folder.
+Also, the GoogleDoc link for the DB Desgin Description with the E/R Diagram is:
+https://docs.google.com/document/d/1e1R5u_KqQ2xsFcNoouKLXoXq74-HqiS9pL_2lEM9hgg/edit?usp=sharing
+
+
+
 

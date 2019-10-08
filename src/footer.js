@@ -29,6 +29,7 @@ var burgerStuff = {
     background: '#bdc3c7'
   },
   bmBurgerBars: {
+    borderRadius: '25px',
     background: '#88C5CC'
   },
 }

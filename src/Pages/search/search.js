@@ -23,7 +23,7 @@ class Search extends React.Component {
       this.getParams();
       }
       getParams(){
-        const values = queryString.parse(this.props.location.search);
+      const values = queryString.parse(this.props.location.search);
       let book = values.bname;
       let course = values.course;
       this.setState({bookname:book,course:course},() => this.search());
@@ -97,8 +97,9 @@ class Search extends React.Component {
     return boxes;
       }
       search() {
-        const bname = this.state.bookname;
-        const course = this.state.course;
+        const bname = this.state.bookname === undefined? '':this.state.bookname;
+        console.log(bname);
+        const course = this.state.course === undefined? '':this.state.course;
         if(bname || course) {
         this.props.history.push(`/search?bname=${bname}&course=${course}`);
         let querystring = `?bname=${bname}`

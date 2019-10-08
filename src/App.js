@@ -86,10 +86,10 @@ class App extends React.Component {
 
   render() {return (
     <div className="App">
-        <div className="w-full overflow-hidden ">
-          <div className="absolute ml-8 mt-1/10 w-full-w/o-margins mt-24">
+        <div className="w-full overflow-hidden text-center flex justify-center">
+          <div className="absolute  w-full-w/o-margins  mt-24">
             <p className="md:text-4xl lg:text-5xl text-lg text-white font-sans font-bold mb-4 md:mb-12">
-              Find deals to experience the world
+Buy and Sell your Books
             </p>
             <div className="flex flex-wrap -m-2">
             </div>

@@ -57,6 +57,7 @@ class Footer extends React.Component {
   }
 
   redirect(page) {
+    this.closeMenu();
     if (page === "logout") {
       this.setState({ token: undefined });
       window.localStorage.removeItem("token");
@@ -88,7 +89,7 @@ class Footer extends React.Component {
       oList.push(
         <p
           key={item}
-          className="h-10 text-2xl p-1 hover:bg-gray-200 w-full"
+          className="h-10 text-2xl p-1 hover:bg-gray-200 w-full cursor-pointer"
           onClick={() => this.redirect(item.replace(/\s/g, "").toLowerCase())}
         >
           {item}
@@ -120,26 +121,15 @@ class Footer extends React.Component {
     return (
       !this.state.token &&
       <div className="h-full w-1/3 md:hidden absolute pt-16">
-      <Menu styles={burgerStuff} width={ '40%' } right slide disableAutoFocus className="z-40 bg-white border-l-2 items-center h-full text-center font-bold justify-center text-bold txt-xl w-full right-0 font-sans-pro">
-        <div className="cursor-pointer mt-8">
+      <Menu styles={burgerStuff} isOpen={this.state.menuOpen} onStateChange={(state) => this.handleStateChange(state)} width={ '40%' } right slide disableAutoFocus className="z-40 bg-white border-l-2 items-center h-full text-center font-bold justify-center text-bold txt-xl w-full right-0 font-sans-pro">
+        <div className=" mt-8">
         <div className="h-10 text-2xl p-1 w-full">
             Menu
         </div>
         <div className="justify-center flex ">
           <hr className="w-1/3 border-b border-blue-new"/>
           </div>
-        <div className="h-10 text-2xl p-1 hover:bg-gray-200 w-full">
-            Profile
-        </div>
-        <div className="h-10 text-2xl p-1 hover:bg-gray-200 w-full">
-            Messages
-        </div>
-        <div className="h-10 text-2xl p-1 hover:bg-gray-200 w-full">
-            Posts
-        </div>
-        <div className="h-10 text-2xl p-1 hover:bg-gray-200 w-full">
-            Logout
-        </div>
+        {this.createOptions()}
         </div>
       </Menu>
     </div>

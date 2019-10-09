@@ -134,7 +134,7 @@ class Footer extends React.Component {
             Jonathan
         </div>
         <div className="justify-center flex ">
-          <hr className="w-1/3 border-b border-blue-new"/>
+          <hr className="w-1/3 border-t border-blue-new"/>
           </div>
         {this.createOptions()}
         </div>

@@ -129,12 +129,12 @@ class Footer extends React.Component {
       !this.state.token &&
       <div className="h-full w-1/3 md:hidden static">
       <Menu styles={burgerStuff} isOpen={this.state.menuOpen} onStateChange={(state) => this.handleStateChange(state)} width={ '40%' } right slide disableAutoFocus className="z-40 bg-white border-l-2 items-center h-full text-center font-bold justify-center text-bold txt-xl w-full right-0 font-sans-pro">
-        <div className=" mt-8">
-        <div className="h-10 text-2xl p-1 w-full">
+        <div className="mt-8">
+        <div className="text-2xl p-1 w-full">
             Jonathan
         </div>
         <div className="justify-center flex ">
-          <hr className="w-1/3 border-t border-blue-new"/>
+          <hr className="w-1/3 border border-blue-new mb-2 mt-2"/>
           </div>
         {this.createOptions()}
         </div>

@@ -83,7 +83,8 @@ class Footer extends React.Component {
   }
   createOptions = () => {
     let oList = [];
-    const options = [
+    const options = !this.state.token?
+    [
       "Profile",
       "Messages",
       "Create Post",
@@ -91,6 +92,11 @@ class Footer extends React.Component {
       "Search",
       "Logout",
       
+    ]
+    :
+    [
+      "Login",
+      "SignUp"
     ];
     options.map(item =>
       oList.push(
@@ -126,15 +132,15 @@ class Footer extends React.Component {
   render() {
     this.storageUpdated();
     return (
-      !this.state.token &&
+      
       <div className="h-full w-1/3 md:hidden static">
       <Menu styles={burgerStuff} isOpen={this.state.menuOpen} onStateChange={(state) => this.handleStateChange(state)} width={ '40%' } right slide disableAutoFocus className="z-40 bg-white border-l-2 items-center h-full text-center font-bold justify-center text-bold txt-xl w-full right-0 font-sans-pro">
         <div className="mt-8">
         <div className="text-2xl p-1 w-full">
-            Jonathan
+        {!this.state.token ? "Jonathan":"Hello"}
         </div>
         <div className="justify-center flex ">
-          <hr className="w-1/3 border border-blue-new mb-2 mt-2"/>
+          <hr className="w-1/3 border border-blue-new mb-2"/>
           </div>
         {this.createOptions()}
         </div>

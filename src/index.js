@@ -22,7 +22,7 @@ import FriendsList from './Pages/friends/friendsList';
 import PasswordChange from './Pages/profile/profile';
 import FriendsRequest from './Pages/friends/friendsList';
 import Create from './Pages/search/create';
-
+import Post from './Pages/search/post';
 const browserHistory = createBrowserHistory();
 ReactDOM.render(
     <BrowserRouter path="/App" history={browserHistory}>
@@ -30,7 +30,7 @@ ReactDOM.render(
     <Header/>
     <Footer/>
 
-    <div className="md:pt-20 pt-16 scrolling-touch bg-blue-new md:scrolling-auto"/>
+    <div className="md:pt-20 pt-16 scrolling-touch h-full bg-blue-new md:scrolling-auto"/>
         <Switch>
             <Route exact path = '/' component ={App}  />
             <Route exact path = '/login' component ={Login}  />
@@ -40,6 +40,7 @@ ReactDOM.render(
             <Route exact path = '/messages' component ={Messages}  />
             <Route exact path = '/messages/:params' component ={Messages}  />
             <Route exact path = '/posts' component ={ProfilePosts}  />
+            <Route exact path = '/post/:id' component ={Post}  />
             <Route exact path = '/profile' component ={Profile}  />
             <Route exact path = '/cancellation/:params' component ={Cancellation}  />
             <Route exact path = '/confirmation/:params' component ={Confirmation}  />

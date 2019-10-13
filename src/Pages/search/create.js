@@ -82,7 +82,7 @@ class Create extends React.Component {
             condition: this.state.condition,
             course: this.state.course,
             description: this.state.description,
-            image: this.state.image,
+            image: null,
             price: this.state.price,
             poster: 23,
             date: today,
@@ -160,7 +160,7 @@ class Create extends React.Component {
       <input onChange= {(e) =>this.handleChange(e)} name="course" id="course" className="block bg-gray-200 h-12 w-full md:w-auto rounded px-5 py-1" ></input>
     </div>
     <div className="md:w-1/3 md:px-2 w-full">
-    <label for="price" className="block text-gray-00 font-bold font-medium">Price</label>
+    <label for="price" className="block text-gray-00 font-bold font-medium">Price (USD)</label>
       <input onChange= {(e) =>this.handleChange(e)} name="price" id="price"className="bg-gray-200 h-12 w-full md:w-auto rounded px-5 py-1" type="number" min="1" step="any"></input>
     </div>
   </div>

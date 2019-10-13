@@ -48,7 +48,7 @@ class Search extends React.Component {
       console.log(this.state.bookname);
     }
     goTo(event) {
-        const value = event.target.value;
+        const value = "post/"+ event;
         this.props.history.push(`/${value}`);
       }
     loadBoxes(){
@@ -57,7 +57,7 @@ class Search extends React.Component {
 	for (let i =0; i< this.state.message.length; i++) {
 
 		boxes.push(
-        <div className="max-w-sm mx-auto md:mr-4 md:ml-4 rounded-lg font-bold ">
+        <div className="max-w-sm mx-auto md:mr-4 md:ml-4 rounded-lg font-bold" onClick={(e)=> this.goTo(this.state.message[i].idposts)}>
             <div className="w-full sm:w-full lg:w-full py-6 ">
                 <div className="bg-white w-64 shadow-2xl rounded-lg rounded cursor-pointer">
                     <div className="bg-cover bg-center justify-center flex h-56 p-4 w-auto overflow-hidden">

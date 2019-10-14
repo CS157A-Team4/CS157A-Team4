@@ -154,7 +154,7 @@ class Search extends React.Component {
      <div className ="md:ml-4 md:mr-4 md:pt-4 mt-2 mb-2 text-2xl leading-none font-sans-pro font-bold" >OR</div>
 
        <input
-       className="overflow-auto p-4 md:text-xl mt-2 md:w-auto md:h-14 shadow-xl  border-2 border-blue-new font-sans-pro text-grey-darker rounded font-bold text-center focus:shadow-inner"
+       className="p-4 md:text-xl mt-2 md:w-auto md:h-14 shadow-xl  border-2 border-blue-new font-sans-pro text-grey-darker rounded font-bold text-center focus:shadow-inner"
          placeholder="Search by Course"
          id ="course"
          value={this.state.course}

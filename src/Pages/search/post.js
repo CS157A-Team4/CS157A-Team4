@@ -76,45 +76,45 @@ class Search extends React.Component {
                 </div>
                 </div>
                 </div>
-                <div className= "md:w-1/4 w-full h-auto border-gray-300 mt-8 pr-8 pl-8 pb-6 pt-8 md:pt-0 md:pb-2 md:pr-2 md:pl-2 md:pt-2 bg-blue-new-light rounded mb-4 md:mb-0"> 
-                    <div className="font-sans-pro text-2xl bg-white px-2 py-2 rounded mb-2 "> 
-                        <p className="inline-block font-bold ">Title : </p> 
-                        <p className="inline-block ml-1 "> {this.state.message.book}  </p> 
+                <div className= "md:w-1/4 w-full h-auto border-gray-300 mt-8 pr-6 pl-6 pb-6 pt-6 md:pt-0 md:pb-2 md:pr-2 md:pl-2 md:pt-2 bg-blue-new-light rounded mb-4 md:mb-0"> 
+                    <div className="font-sans-pro  bg-white px-2 py-2 rounded mb-2 "> 
+                        <p className="inline-block text-xl font-bold ">Title : </p> 
+                        <p className="inline-block text-2xl ml-1 "> {this.state.message.book}  </p> 
                     </div>
-                    <div className="font-sans-pro text-2xl bg-white px-2 py-2 rounded mb-2 "> 
-                        <p className="inline-block font-bold ">Author : </p> 
-                        <p className="inline-block ml-1 "> {this.state.message.author}  </p> 
+                    <div className="font-sans-pro bg-white px-2 py-2 rounded mb-2 "> 
+                        <p className="inline-block text-xl font-bold ">Author : </p> 
+                        <p className="inline-block text-2xl ml-1 "> {this.state.message.author}  </p> 
                     </div>
-                    <div className="font-sans-pro text-2xl bg-white px-2 py-2 rounded mb-2 "> 
-                        <p className="inline-block font-bold ">Posted by : </p> 
-                        <p className="inline-block ml-1 "> {this.state.message.firstname + " " + this.state.message.surname}  </p> 
+                    <div className="font-sans-pro  bg-white px-2 py-2 rounded mb-2 "> 
+                        <p className="inline-block text-xl font-bold ">Posted by : </p> 
+                        <p className="inline-block text-2xl ml-1 "> {this.state.message.firstname + " " + this.state.message.surname}  </p> 
                     </div>
-                    <div className="font-sans-pro text-2xl bg-white px-2 py-2 rounded mb-2 "> 
-                        <p className="inline-block font-bold ">Posted on : </p> 
-                        <p className="inline-block ml-1 "> {this.state.message.date.split('T')[0]}  </p> 
+                    <div className="font-sans-pro  bg-white px-2 py-2 rounded mb-2 "> 
+                        <p className="inline-block text-xl font-bold ">Posted on : </p> 
+                        <p className="inline-block text-2xl ml-1 "> {this.state.message.date.split('T')[0]}  </p> 
                     </div>
-                    <div className="font-sans-pro text-2xl bg-white px-2 py-2 rounded mb-2 "> 
-                        <p className="inline-block font-bold ">Course : </p> 
-                        <p className="inline-block ml-1 "> {this.state.message.course}  </p> 
+                    <div className="font-sans-pro bg-white px-2 py-2 rounded mb-2 "> 
+                        <p className="inline-block text-xl font-bold ">Course : </p> 
+                        <p className="inline-block text-2xl ml-1 "> {this.state.message.course}  </p> 
                     </div>
-                    <div className="font-sans-pro text-2xl bg-white px-2 py-2 rounded mb-2 "> 
-                        <p className="inline-block font-bold "> Condition: </p> 
-                        <p className="inline-block ml-1 "> {this.state.message.condition}  </p> 
+                    <div className="font-sans-pro bg-white px-2 py-2 rounded mb-2 "> 
+                        <p className="inline-block  text-xl font-bold "> Condition: </p> 
+                        <p className="inline-block text-2xl ml-1 "> {this.state.message.condition}  </p> 
                     </div>
                     <div className="font-sans-pro h-auto overflow-hidden bg-white px-2 py-2 rounded mb-2 "> 
-                        <div className="font-bold text-2xl mb-2"> Description: </div> 
+                        <div className="font-bold text-xl mb-2"> Description: </div> 
                         <div className="overflow-y-auto leading-snug overflow-hidden scrolling-touch md:scrolling-auto text-lg h-full">
                         <p className="inline-block h-64 ">{this.state.message.body}</p>
 
                         </div>
                     </div>
-                    <div className="font-sans-pro text-2xl bg-white px-2 py-2 rounded mb-2 md:mb-0 shadow-lg"> 
+                    <div className="font-sans-pro text-2xl bg-white px-2 py-2 rounded md:mb-0 shadow-lg"> 
                         <p className="inline-block font-bold "> Asking Price: </p> 
                         <p className="inline-block ml-1 "> ${this.state.message.price}  </p> 
                     </div>
                 </div> 
-                <div className= "md:w-1/4 w-full md:mt-8 pr-8 pl-8 pb-2 md:ml-8 md:pb-0 md:pr-0 md:pl-0 rounded-b-full border border-black"> 
-                    <div className="font-sans-pro text-2xl mb-6  justify-center rounded text-center"> 
+                <div className= "md:w-1/4 w-full md:mt-8 pb-2 md:ml-8 md:pb-0 md:pr-0 md:pl-0 rounded-b-full border border-black"> 
+                    <div className="font-sans-pro text-2xl mb-6 justify-center rounded text-center"> 
                         <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded mb-2 shadow-lg">Send Request to Poster</button>
                         <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded  shadow-lg">Save Post for Later</button>
                     </div>

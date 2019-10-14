@@ -68,7 +68,7 @@ class Search extends React.Component {
 	render() {
     	return (
             this.state.loaded  == true &&(
-                <div className="md:flex md:justify-start px-6 md:px-0">
+                <div className="md:flex md:items-center md:justify-start px-6 md:px-0">
                 <div className='md:max-w-xl max-h-full text-center md:w-3/4 border-solid'>
                     <div className="border-solid w-3/4 md:w-3/5 h-auto bg-white inline-block border-4 mt-8 rounded"style={{border:"6px solid white"}}>
                         <div className="border-solid border-4" style={{border:"6px solid #C2E1E5"}}>

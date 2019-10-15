@@ -227,14 +227,14 @@ class Search extends React.Component {
                 <div className='md:max-w-xl max-h-full text-center md:w-3/4 border-solid'>
                     <div className="border-solid w-3/4 md:w-3/5 h-auto bg-white inline-block border-4 mt-8 rounded"style={{border:"6px solid white"}}>
                         <div className="border-solid border-4" style={{border:"6px solid #C2E1E5"}}>
-                <img className= "" style={{border:"6px solid white"}} alt="postImage" src={this.state.message.image !== null? this.state.message.image:logo} />
+                <img className= "" style={{border:"6px solid white"}} alt="postImage" src={this.state.message.image !== "null" && this.state.message.image !== null ? this.state.message.image:logo} />
                 </div>
                 </div>
                 </div>
                 <div className= "md:w-1/4 w-full h-auto border-gray-300 mt-8 pr-6 pl-6 pb-6 pt-6 md:pt-0 md:pb-2 md:pr-2 md:pl-2 md:pt-2 bg-blue-new-light rounded mb-4 md:mb-0"> 
                     <div className="font-sans-pro  bg-white px-2 py-2 rounded mb-2 "> 
                         <p className="inline-block text-xl font-bold ">Title : </p> 
-                        <p className="inline-block text-2xl ml-1 "> {this.state.message.book}  </p> 
+                        <p className="inline-block text-2xl ml-1 "> {this.state.message.title}  </p> 
                     </div>
                     <div className="font-sans-pro bg-white px-2 py-2 rounded mb-2 "> 
                         <p className="inline-block text-xl font-bold ">Author : </p> 

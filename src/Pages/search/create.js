@@ -17,7 +17,7 @@ class Create extends React.Component {
       
       this.state = {
         message:[],
-        image:logo,
+        image:null,
         condition:'',
         error:null,
         author: '',
@@ -82,7 +82,7 @@ class Create extends React.Component {
             condition: this.state.condition,
             course: this.state.course,
             description: this.state.description,
-            image: null,
+            image: this.state.image,
             price: this.state.price,
             poster: 23,
             date: today,

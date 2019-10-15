@@ -15,6 +15,8 @@ class Search extends React.Component {
         token:false,
         loaded:false,
         message:[],
+        comments:[],
+        newComment:'',
       };
       this.storageUpdated = this.storageUpdated.bind(this);
       this.handleChange = this.handleChange.bind(this);
@@ -37,8 +39,8 @@ class Search extends React.Component {
                   console.log(data);
               }
               else {
-                console.log(data);
-                  this.setState({message:data[0]});
+                    console.log(data[1]);
+                  this.setState({message:data[0][0],comments:data[1]});
                   this.setState({loaded:true});
                   console.log(this.state);
               }
@@ -55,12 +57,90 @@ class Search extends React.Component {
         });
       }
     }
-  
+    loadComments(){
+        let comments = [];
+        for(let x in this.state.comments){
+            let bg = x % 2 == 0? "bg-transparent" : "bg-blue-new-light";
+            bg+= " leading-snug py-2 px-2 border border-solid mt-1 rounded"
+            comments.push(
+            <div class={bg}>
+            <div className="justify-between flex font-bold">
+            <p>{this.state.comments[x].firstname} {this.state.comments[x].surname}</p>
+            <p>{this.state.comments[x].when.split("T")[0]}</p>
+            </div>
+            <p>{this.state.comments[x].content}</p>
+        </div>
+        )
+        }
+        return comments;
+    }
     handleChange(event) {
       this.setState({
         [event.target.id]: event.target.value
       });
     }
+    newCommentMaker(event){
+        event.preventDefault();
+    }
+    onEnterPress = (e) => {
+        if(e.keyCode == 13 && e.shiftKey == false) {
+          e.preventDefault();
+          let comment = this.state.newComment
+          let commentor = 23;
+          let postId = this.props.match.params.id;
+          if(this.state.newComment == ''){
+                window.alert("No Comment found");            
+            return;
+        }
+            var today = new Date();
+            var dd = today.getDate();
+
+            var mm = today.getMonth()+1; 
+            var yyyy = today.getFullYear();
+            if(dd<10) 
+            {
+                dd='0'+dd;
+            } 
+
+            if(mm<10) 
+            {
+                mm='0'+mm;
+            } 
+            today = +yyyy+'-'+mm+'-'+dd;
+            console.log(today, comment,commentor,postId);
+            let newCommentContent = { 
+                "content":comment,
+                "commentor":commentor,
+                "postid":postId,
+                "when":today 
+            }
+            fetch(api + "/posts/createComment", {
+                method: "POST",
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newCommentContent)
+              }).then(function (response) {
+                return response.json();
+              }).then(function (data) {
+                if (data["error"]) {
+                  this.setState({
+                    error: data["message"]
+                  });
+                  console.log("ERROR");
+                }
+                else {
+                    console.log("Did it");
+                    this.setState({comments:data,newComment:''});
+                    var notes = this.refs.aComment;
+                    notes.value = ""; // Unset the value
+
+                }
+
+              }.bind(this));
+        }
+      }
     goTo(event) {
         const value = event.target.value;
         this.props.history.push(`/${value}`);
@@ -121,57 +201,11 @@ class Search extends React.Component {
                     <div className="w-full relative font-sans-pro rounded shadow-lg bg-white py-2 ">
                         <p className="text-2xl font-bold text-center font-sans-pro mb-2 border-b border-solid border-gray-300">Comments</p>
                         <div className="px-4 h-128 overflow-auto pb-10 scrolling-touch md:scrolling-auto">
-                            <div class="bg-transparent leading-snug py-2 px-2 border border-solid rounded  ">
-                                <div className="justify-between flex font-bold">
-                                <p>Jonathan Van</p>
-                                <p>2019-10-07</p>
-                                </div>
-                                <p>Hi I really like this book. Is it still available? </p>
-                            </div>
-                            <div class="bg-blue-new-light mt-1 leading-snug py-2 px-2 border border-solid rounded">
-                                <div className="justify-between flex font-bold">
-                                <p>Yu Xiu</p>
-                                <p>2019-10-08</p>
-                                </div>
-                                <p>Yes! If you want it. Please send a message request to me. We will arrange details after. </p>
-                            </div>
-                            <div class="bg-transparent leading-snug py-2 px-2 border border-solid mt-1 rounded">
-                                <div className="justify-between flex font-bold">
-                                <p>Jonathan Van</p>
-                                <p>2019-10-09</p>
-                                </div>
-                                <p>I do not know how to send a request can I message you here instead? </p>
-                            </div>
-                            <div class="bg-blue-new-light mt-1 leading-snug py-2 px-2 border border-solid rounded">
-                                <div className="justify-between flex font-bold">
-                                <p>Yu Xiu</p>
-                                <p>2019-10-10</p>
-                                </div>
-                                <p>That is not safe. Everyone can see our conversation and intercept it.</p>
-                            </div>
-                            <div class="bg-transparent leading-snug py-2 px-2 border border-solid mt-1 rounded">
-                                <div className="justify-between flex font-bold">
-                                <p>Cole McKinnon</p>
-                                <p>2019-10-11</p>
-                                </div>
-                                <p>Hi guys! I read your conversation and will know where you guys are meeting :). </p>
-                            </div>
-                            <div class="bg-blue-new-light leading-snug py-2 px-2 border border-solid mt-1 rounded">
-                                <div className="justify-between flex font-bold">
-                                <p>Cole McKinnon</p>
-                                <p>2019-10-11</p>
-                                </div>
-                                <p>PS can I have the book too? </p>
-                            </div>
-                            <div class="bg-transparent leading-snug py-2 px-2 border border-solid mt-1 rounded">
-                                <div className="justify-between flex font-bold">
-                                <p>Jonathan Van</p>
-                                <p>2019-10-12</p>
-                                </div>
-                                <p>Wait please don't do that LOL.</p>
-                            </div>
+                            {this.loadComments()}
                         </div>
-                        <textarea name="body" placeholder="Add a comment" className="appearance-none w-full bg-gray-100 bottom-0 absolute rounded-full border  h-10 px-2 pt-3 text-lg"></textarea>
+                        <form ref={el => this.myFormRef = el} onSubmit={(e)=> this.newCommentMaker(e)} >
+                            <textarea ref="aComment" name="body" onChange={this.handleChange} id="newComment" value={this.props.newComment} onKeyDown={this.onEnterPress} placeholder="Add a comment" className="appearance-none w-full bg-gray-100 bottom-0 absolute rounded-full border h-10 px-2 pt-3 text-lg"></textarea>
+                        </form>
                     </div>
                     
                 </div>

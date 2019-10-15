@@ -64,7 +64,7 @@ class Search extends React.Component {
                       <img className="rounded h-full" src={this.state.message[i].image !== "null" && this.state.message[i].image !== null?  this.state.message[i].image:logo}></img>
                     </div>
                     <div className="p-4 pt-0">
-                        <p className="overflow-auto uppercase tracking-wide text-sm font-bold text-gray-700">{this.state.message[i].book}</p>
+                        <p className="overflow-auto uppercase tracking-wide text-sm font-bold text-gray-700">{this.state.message[i].title}</p>
                         <p className="text-3xl text-gray-900">$35</p>
                         <p className="text-gray-700"> {this.state.message[i].author}</p>
                     </div>

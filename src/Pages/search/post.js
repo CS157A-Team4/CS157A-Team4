@@ -132,7 +132,6 @@ class Search extends React.Component {
                     this.setState({comments:data,newComment:''});
                     var notes = this.refs.aComment;
                     notes.value = ""; // Unset the value
-                    this.newData.scrollIntoView({ behavior: "smooth" })
                 }
 
               }.bind(this));

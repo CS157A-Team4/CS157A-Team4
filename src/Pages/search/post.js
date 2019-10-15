@@ -63,7 +63,7 @@ class Search extends React.Component {
             let bg = x % 2 == 0? "bg-transparent" : "bg-blue-new-light";
             bg+= " leading-snug py-2 px-2 border border-solid mt-1 rounded"
             comments.push(
-            <div class={bg}>
+            <div ref={(ref) => this.newData = ref}  id={this.state.comments[x].idcomments} class={bg}>
             <div className="justify-between flex font-bold">
             <p>{this.state.comments[x].firstname} {this.state.comments[x].surname}</p>
             <p>{this.state.comments[x].when.split("T")[0]}</p>
@@ -78,9 +78,6 @@ class Search extends React.Component {
       this.setState({
         [event.target.id]: event.target.value
       });
-    }
-    newCommentMaker(event){
-        event.preventDefault();
     }
     onEnterPress = (e) => {
         if(e.keyCode == 13 && e.shiftKey == false) {
@@ -135,11 +132,19 @@ class Search extends React.Component {
                     this.setState({comments:data,newComment:''});
                     var notes = this.refs.aComment;
                     notes.value = ""; // Unset the value
-
+                    this.newData.scrollIntoView({ behavior: "smooth" })
                 }
 
               }.bind(this));
         }
+      }
+      scrollToBottom = () => {
+        this.newData.scrollIntoView({ behavior: "smooth" });
+      }
+      componentDidUpdate() {
+          if(this.newData !== undefined){
+        this.scrollToBottom();
+    }
       }
     goTo(event) {
         const value = event.target.value;
@@ -203,7 +208,7 @@ class Search extends React.Component {
                         <div className="px-4 h-128 overflow-auto pb-10 scrolling-touch md:scrolling-auto">
                             {this.loadComments()}
                         </div>
-                        <form ref={el => this.myFormRef = el} onSubmit={(e)=> this.newCommentMaker(e)} >
+                        <form ref={el => this.myFormRef = el} >
                             <textarea ref="aComment" name="body" onChange={this.handleChange} id="newComment" value={this.props.newComment} onKeyDown={this.onEnterPress} placeholder="Add a comment" className="appearance-none w-full bg-gray-100 bottom-0 absolute rounded-full border h-10 px-2 pt-3 text-lg"></textarea>
                         </form>
                     </div>

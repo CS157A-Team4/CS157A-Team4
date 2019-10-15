@@ -146,7 +146,9 @@ class Search extends React.Component {
         }
       }
       scrollToBottom = () => {
+          if(this.newData !== undefined && this.newData !== null){
         this.newData.scrollIntoView({ behavior: "auto" });
+    }
         window.scrollTo(0, 0)
     }
       componentDidUpdate() {

@@ -17,7 +17,7 @@ class Search extends React.Component {
         message:[],
         comments:[],
         newComment:'',
-        saved: false
+        saved: false,
       };
       this.storageUpdated = this.storageUpdated.bind(this);
       this.handleChange = this.handleChange.bind(this);
@@ -47,6 +47,7 @@ class Search extends React.Component {
                       this.setState({saved:true});
                   }
                   console.log(this.state);
+                  this.scrollToBottom();
                   
               }
       
@@ -137,6 +138,8 @@ class Search extends React.Component {
                     this.setState({comments:data,newComment:''});
                     var notes = this.refs.aComment;
                     notes.value = ""; // Unset the value
+                    this.newData.scrollIntoView({ behavior: "auto" });
+
                 }
 
               }.bind(this));
@@ -144,10 +147,11 @@ class Search extends React.Component {
       }
       scrollToBottom = () => {
         this.newData.scrollIntoView({ behavior: "auto" });
-      }
+        window.scrollTo(0, 0)
+    }
       componentDidUpdate() {
           if(this.newData !== undefined){
-        this.scrollToBottom();
+       // this.scrollToBottom();
     }
       }
     goTo(event) {
@@ -227,7 +231,7 @@ class Search extends React.Component {
                 <div className='md:max-w-xl max-h-full text-center md:w-3/4 border-solid'>
                     <div className="border-solid w-3/4 md:w-3/5 h-auto bg-white inline-block border-4 mt-8 rounded"style={{border:"6px solid white"}}>
                         <div className="border-solid border-4" style={{border:"6px solid #C2E1E5"}}>
-                <img className= "" style={{border:"6px solid white"}} alt="postImage" src={this.state.message.image !== "null" && this.state.message.image !== null ? this.state.message.image:logo} />
+                <img className= "" style={{border:"6px solid white"}}  alt="postImage" src={this.state.message.image !== "null" && this.state.message.image !== null ? this.state.message.image:logo} />
                 </div>
                 </div>
                 </div>

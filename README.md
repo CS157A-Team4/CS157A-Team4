@@ -23,5 +23,16 @@ Also, the GoogleDoc link for the DB Desgin Description with the E/R Diagram is:
 https://docs.google.com/document/d/1e1R5u_KqQ2xsFcNoouKLXoXq74-HqiS9pL_2lEM9hgg/edit?usp=sharing
 
 
+10/15/2019
+
+Our "Project Data Model & DB Desgin Revision" file is in the Documents folder.
+
+The GoogleDoc link for the final "Project Data Model & DB Desgin Revision" file is:
+https://docs.google.com/document/d/1NhZIWkGF1zSbBYGuGw1_vYTB1oOhr_BlImqtyAQaiVQ/edit?usp=sharing
+
+Also, the GoogleDoc link with only schemas and table screenshots is:
+https://docs.google.com/document/d/1dzUgF7gITpsxFTwmovOXmv1yA-LYFA5DrXRjsS3dRy0/edit?usp=sharing
+
+
 
 

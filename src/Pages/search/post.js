@@ -17,6 +17,7 @@ class Search extends React.Component {
         message:[],
         comments:[],
         newComment:'',
+        saved: false
       };
       this.storageUpdated = this.storageUpdated.bind(this);
       this.handleChange = this.handleChange.bind(this);
@@ -39,10 +40,14 @@ class Search extends React.Component {
                   console.log(data);
               }
               else {
-                    console.log(data[1]);
+                    console.log(data[2]);
                   this.setState({message:data[0][0],comments:data[1]});
                   this.setState({loaded:true});
+                  if(data[2].some(e => e.userID == 23)){
+                      this.setState({saved:true});
+                  }
                   console.log(this.state);
+                  
               }
       
           }.bind(this))
@@ -138,7 +143,7 @@ class Search extends React.Component {
         }
       }
       scrollToBottom = () => {
-        this.newData.scrollIntoView({ behavior: "smooth" });
+        this.newData.scrollIntoView({ behavior: "auto" });
       }
       componentDidUpdate() {
           if(this.newData !== undefined){
@@ -149,6 +154,72 @@ class Search extends React.Component {
         const value = event.target.value;
         this.props.history.push(`/${value}`);
       } 
+    savePost(e){
+        let user = 23;
+        let postId = this.state.message.idposts;
+        let type = "favorite";
+        let imageId = this.state.message.image;
+        let newSave = { 
+            "userId":user,
+            "postType":type,
+            "postId":postId,
+            "imageId":imageId 
+        }
+        fetch(api + "/profile/save", {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newSave)
+          }).then(function (response) {
+            return response.json();
+          }).then(function (data) {
+            if (data["error"]) {
+              this.setState({
+                error: data["message"]
+              });
+              console.log("ERROR");
+            }
+            else {
+                console.log("Did it");
+                this.setState({saved:true});
+            }
+
+          }.bind(this));
+    
+    }
+    unsavePost(e){
+        let user = 23;
+        let postId = this.state.message.idposts;
+        let newSave = { 
+            "userId":user,
+            "postId":postId,
+        }
+        fetch(api + "/profile/unsave", {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newSave)
+          }).then(function (response) {
+            return response.json();
+          }).then(function (data) {
+            if (data["error"]) {
+              this.setState({
+                error: data["message"]
+              });
+              console.log("ERROR");
+            }
+            else {
+                console.log("Did it");
+                this.setState({saved:false});
+            }
+
+          }.bind(this));
+    
+    }
 	render() {
     	return (
             this.state.loaded  == true &&(
@@ -198,10 +269,23 @@ class Search extends React.Component {
                     </div>
                 </div> 
                 <div className= "md:w-1/4 w-full md:mt-8 pb-2 md:ml-8 md:pb-0 md:pr-0 md:pl-0 rounded-b-full border border-black"> 
+                {this.state.message.seller !== 23 ?
                     <div className="font-sans-pro text-2xl mb-6 justify-center rounded text-center"> 
+
                         <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded mb-2 shadow-lg">Send Request to Poster</button>
-                        <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded  shadow-lg">Save Post for Later</button>
-                    </div>
+                        {this.state.saved !== true?
+                        <button onClick={e => this.savePost(e)}className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded  shadow-lg">Save Post for Later</button>
+                        :
+                        <button onClick={e => this.unsavePost(e)}className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded  shadow-lg">Removed Post from Saved</button>
+                        }
+                        </div>
+                        :
+                    <div className="font-sans-pro text-2xl mb-6 justify-center rounded text-center"> 
+                        <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded mb-2 shadow-lg">Edit Post</button>
+                        <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded  shadow-lg">Close Post</button>
+                       
+                        </div>
+                    }
                     <div className="w-full relative font-sans-pro rounded shadow-lg bg-white py-2 ">
                         <p className="text-2xl font-bold text-center font-sans-pro mb-2 border-b border-solid border-gray-300">Comments</p>
                         <div className="px-4 h-128 overflow-auto pb-10 scrolling-touch md:scrolling-auto">

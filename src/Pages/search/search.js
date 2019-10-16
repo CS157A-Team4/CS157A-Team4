@@ -64,17 +64,17 @@ class Search extends React.Component {
                       <img className="rounded h-full" src={this.state.message[i].image !== "null" && this.state.message[i].image !== null?  this.state.message[i].image:logo}></img>
                     </div>
                     <div className="p-4 pt-0">
-                        <p className="overflow-auto uppercase tracking-wide text-sm font-bold text-gray-700">{this.state.message[i].title}</p>
-                        <p className="text-3xl text-gray-900">$35</p>
+                        <p className="overflow-auto uppercase tracking-wide text-sm font-bold text-gray-700 mb-2">{this.state.message[i].title}</p>
+                        <p className="text-3xl text-gray-900 mb-2">$35</p>
                         <p className="text-gray-700"> {this.state.message[i].author}</p>
                     </div>
-                    <div className="flex p-2 border-t border-gray-300 text-gray-700">
-                        <div className="flex inline-flex items-center">
-                            <svg className="h-6 w-6 text-gray-600 fill-current mr-3"/>
-                            <p className="text-black text-lg"> {this.state.message[i].condition}</p>                     
+                    <div className="flex justify-between p-4 border-t border-solid border-gray-300 text-gray-700">
+                        <div className="flex pt-1 just">
+                            <svg className="h-6 w-6 text-gray-600 fill-current "/>
+                            <p className="text-black text-lg whitespace-no-wrap"> {this.state.message[i].condition}</p>                     
                         </div>
-                        <div className="flex-1 inline-flex items-center">
-                            <svg className="h-6 w-6 text-gray-600 fill-current mr-3"/>
+                        <div className="flex items-center">
+                            <svg className="h-6 w-6 text-gray-600 fill-current"/>
                             {
                             this.state.message[i].hold == 0? 
                             <p className="text-green-500 text-lg"> Available</p>
@@ -83,7 +83,7 @@ class Search extends React.Component {
                             }
                         </div>
                     </div>
-                    <div className="border-b rounded-lg rounded-t-none px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
+                    <div className="border-b border-solid rounded-lg rounded-t-none px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
                         <div className="text-xs uppercase font-bold text-gray-600 tracking-wide">Seller</div>
                         <div className="flex justify-center items-center pt-2">
                             <div>

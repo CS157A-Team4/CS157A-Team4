@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import{Router, Route,Switch } from 'react-router-dom';
+import{BrowserRouter, Route,Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import Error from './error';
 import Login from './Pages/authentication/login';
@@ -21,11 +21,16 @@ import Footer from './footer';
 import FriendsList from './Pages/friends/friendsList';
 import PasswordChange from './Pages/profile/profile';
 import FriendsRequest from './Pages/friends/friendsList';
+import Create from './Pages/search/create';
+import Post from './Pages/search/post';
 const browserHistory = createBrowserHistory();
 ReactDOM.render(
-    <Router path="/App" history={browserHistory}>
-    <div className="scrolling-touch">
+    <BrowserRouter path="/App" history={browserHistory}>
+    <div className="bg-blue-new min-h-screen">
     <Header/>
+    <Footer/>
+
+    <div className="md:pt-20 pt-16 scrolling-touch h-full bg-blue-new md:scrolling-auto"/>
         <Switch>
             <Route exact path = '/' component ={App}  />
             <Route exact path = '/login' component ={Login}  />
@@ -35,20 +40,20 @@ ReactDOM.render(
             <Route exact path = '/messages' component ={Messages}  />
             <Route exact path = '/messages/:params' component ={Messages}  />
             <Route exact path = '/posts' component ={ProfilePosts}  />
+            <Route exact path = '/post/:id' component ={Post}  />
             <Route exact path = '/profile' component ={Profile}  />
             <Route exact path = '/cancellation/:params' component ={Cancellation}  />
             <Route exact path = '/confirmation/:params' component ={Confirmation}  />
             <Route exact path = '/search' component ={Search}  />
             <Route exact path = '/search/:params' component ={Search}  />
             <Route exact path = '/friendsList' component ={FriendsList}  />
+            <Route exact path = '/createPost' component ={Create}  />
             <Route exact path = '/friendsRequest' component ={FriendsRequest}  />
             <Route exact path = '/passwordChange' component ={PasswordChange}  />
             <Route component={Error}/>
         </Switch>
-        <Footer className="md:hidden"/>
     </div>
-    
-    </Router>, document.getElementById('root'));
+    </BrowserRouter>, document.getElementById('root'));
     
 
 // If you want your app to work offline and load faster, you can change

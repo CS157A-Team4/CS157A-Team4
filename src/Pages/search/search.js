@@ -97,6 +97,7 @@ class Search extends React.Component {
     return boxes;
       }
       search() {
+        console.log("THIS IS THE BACKEND POINT", process.env.backendPoint);
         const bname = this.state.bookname === undefined? '':this.state.bookname.replace(/\s/g, '');
         const course = this.state.course === undefined? '':this.state.course.replace(/\s/g, '');
         this.setState({message:[],loaded:false});

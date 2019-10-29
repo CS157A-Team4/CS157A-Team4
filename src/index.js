@@ -23,6 +23,7 @@ import PasswordChange from './Pages/profile/profile';
 import FriendsRequest from './Pages/friends/friendsList';
 import Create from './Pages/search/create';
 import Post from './Pages/search/post';
+import Edit from './Pages/search/edit';
 const browserHistory = createBrowserHistory();
 ReactDOM.render(
     <BrowserRouter path="/App" history={browserHistory}>
@@ -48,6 +49,7 @@ ReactDOM.render(
             <Route exact path = '/search/:params' component ={Search}  />
             <Route exact path = '/friendsList' component ={FriendsList}  />
             <Route exact path = '/createPost' component ={Create}  />
+            <Route exact path = '/editPost/:id' component ={Edit}  />
             <Route exact path = '/friendsRequest' component ={FriendsRequest}  />
             <Route exact path = '/passwordChange' component ={PasswordChange}  />
             <Route component={Error}/>

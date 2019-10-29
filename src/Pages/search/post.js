@@ -160,9 +160,12 @@ class Search extends React.Component {
         const value = event.target.value;
         this.props.history.push(`/${value}`);
       } 
+    goEdit(e){
+      this.props.history.push(`/editPost/${this.props.match.params.id}`);
+    }
     savePost(e){
         let user = 23;
-        let postId = this.state.message.idposts;
+        let postId = this.state.message.postID;
         let type = "favorite";
         let imageId = this.state.message.image;
         let newSave = { 
@@ -197,7 +200,7 @@ class Search extends React.Component {
     }
     unsavePost(e){
         let user = 23;
-        let postId = this.state.message.idposts;
+        let postId = this.state.message.postID;
         let newSave = { 
             "userId":user,
             "postId":postId,
@@ -233,7 +236,7 @@ class Search extends React.Component {
                 <div className='md:max-w-xl max-h-full text-center md:w-3/4 border-solid'>
                     <div className="border-solid w-3/4 md:w-3/5 h-auto bg-white inline-block border-4 mt-8 rounded"style={{border:"6px solid white"}}>
                         <div className="border-solid border-4" style={{border:"6px solid #C2E1E5"}}>
-                <img className= "" style={{border:"6px solid white"}}  alt="postImage" src={this.state.message.image !== "null" && this.state.message.image !== null ? this.state.message.image:logo} />
+                <img className= "" style={{border:"6px solid white"}}  alt="postImage" src={this.state.message.image !== "null" && this.state.message.image !== null && this.state.message.image !== undefined ? this.state.message.image:logo} />
                 </div>
                 </div>
                 </div>
@@ -287,7 +290,7 @@ class Search extends React.Component {
                         </div>
                         :
                     <div className="font-sans-pro text-2xl mb-6 justify-center rounded text-center"> 
-                        <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded mb-2 shadow-lg">Edit Post</button>
+                        <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded mb-2 shadow-lg" onClick={(e) => this.goEdit(e)}>Edit Post</button>
                         <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded  shadow-lg">Close Post</button>
                        
                         </div>

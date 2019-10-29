@@ -4,6 +4,7 @@ import './App.css';
 import { withRouter } from 'react-router-dom';
 import { thisExpression } from '@babel/types';
 import api from './backend/backend';
+import { slide as Menu } from "react-burger-menu";
 
 class App extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class App extends React.Component {
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     console.log("hi");
     fetch(api+"/testapi/tables", {
       method: "GET",
@@ -82,28 +83,19 @@ class App extends React.Component {
 
       }.bind(this));
 }
-  
-  
+
   render() {return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Home page for Bookie WHYYY
-        </p>
-        <p>
-          {this.createTable()}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <div className="w-full overflow-hidden text-center flex justify-center">
+          <div className="absolute w-full-w/o-margins  mt-24">
+            <p className="md:text-4xl lg:text-5xl text-lg text-white font-sans font-bold mb-4 md:mb-12">
+Buy and Sell your Books
+            </p>
+            <div className="flex flex-wrap -m-2">
+            </div>
+        </div>
+      </div>
+      </div>
   );
 }
 }

@@ -1,3 +1,3 @@
-const api = process.env.GATSBY_backendPoint;
+const api = "https://sjsubookiebackend.herokuapp.com";
 
 export default api

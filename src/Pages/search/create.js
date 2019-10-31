@@ -100,7 +100,9 @@ class Create extends React.Component {
             if (data["error"]) {
               alert(data["message"])
             } else {
+              console.log(data);
                 window.alert("Successfully made a sales post.");
+               // this.props.history.push(`/`);
             }
           });
     } 

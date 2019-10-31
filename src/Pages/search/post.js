@@ -18,6 +18,7 @@ class Search extends React.Component {
         comments:[],
         newComment:'',
         saved: false,
+        error: null
       };
       this.storageUpdated = this.storageUpdated.bind(this);
       this.handleChange = this.handleChange.bind(this);
@@ -40,7 +41,7 @@ class Search extends React.Component {
                   console.log(data);
               }
               else {
-                    console.log(data[2]);
+                    console.log(data);
                   this.setState({message:data[0][0],comments:data[1]});
                   this.setState({loaded:true});
                   if(data[2].some(e => e.userID == 23)){
@@ -215,6 +216,7 @@ class Search extends React.Component {
           }).then(function (response) {
             return response.json();
           }).then(function (data) {
+            console.log(data);
             if (data["error"]) {
               this.setState({
                 error: data["message"]
@@ -231,7 +233,15 @@ class Search extends React.Component {
     }
 	render() {
     	return (
-            this.state.loaded  == true &&(
+            this.state.error !== null ? (
+              <div className="md:flex md:items-center md:justify-center px-6 md:px-0">
+              <div className='md:max-w-xl max-h-full text-center border-solid text-center pt-16'>
+                <p className="text-2xl font-sans-pro text-white font-white font-bold">No Post Information was found, please insure that this post exists. It may or may not have been deleted.</p>
+              </div>
+              </div>
+            )
+            :
+            this.state.loaded  == true && !this.state.error &&(
                 <div className="md:flex md:items-center md:justify-start px-6 md:px-0">
                 <div className='md:max-w-xl max-h-full text-center md:w-3/4 border-solid'>
                     <div className="border-solid w-3/4 md:w-3/5 h-auto bg-white inline-block border-4 mt-8 rounded"style={{border:"6px solid white"}}>

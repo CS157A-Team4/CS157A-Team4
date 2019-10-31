@@ -36,7 +36,7 @@ class Search extends React.Component {
           .then(function (data) {
               if (data["error"]) {
                   this.setState({
-                      error: data["message"]
+                      error: data["error"]
                   });
                   console.log(data);
               }

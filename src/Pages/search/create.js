@@ -141,7 +141,7 @@ class Create extends React.Component {
     <p className="text-gray-800 text-3xl text-center font-bold">Create a Post</p>
     <div className="md:flex md:justify-between ">
     <div className="w-full">
-      <label className=" block text-medium text-gray-00" for="bookname">Book Title</label>
+      <label className="block text-medium text-gray-00" for="bookname">Book Title</label>
       <input className=" w-full block mr-auto px-5 py-1 h-12 text-gray-700 bg-gray-200 rounded"  onChange= {(e) =>this.handleChange(e)} id="bookname" name="bookname" type="text" required placeholder="Ex: Defense Against the Dark Arts" aria-label="Book"/>
     </div>
     <div className="md:w-1/3 md:px-2 w-full">

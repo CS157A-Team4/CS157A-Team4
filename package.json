@@ -9,6 +9,7 @@
     "query-string": "^6.8.3",
     "react": "^16.9.0",
     "react-burger-menu": "^2.6.11",
+    "react-confirm-alert": "^2.4.1",
     "react-dom": "^16.9.0",
     "react-infinite": "^0.13.0",
     "react-native-base64": "0.0.2",

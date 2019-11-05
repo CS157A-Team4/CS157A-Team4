@@ -5,7 +5,9 @@ import bBook from '../../images/anotherbook.png';
 import api from '../../backend/backend';
 import queryString from 'query-string';
 import Infinite from 'react-infinite';
-class Search extends React.Component {	
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+class Post extends React.Component {	
     constructor(props) {
         super(props);
       
@@ -22,6 +24,24 @@ class Search extends React.Component {
       };
       this.storageUpdated = this.storageUpdated.bind(this);
       this.handleChange = this.handleChange.bind(this);
+    }
+    delete(){
+      console.log("HERe");
+      let ids = {
+        postId: this.state.message.postID,
+        imageId: this.state.message.imageId
+      }
+      console.log(ids);
+          fetch(api+"/posts/delete", {
+            method: 'DELETE',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(ids)
+          })
+          .then(res => res.json())
+          .then(res => {
+            console.log(res);
+          alert(res["message"]);
+        })
     }
     UNSAFE_componentWillMount() {
       this.getParams();
@@ -199,6 +219,21 @@ class Search extends React.Component {
           }.bind(this));
     
     }
+    getConfirm = () => {
+      confirmAlert({
+        title: 'Listing Deletion Process',
+        message: 'Are you sure you want to delete this posting?',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () => this.delete()
+          },
+          {
+            label: 'No',
+          }
+        ]
+      });
+    };
     unsavePost(e){
         let user = 23;
         let postId = this.state.message.postID;
@@ -232,6 +267,7 @@ class Search extends React.Component {
     
     }
 	render() {
+    console.log(this.state);
     	return (
             this.state.error !== null ? (
               <div className="md:flex md:items-center md:justify-center px-6 md:px-0">
@@ -301,7 +337,7 @@ class Search extends React.Component {
                         :
                     <div className="font-sans-pro text-2xl mb-6 justify-center rounded text-center"> 
                         <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded mb-2 shadow-lg" onClick={(e) => this.goEdit(e)}>Edit Post</button>
-                        <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded  shadow-lg">Close Post</button>
+                        <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded  shadow-lg" onClick={()=>this.getConfirm()}>Close Post</button>
                        
                         </div>
                     }
@@ -324,4 +360,4 @@ class Search extends React.Component {
 	}
 }
 
-export default Search;
+export default Post;

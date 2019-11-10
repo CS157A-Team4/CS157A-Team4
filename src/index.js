@@ -20,7 +20,7 @@ import Header from './header';
 import Footer from './footer';
 import FriendsList from './Pages/friends/friendsList';
 import PasswordChange from './Pages/profile/profile';
-import FriendsRequest from './Pages/friends/friendsList';
+import FriendsRequest from './Pages/friends/friendsRequest';
 import Create from './Pages/search/create';
 import Post from './Pages/search/post';
 const browserHistory = createBrowserHistory();
@@ -46,9 +46,9 @@ ReactDOM.render(
             <Route exact path = '/confirmation/:params' component ={Confirmation}  />
             <Route exact path = '/search' component ={Search}  />
             <Route exact path = '/search/:params' component ={Search}  />
-            <Route exact path = '/friendsList' component ={FriendsList}  />
+            <Route exact path = '/friends' component ={FriendsList}  />
             <Route exact path = '/createPost' component ={Create}  />
-            <Route exact path = '/friendsRequest' component ={FriendsRequest}  />
+            <Route exact path = '/friendsR' component ={FriendsRequest}  />
             <Route exact path = '/passwordChange' component ={PasswordChange}  />
             <Route component={Error}/>
         </Switch>

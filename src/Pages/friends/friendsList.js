@@ -34,7 +34,8 @@ class Table extends React.Component {
             }.bind(this)
         )
     }
-    // a function for friends table data
+
+    // a function for friends table data, users info
     renderFriendsTable() {
         return this.state.friends.map((friends, index) => {
             console.log(friends)
@@ -46,13 +47,48 @@ class Table extends React.Component {
             console.log(friends.surname);
 
             return (
-                <tr key={relationshipId}>
-                    <td>{relationshipId}</td>
-                    <td>{user1}</td>
-                    <td>{user2}</td>
-                    <td>{firstname}</td>
-                    <td>{surname}</td>
-                </tr>
+                <table className="table-auto">
+                    <thead>
+                    <tr>
+                        <th className="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b
+                        border-grey-light">ID</th>
+                        <th className="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b
+                        border-grey-light">User1</th>
+                        <th className="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b
+                        border-grey-light">User2</th>
+                        <th className="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b
+                        border-grey-light">First name</th>
+                        <th className="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b
+                        border-grey-light">Last name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr key={relationshipId}>
+                        <td className="py-4 px-6 border-b border-grey-light">{relationshipId}</td>
+                        <td className="py-4 px-6 border-b border-grey-light">{user1}</td>
+                        <td className="py-4 px-6 border-b border-grey-light">{user2}</td>
+                        <td className="py-4 px-6 border-b border-grey-light">{firstname}</td>
+                        <td className="py-4 px-6 border-b border-grey-light">{surname}</td>
+                        <td> <button
+                            className="bg-green-400 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-l-full">
+                            Accept
+                        </button>
+                            {' '}
+                            <button
+                                className="bg-blue-400 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-r-full">
+                                Delete
+                            </button></td>
+                    </tr>
+                    </tbody>
+                </table>
+                // <tr key={relationshipId}>
+                //     <td class="py-4 px-6 border-b border-grey-light">{relationshipId}</td>
+                //     <td class="py-4 px-6 border-b border-grey-light">{user1}</td>
+                //     <td class="py-4 px-6 border-b border-grey-light">{user2}</td>
+                //     <td class="py-4 px-6 border-b border-grey-light">{firstname}</td>
+                //     <td class="py-4 px-6 border-b border-grey-light">{surname}</td>
+                // </tr>
+
             )
         })
     }
@@ -72,27 +108,34 @@ class Table extends React.Component {
     render() {
         return(
             <div>
-                <h1 id='title'>Friends list Table</h1>
-                <h1>Friends list table is coming soon</h1>
-                    <table id='friends'>
+                <thead>
+                <th className="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark
+                    border-b border-grey-light" id='title'>Friends list Table</th></thead>
+                    <table className="table-auto" id='friends'>
+                        {/*<thead>*/}
+                        {/*<tr>*/}
+                        {/*    <th className="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark
+                        border-b border-grey-light">ID</th>*/}
+                        {/*    <th className="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark
+                        border-b border-grey-light">User1</th>*/}
+                        {/*    <th className="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark
+                        border-b border-grey-light">User2</th>*/}
+                        {/*    <th className="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark
+                        border-b border-grey-light">first name</th>*/}
+                        {/*    <th className="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark
+                        border-b border-grey-light">last name</th>*/}
+
+                        {/*</tr>*/}
+                        {/*</thead>*/}
                         <tbody>
-                            <tr>{this.renderFriendsTableHeader()}</tr>
-                           {this.renderFriendsTable()}
-
+                        <tr>
+                            {this.renderFriendsTable()}
+                        </tr>
                         </tbody>
-
+                            {/*<tr>{this.renderFriendsTableHeader()}</tr>*/}
                     </table>
 
                 <header className="App-header">
-                    <h2>Buttons</h2>
-                    <button variant="request"  size="lg">
-                        Accept
-
-                    </button>{' '}
-                    <button variant="request"  size="lg">
-                        Delete
-
-                    </button>
                     <img src={logo} className="App-logo" alt="logo" />
                     <p>
                         Bookie's Temporary friends list Page
@@ -105,9 +148,8 @@ class Table extends React.Component {
                         Click here to return home
                     </button>
                 </header>
-
-
             </div>
+
 
         )
     }

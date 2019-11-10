@@ -75,7 +75,7 @@ class Table extends React.Component {
                         </button>
                             {' '}
                             <button
-                                className="bg-blue-400 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-r-full">
+                                className="bg-red-300 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-r-full">
                                 Delete
                             </button></td>
                     </tr>

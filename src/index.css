@@ -3941,6 +3941,9 @@ table {
 .h-128 {
   height: 31rem;
 }
+.h-160{
+  height: 40rem;
+}
 .h-auto {
   height: auto;
 }
@@ -5147,7 +5150,7 @@ table {
   max-height: 100%;
 }
 .max-height-half {
-  max-height: 82.5%;
+  max-height: 50%;
 }
 
 .max-h-screen {
@@ -5197,15 +5200,20 @@ table {
 .max-w-full {
   max-width: 100%;
 }
-.full-w/o-margins{
+.full-w/o-margins {
   width: calc(100% - 4rem);
 }
 .min-h-0 {
   min-height: 0;
 }
-
+.min-h-72 {
+  min-height: 18rem;
+}
 .min-h-full {
   min-height: 100%;
+}
+.min-w-160 {
+  min-width: 40rem;
 }
 
 .min-h-screen {

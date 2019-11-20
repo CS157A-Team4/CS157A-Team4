@@ -47,7 +47,8 @@ class Post extends React.Component {
       this.getParams();
       }
       getParams(){
-        let values = this.props.match.params.id;      
+        let values = this.props.match.params.id;    
+
         fetch(api+"/posts/" +values)
           .then(function (response) {
             console.log("hi");
@@ -206,6 +207,7 @@ class Post extends React.Component {
             return response.json();
           }).then(function (data) {
             if (data["error"]) {
+              console.log(data["error"])
               this.setState({
                 error: data["message"]
               });

@@ -61,7 +61,7 @@ class App extends React.Component {
         </div>
         <div className="absolute mt-64 z-10 w-full flex flex-wrap justify-center items-center">
           <div class=" flex w-1/2 mt-4 flex-row flex-wrap justify-center items-center ">
-          <div onClick={(e) => this.goTo(e)}className="w-3/4 bg-white mt-4 h-20 z-10 cursor-pointer rounded items-center pt-1 border-blue-new border-2">
+          <div onClick={(e) => this.goTo(e)}className="w-3/4 bg-white hover:text-white text-gray-600 hover:bg-blue-new hover:shadow-lg mt-4 h-20 z-10 cursor-pointer rounded items-center pt-1 border-blue-new border-2">
               <p className="items-center mt-5 text-4xl font-bold">Click here to sell your Book!!</p>
           </div>
 </div>

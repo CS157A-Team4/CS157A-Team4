@@ -45,8 +45,6 @@ class Table extends React.Component {
 
             return (
                 <tr className="border-b-2 border-aqua " key={relationshipId}>
-                    {/*<td className="py-4 px-6 text-center border-grey-light">{relationshipId}</td>*/}
-                    {/*<td className="py-4 px-6 text-center border-b border-grey-light">{user1}</td>*/}
                     <td className="py-4 px-6 text-center border-b border-grey-light">{user2}</td>
                     <td className="py-4 px-6 text-center border-b border-grey-light">{firstname}</td>
                     <td className="py-4 px-6 text-center border-b border-grey-light">{surname}</td>
@@ -69,10 +67,6 @@ class Table extends React.Component {
                     <table className="table-fixed" id='friends' >
                         <thead>
                         <tr>
-                        {/*    <th className="py-4 px-6 bg-grey-lightest text-center font-bold font-sans-pro*/}
-                        {/*border-b border-grey-light">ID</th>*/}
-                        {/*    <th className="py-4 px-6 bg-grey-lightest text-center font-bold font-sans-pro*/}
-                        {/*border-b border-grey-light">User1</th>*/}
                             <th className="py-4 px-6 bg-grey-lightest text-center font-bold font-sans-pro
                         border-b border-grey-light">Friend Id</th>
                             <th className="py-4 px-6 bg-grey-lightest text-center font-bold font-sans-pro

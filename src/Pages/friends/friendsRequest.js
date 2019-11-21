@@ -64,7 +64,6 @@ class Table extends React.Component {
                         </button>
                     </td>
                 </tr>
-
             )
         })
     }
@@ -157,14 +156,10 @@ class Table extends React.Component {
                     <tbody>
                     {this.renderFriendsTable()}
                     </tbody>
-                    {/*<tr>{this.renderFriendsTableHeader()}</tr>*/}
                 </table>
                 </div>
-
-
             </div>
             )
-
         )
     }
 }

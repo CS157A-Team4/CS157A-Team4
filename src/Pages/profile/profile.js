@@ -1,4 +1,5 @@
 import React from 'react';
+//import PasswordChange from './Pages/profile/profile';
 import logo from '../../logo.svg';
 
 class Profile extends React.Component {
@@ -21,6 +22,7 @@ class Profile extends React.Component {
 
 	render() {
     	return (
+            // this.state.loaded && (
         <div>
             <div className="w-0 md:w-1/4 lg:w-1/5 h-0 md:h-screen overflow-y-hidden bg-white shadow-lg">
                 <div className="p-5 bg-white sticky bg-gray-200">
@@ -40,7 +42,8 @@ class Profile extends React.Component {
             </div>
         </div>
 
-		)	
+		//)
+        )
 	}
 }
 

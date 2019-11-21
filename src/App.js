@@ -49,7 +49,7 @@ class App extends React.Component {
   }
   render() {return (
     <div className="App bg-white">
-        <div className="w-full overflow-hidden text-center flex justify-center font-sans-pro text-xl font-bold">
+        <div className="w-full overflow-hidden text-center flex justify-center font-sans-pro  md:text-xl font-bold">
         <img src={background} className="h-160 w-full light-filter z-0 object-cover"></img>
        
           <div className="absolute mt-48 z-10 w-full flex flex-wrap justify-center">
@@ -62,7 +62,7 @@ class App extends React.Component {
         <div className="absolute mt-64 z-10 w-full flex flex-wrap justify-center items-center">
           <div class=" flex w-1/2 mt-4 flex-row flex-wrap justify-center items-center ">
           <div onClick={(e) => this.goTo(e)}className="w-3/4 bg-white hover:text-white text-gray-600 hover:bg-blue-new hover:shadow-lg mt-4 h-20 z-10 cursor-pointer rounded items-center pt-1 border-blue-new border-2">
-              <p className="items-center mt-5 text-4xl font-bold">Click here to sell your Book!!</p>
+              <p className="items-center text-xl mt-5 md:text-4xl font-bold">Click here to sell your Book!!</p>
           </div>
 </div>
 

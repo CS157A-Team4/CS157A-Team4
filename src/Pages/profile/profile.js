@@ -1,6 +1,9 @@
 import React from 'react';
 //import PasswordChange from './Pages/profile/profile';
 import logo from '../../logo.svg';
+import Friends from './components/friends';
+import Posts from './components/posts';
+import Settings from './components/settings';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -47,13 +50,13 @@ class Profile extends React.Component {
             
         </div>
         {this.state.status === 'friends' &&
-        <div>Friends</div>
+        <Friends/>
         }
         {this.state.status === 'settings' &&
-        <div>Settings</div>
+        <Settings/>
         }
         {this.state.status === 'posts' &&
-        <div>Posts</div>
+        <Posts/>
         }
         </div>
 		//)

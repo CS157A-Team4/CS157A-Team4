@@ -14,6 +14,27 @@ class Posts extends React.Component {
         };
     }
 
+    UNSAFE_componentWillMount() { // call before render
+        this.show_post()
+    }
+
+    show_post() {
+        console.log("test show posts!!!");
+        let user = 23;
+
+        console.log(user)
+        fetch (`https://sjsubookietest.herokuapp.com/profile/getAll/${user}`).then(results => {
+            return results.json()
+        }).then(data=>{
+            if (data["error"]) {
+                alert(data["message"]);
+            }
+            else{
+                console.log(data["data"]);
+                alert(data["message"]);
+            }
+        })
+    }
     goTo(event) {
         const value = event.target.value;
         this.props.history.push(`/${value}`);
@@ -25,7 +46,7 @@ class Posts extends React.Component {
     	return (
             // this.state.loaded && (
 
-        <div>Posts</div>
+        <div>Posts Data</div>
 		//)
         )
 	}

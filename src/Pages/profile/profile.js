@@ -18,9 +18,7 @@ class Profile extends React.Component {
             loaded:false // do not reload page
         };
     }
-    UNSAFE_componentWillMount() { // call before render
-        this.show_post()
-    }
+
 
     goTo(event) {
         const value = event.target.value;
@@ -29,23 +27,7 @@ class Profile extends React.Component {
     updateState(e){
         this.setState({status:e.target.id})
     }
-    show_post() {
-        console.log("test show posts!!!");
-        let user = 23;
 
-        console.log(user)
-        fetch (`https://sjsubookietest.herokuapp.com/profile/getAll/${user}`).then(results => {
-            return results.json()
-        }).then(data=>{
-            if (data["error"]) {
-                alert(data["message"]);
-            }
-            else{
-                console.log(data["data"]);
-                alert(data["message"]);
-            }
-        })
-    }
 
 	render() {
     	return (

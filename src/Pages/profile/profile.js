@@ -63,7 +63,7 @@ class Profile extends React.Component {
 	render() {
     	return (
             // this.state.loaded && (
-                <div className=" w-full h-full">
+                <div className="flex w-full h-full">
         <div className="w-1/5 flex flex-col bg-white h-full ">
             <div className="w-0 md:w-full lg:w-full h-0 md:h-full overflow-y-hidden bg-white shadow-lg">
                 <div className="p-5 bg-white sticky flex justify-center items-center  bg-gray-200">

@@ -26,11 +26,11 @@ import Post from './Pages/search/post';
 const browserHistory = createBrowserHistory();
 ReactDOM.render(
     <BrowserRouter path="/App" history={browserHistory}>
-    <div className="bg-blue-new min-h-screen">
+    <div className="bg-blue-new min-h-screen max-h-screen scrolling-touch bg-blue-new md:scrolling-auto">
     <Header/>
     <Footer/>
 
-    <div className="md:pt-20 pt-16 scrolling-touch h-full bg-blue-new md:scrolling-auto"/>
+    <div className="md:pt-20 pt-16 h-screen">
         <Switch>
             <Route exact path = '/' component ={App}  />
             <Route exact path = '/login' component ={Login}  />
@@ -52,6 +52,7 @@ ReactDOM.render(
             <Route exact path = '/passwordChange' component ={PasswordChange}  />
             <Route component={Error}/>
         </Switch>
+        </div>
     </div>
     </BrowserRouter>, document.getElementById('root'));
     

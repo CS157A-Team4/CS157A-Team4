@@ -24,6 +24,9 @@ class App extends React.Component {
   goTo(event) {
     this.props.history.push(`/createPost`);
   }
+  componentWillMount(){
+    
+  }
   handleChange(event) {
     this.setState({
       [event.target.id]: event.target.value
@@ -61,7 +64,7 @@ class App extends React.Component {
         </div>
         <div className="absolute mt-64 z-10 w-full flex flex-wrap justify-center items-center">
           <div class=" flex w-1/2 mt-4 flex-row flex-wrap justify-center items-center ">
-          <div onClick={(e) => this.goTo(e)}className="w-3/4 flex justify-center items-center bg-white hover:text-white text-gray-600 hover:bg-blue-new hover:shadow-lg mt-4 h-20 z-10 cursor-pointer rounded items-center pt-1 border-blue-new border-2">
+          <div onClick={(e) => this.goTo(e)}className="md:w-3/4 w-full flex justify-center items-center bg-white hover:text-white text-gray-600 hover:bg-blue-new hover:shadow-lg mt-4 h-20 z-10 cursor-pointer rounded items-center pt-1 border-blue-new border-2">
               <p className="items-center text-xl md:text-3xl font-bold">Click here to sell your Book!!</p>
           </div>
 </div>

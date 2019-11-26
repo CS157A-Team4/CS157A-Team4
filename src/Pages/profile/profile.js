@@ -30,10 +30,10 @@ class Profile extends React.Component {
     	return (
             // this.state.loaded && (
                 <div className="flex w-full">
-        <div className="w-1/4">
+        <div className="w-full">
             <div className="w-0 md:w-full lg:w-1/5 h-0 md:h-screen overflow-y-hidden bg-white shadow-lg">
-                <div className="p-5 bg-white sticky bg-gray-200">
-                    <p className="pt-2 border-t mt-5 w-full text-center text-xl text-gray-800 round-full bg-blue-new
+                <div className="p-5 bg-white sticky flex justify-center items-center  bg-gray-200">
+                    <p className="border-t p-3  w-full text-center text-xl text-gray-800 round-full bg-blue-new
                     font-sans-pro font-bold">
                        Your Profile</p>
                 </div>

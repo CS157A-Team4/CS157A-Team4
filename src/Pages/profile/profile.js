@@ -26,6 +26,40 @@ class Profile extends React.Component {
     updateState(e){
         this.setState({status:e.target.id})
     }
+    // show_post(e) {
+    //     console.log("test show posts!!!");
+    //     e.preventDefault();
+    //     let user = 23;
+    //     let postId = this.state.message.idposts;
+    //     let type = "favorite";
+    //     let imageId = this.state.message.image;
+    //     let newSave = {
+    //         "userId":user,
+    //         "postType":type,
+    //         "postId":postId,
+    //         "imageId":imageId
+    //     };
+    //     console.log(user)
+    //     fetch ('https://sjsubookietest.herokuapp.com/friends/request/create', {
+    //         method:"POST",
+    //         headers:{
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(user)
+    //     }).then(results => {
+    //         return results.json()
+    //     }).then(data=>{
+    //         if (data["error"]) {
+    //             alert(data["message"]);
+    //         }
+    //         else{
+    //             console.log(data);
+    //             alert(data["message"]);
+    //             // refresh the page
+    //             window.location.reload();
+    //         }
+    //     })
+    // }
 	render() {
     	return (
             // this.state.loaded && (
@@ -37,7 +71,7 @@ class Profile extends React.Component {
                     font-sans-pro font-bold">
                        Your Profile</p>
                 </div>
-                <div className="h-full bg-white ">
+                <div className="h-full bg-white">
                     <button id="posts" onClick={e=>this.updateState(e)} className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left
                     text-gray-700 font-sans-pro font-bold text-justify">Posts</button>
                     <button id="friends" onClick={e=>this.updateState(e)}className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left

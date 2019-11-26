@@ -18,6 +18,9 @@ class Profile extends React.Component {
             loaded:false // do not reload page
         };
     }
+    UNSAFE_componentWillMount() { // call before render
+        this.show_post()
+    }
 
     goTo(event) {
         const value = event.target.value;
@@ -26,40 +29,24 @@ class Profile extends React.Component {
     updateState(e){
         this.setState({status:e.target.id})
     }
-    // show_post(e) {
-    //     console.log("test show posts!!!");
-    //     e.preventDefault();
-    //     let user = 23;
-    //     let postId = this.state.message.idposts;
-    //     let type = "favorite";
-    //     let imageId = this.state.message.image;
-    //     let newSave = {
-    //         "userId":user,
-    //         "postType":type,
-    //         "postId":postId,
-    //         "imageId":imageId
-    //     };
-    //     console.log(user)
-    //     fetch ('https://sjsubookietest.herokuapp.com/friends/request/create', {
-    //         method:"POST",
-    //         headers:{
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(user)
-    //     }).then(results => {
-    //         return results.json()
-    //     }).then(data=>{
-    //         if (data["error"]) {
-    //             alert(data["message"]);
-    //         }
-    //         else{
-    //             console.log(data);
-    //             alert(data["message"]);
-    //             // refresh the page
-    //             window.location.reload();
-    //         }
-    //     })
-    // }
+    show_post() {
+        console.log("test show posts!!!");
+        let user = 23;
+
+        console.log(user)
+        fetch (`https://sjsubookietest.herokuapp.com/profile/getAll/${user}`).then(results => {
+            return results.json()
+        }).then(data=>{
+            if (data["error"]) {
+                alert(data["message"]);
+            }
+            else{
+                console.log(data["data"]);
+                alert(data["message"]);
+            }
+        })
+    }
+
 	render() {
     	return (
             // this.state.loaded && (

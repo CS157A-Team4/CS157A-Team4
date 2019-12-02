@@ -238,13 +238,34 @@ class Post extends React.Component {
     };
     createRelation(e) {
       e.preventDefault();
+      var myDate = new Date();
+      var newDate = new Date(myDate.setTime( myDate.getTime() + 3 * 86400000 ));
+      var today = newDate;
+      var dd = today.getDate();
+
+      var mm = today.getMonth()+1; 
+      var yyyy = today.getFullYear();
+      if(dd<10) 
+      {
+          dd='0'+dd;
+      } 
+
+      if(mm<10) 
+      {
+          mm='0'+mm;
+      } 
+      today = +yyyy+'-'+mm+'-'+dd;
       let user2 = this.state.message.seller;
       let user1 = 23;
+      let postId = this.state.message.postID;
       let users = {
-          user1: user1,
-          user2: user2,
+          buyer: user1,
+          seller: user2,
+          postID:postId,
+          date:today
       };
-      fetch ('https://sjsubookietest.herokuapp.com/friends/request/create', {
+      console.log(users);
+      fetch (api+ '/reservations/create', {
           method:"POST",
           headers:{
           'Content-Type': 'application/json'
@@ -255,6 +276,7 @@ class Post extends React.Component {
       }).then(data=>{
           if (data["error"]) {
               alert(data["message"]);
+              console.log(data["message"])
           }
           else{
               alert(data["message"]);
@@ -314,9 +336,9 @@ class Post extends React.Component {
                 </div>
                 </div>
                 <div className= "md:w-1/4 w-full h-auto border-gray-300 mt-8 pr-6 pl-6 pb-6 pt-6 md:pt-0 md:pb-2 md:pr-2 md:pl-2 md:pt-2 bg-blue-new-light rounded mb-4 md:mb-0"> 
-                    <div className="font-sans-pro bg-white px-2 py-2 rounded mb-2 overflow-x-auto overflow-hidden"> 
-                        <p className="inline-block text-xl font-bold ">Title : </p> 
-                        <p className="inline-block text-2xl ml-1 "> {this.state.message.title}  </p> 
+                    <div className="font-sans-pro h-12 w-auto bg-white px-2 py-2 rounded mb-2 overflow-x-scroll "> 
+                        <p className="inline-block text-xl font-bold ">Title: </p> 
+                        <p className="inline-block text-2xl  ml-1 "> {this.state.message.title}  </p> 
                     </div>
                     <div className="font-sans-pro bg-white px-2 py-2 rounded mb-2 "> 
                         <p className="inline-block text-xl font-bold ">Author : </p> 
@@ -326,7 +348,7 @@ class Post extends React.Component {
                         <p className="inline-block text-xl font-bold ">Posted by : </p> 
                         <p className="inline-block text-2xl ml-1 "> {this.state.message.firstname + " " + this.state.message.surname}  </p> 
                     </div>
-                    <div className="font-sans-pro  bg-white px-2 py-2 rounded mb-2 "> 
+                    <div className="font-sans-pro flex  bg-white px-2 py-2 rounded mb-2 "> 
                         <p className="inline-block text-xl font-bold ">Posted on : </p> 
                         <p className="inline-block text-2xl ml-1 "> {this.state.message.date.split('T')[0]}  </p> 
                     </div>
@@ -353,8 +375,12 @@ class Post extends React.Component {
                 <div className= "md:w-1/4 w-full md:mt-8 pb-2 md:ml-8 md:pb-0 md:pr-0 md:pl-0 rounded-b-full border border-black"> 
                 {this.state.message.seller !== 23 ?
                     <div className="font-sans-pro text-2xl mb-6 justify-center rounded text-center"> 
-
+                        {
+                          this.state.message.hold !== 1 ?
                         <button onClick={e =>this.createRelation(e)}className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded mb-2 shadow-lg">Send Request to Poster</button>
+                        :
+                        <button disabled className="bg-gray-400 cursor-default w-full px-2 py-2 rounded mb-2 shadow-lg">Post Currently on Hold</button>
+                        }
                         {this.state.saved !== true?
                         <button onClick={e => this.savePost(e)}className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded  shadow-lg">Save Post for Later</button>
                         :

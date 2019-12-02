@@ -27,7 +27,7 @@ import Edit from './Pages/search/edit';
 const browserHistory = createBrowserHistory();
 ReactDOM.render(
     <BrowserRouter path="/App" history={browserHistory}>
-    <div className="bg-blue-new min-h-screen">
+    <div className="bg-blue-new min-h-screen max-h-screen">
     <Header/>
     <Footer/>
 

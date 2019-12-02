@@ -12,8 +12,8 @@ class Profile extends React.Component {
 	render() {
     	return (
         <div>
-          <div className="App">
-            <header className="App-header">
+          <div className="">
+            <header className="flex justify-center flex-col items-center text-center">
               <img src={logo} className="App-logo" alt="logo" />
               <p>
                 Bookie's Temporary Profile Page

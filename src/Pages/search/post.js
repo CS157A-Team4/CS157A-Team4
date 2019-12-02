@@ -236,6 +236,31 @@ class Post extends React.Component {
         ]
       });
     };
+    createRelation(e) {
+      e.preventDefault();
+      let user2 = this.state.message.seller;
+      let user1 = 23;
+      let users = {
+          user1: user1,
+          user2: user2,
+      };
+      fetch ('https://sjsubookietest.herokuapp.com/friends/request/create', {
+          method:"POST",
+          headers:{
+          'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(users)
+      }).then(results => {
+          return results.json()
+      }).then(data=>{
+          if (data["error"]) {
+              alert(data["message"]);
+          }
+          else{
+              alert(data["message"]);
+          }
+      })
+  }
     unsavePost(e){
         let user = 23;
         let postId = this.state.message.postID;
@@ -289,7 +314,7 @@ class Post extends React.Component {
                 </div>
                 </div>
                 <div className= "md:w-1/4 w-full h-auto border-gray-300 mt-8 pr-6 pl-6 pb-6 pt-6 md:pt-0 md:pb-2 md:pr-2 md:pl-2 md:pt-2 bg-blue-new-light rounded mb-4 md:mb-0"> 
-                    <div className="font-sans-pro  bg-white px-2 py-2 rounded mb-2 "> 
+                    <div className="font-sans-pro bg-white px-2 py-2 rounded mb-2 overflow-x-auto overflow-hidden"> 
                         <p className="inline-block text-xl font-bold ">Title : </p> 
                         <p className="inline-block text-2xl ml-1 "> {this.state.message.title}  </p> 
                     </div>
@@ -329,7 +354,7 @@ class Post extends React.Component {
                 {this.state.message.seller !== 23 ?
                     <div className="font-sans-pro text-2xl mb-6 justify-center rounded text-center"> 
 
-                        <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded mb-2 shadow-lg">Send Request to Poster</button>
+                        <button onClick={e =>this.createRelation(e)}className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded mb-2 shadow-lg">Send Request to Poster</button>
                         {this.state.saved !== true?
                         <button onClick={e => this.savePost(e)}className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded  shadow-lg">Save Post for Later</button>
                         :

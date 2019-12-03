@@ -31,6 +31,7 @@ class Profile extends React.Component {
 
 	render() {
     	return (
+
             // this.state.loaded && (
                 <div className="flex w-full h-full">
         <div className="w-1/5 flex flex-col bg-white h-full ">
@@ -56,7 +57,6 @@ class Profile extends React.Component {
             </div>
             
         </div>
-
         </div>
 		//)
         )

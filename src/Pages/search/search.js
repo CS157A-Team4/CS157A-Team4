@@ -4,6 +4,7 @@ import aBook from '../../images/testbook.png';
 import bBook from '../../images/anotherbook.png';
 import api from '../../backend/backend';
 import queryString from 'query-string';
+import TextTruncate from 'react-text-truncate'; // recommend
 class Search extends React.Component {	
     constructor(props) {
         super(props);
@@ -63,11 +64,16 @@ class Search extends React.Component {
                     <div className="bg-cover bg-center justify-center flex h-56 p-4 w-auto overflow-hidden">
                       <img className="rounded h-full" src={this.state.message[i].image !== "null" && this.state.message[i].image !== null?  this.state.message[i].image:logo}></img>
                     </div>
-                    <div className="p-4 pt-0">
-                        <p className="overflow-auto uppercase tracking-wide text-sm font-bold text-gray-700 mb-2">{this.state.message[i].title}</p>
-                        <p className="text-3xl text-gray-900 mb-2">$35</p>
+                    <div className="overflow-auto uppercase tracking-wide text-sm font-bold text-gray-700 mb-2">
+                    <TextTruncate
+                        line={1}
+                        element="span"
+                        truncateText="…"
+                        text={this.state.message[i].title}
+                    /> 
+                        <p className="text-3xl text-gray-900 mb-2">{"$"+this.state.message[i].price}</p>
                         <p className="text-gray-700"> {this.state.message[i].author}</p>
-                    </div>
+                   </div>
                     <div className="flex justify-between p-4 border-t border-solid border-gray-300 text-gray-700">
                         <div className="flex pt-1 just">
                             <svg className="h-6 w-6 text-gray-600 fill-current "/>
@@ -76,7 +82,7 @@ class Search extends React.Component {
                         <div className="flex items-center">
                             <svg className="h-6 w-6 text-gray-600 fill-current"/>
                             {
-                            this.state.message[i].hold == 0? 
+                            this.state.message[i].hold === 0? 
                             <p className="text-green-500 text-lg"> Available</p>
                             :
                             <p className="text-red-500 text-lg"> On Hold</p>

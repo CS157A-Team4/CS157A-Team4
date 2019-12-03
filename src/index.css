@@ -5204,8 +5204,9 @@ table {
   max-width: 100%;
 }
 .full-w/o-margins {
-          width: calc(100% - 4rem);
-        }
+  width: calc(100% - 4rem);
+}
+
 .min-h-0 {
   min-height: 0;
 }
@@ -55408,5 +55409,4 @@ code {
   .react-autosuggest__suggestion--highlighted {
     background-color: #ddd;
   }
-
 }

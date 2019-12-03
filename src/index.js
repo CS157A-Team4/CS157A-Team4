@@ -23,6 +23,7 @@ import PasswordChange from './Pages/profile/profile';
 import FriendsRequest from './Pages/friends/friendsRequest';
 import Create from './Pages/search/create';
 import Post from './Pages/search/post';
+import Edit from './Pages/search/edit';
 import Friends from "./Pages/profile/components/friends";
 import Posts from "./Pages/profile/components/posts";
 import Settings from "./Pages/profile/components/settings";
@@ -51,6 +52,7 @@ ReactDOM.render(
             <Route exact path = '/search/:params' component ={Search}  />
             <Route exact path = '/profile/friends' component ={FriendsList}  />
             <Route exact path = '/createPost' component ={Create}  />
+            <Route exact path = '/editPost/:id' component ={Edit}  />           
             <Route exact path = '/profile/friendsR' component ={FriendsRequest}  />
             <Route exact path = '/passwordChange' component ={PasswordChange}  />
             <Route exact path = '/profile/friends' component ={Friends}  />

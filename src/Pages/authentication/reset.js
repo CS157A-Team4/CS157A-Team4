@@ -30,14 +30,14 @@ export default function Reset(props) {
   }
     
   return (
-    <div className="flex items-center justify-center w-full  h-full md:mt-20 mt-6 ">
+    <div className="flex items-center justify-center w-full  h-full md:mt-0 mt-6 ">
       <div className="w-full max-w-md">
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <label className="block font-bold font-sans-pro text-grey-700 text-2xl rounded font-bold md:text-center mb-1 md:mb-6 pr-4" for="inline-full-name">Enter code</label>
           <label className="block font-sans-pro text-grey-darker text-l rounded md:text-left mb-1 md:mb-6 pr-4" for="inline-full-name">Enter the code emailed to you to reset your password.</label>
           <div className="md:flex md:items-center mb-8">
             <div className="md:w-1/3">
-              <label className="block font-bold font-sans-pro text-grey-darker text-xl rounded font-bold md:text-left mb-1 md:mb-0 pr-4" for="inline-full-name">Username</label>
+              <label className="block font-bold font-sans-pro text-grey-darker text-xl rounded font-bold md:text-left mb-1 md:mb-0 pr-4" for="inline-full-name">5 Digit Code:</label>
             </div>
             {/*  EMAIL  */}
             <div className="md:w-2/3">
@@ -46,7 +46,7 @@ export default function Reset(props) {
                 type="email"
                 onChange={e => setEmail(e.target.value)}
                 value={email}
-                placeholder="email" />
+                placeholder="_ _ _ _ _" />
             </div>
           </div>
 

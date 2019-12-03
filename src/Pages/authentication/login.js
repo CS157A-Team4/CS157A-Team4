@@ -55,6 +55,7 @@ export default function Login(props) {
   }
     
   return (
+    
     <div className="flex items-center justify-center w-full  h-full  ">
       <div className="w-full max-w-md">
       
@@ -72,6 +73,7 @@ export default function Login(props) {
                 type="email"
                 onChange={e => setEmail(e.target.value)}
                 value={email}
+                required
                 placeholder="email" />
             </div>
           </div>
@@ -88,6 +90,7 @@ export default function Login(props) {
                 type="password"
                 onChange={e => setPassword(e.target.value)}
                 value={password}
+                required
                 placeholder="******************" />
             </div>
 

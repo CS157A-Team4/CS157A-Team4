@@ -68,6 +68,7 @@ export default function SignUp(props) {
                         type="text" 
                         onChange={e => setFirstName(e.target.value)}
                         value={firstname}
+                        required
                         placeholder="First Name"/>
               </div>
             </div>
@@ -83,6 +84,7 @@ export default function SignUp(props) {
                         type="text"
                         onChange={e => setSurName(e.target.value)}
                         value={surname}
+                        required
                         placeholder="Last Name"/>
               </div>
             </div>
@@ -98,6 +100,7 @@ export default function SignUp(props) {
                         type="text"
                         onChange={e => setEmail(e.target.value)}
                         value={email} 
+                        required
                         placeholder="Email"/>
               </div>
             </div>
@@ -113,6 +116,7 @@ export default function SignUp(props) {
                         type="text"
                         onChange={e => setSchoolId(e.target.value)}
                         value={schoolid} 
+                        required
                         placeholder="123456789"/>
               </div>
             </div>
@@ -128,6 +132,7 @@ export default function SignUp(props) {
                         type="password"
                         onChange={e => setPassword(e.target.value)}
                         value={password}
+                        required
                         placeholder="******************"/>
               </div>
             </div>
@@ -143,6 +148,7 @@ export default function SignUp(props) {
                         type="password" 
                         onChange={e => setConfirmPassword(e.target.value)}
                         value={confirmpassword}
+                        required
                         placeholder="******************"/>
               </div>
             </div>

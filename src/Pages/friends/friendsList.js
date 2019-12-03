@@ -8,7 +8,6 @@ class Table extends React.Component {
         this.state = {
             data : [],
             friends: [
-                {relationshipId: 0, user1: '', user2: '', firstname: '',surname: ''}
 
             ]
         };

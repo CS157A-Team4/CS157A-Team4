@@ -33,6 +33,9 @@ class Edit extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
     }
     UNSAFE_componentWillMount() {
+      if(window.localStorage.getItem("id") === null){
+        this.props.history.push('/login');  
+    }
         this.getParams();
         }
         getParams(){

@@ -15,6 +15,10 @@ class Table extends React.Component {
     }
 
     UNSAFE_componentWillMount() { // call before render
+        if(window.localStorage.getItem("id") === null){
+            this.props.history.push('/login');  
+        }
+
         this.getFriends()
     }
 

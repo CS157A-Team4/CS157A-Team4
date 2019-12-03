@@ -318,6 +318,7 @@ class Post extends React.Component {
     }
 	render() {
     console.log(this.state);
+    console.log(this.state.message.seller);
     	return (
             this.state.error !== null ? (
               <div className="md:flex md:items-center md:justify-center px-6 md:px-0">
@@ -374,7 +375,7 @@ class Post extends React.Component {
                     </div>
                 </div> 
                 <div className= "md:w-1/4 w-full md:mt-8 pb-2 md:ml-8 md:pb-0 md:pr-0 md:pl-0 rounded-b-full border border-black"> 
-                {this.state.message.seller !== window.localStorage.getItem("id") ?
+                {this.state.message.seller.toString() !== window.localStorage.getItem("id") ?
                     <div className="font-sans-pro text-2xl mb-6 justify-center rounded text-center"> 
                         {
                           this.state.message.hold !== 1 ?

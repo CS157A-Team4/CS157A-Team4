@@ -10,9 +10,12 @@ class Header extends React.Component {
     this.state = {
       bookname:'',
       course:'',
-      token:false,
-      menuOpen:false
+      id:null,
+      menuOpen:false,
+      name: ''
     };
+
+
     this.storageUpdated = this.storageUpdated.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,20 +23,25 @@ class Header extends React.Component {
     
   }
   storageUpdated() {
-    if (window.localStorage.getItem("token") !== this.state.token) {
-      this.setState({
-        token: window.localStorage.getItem("token"),
-        user: JSON.parse(window.localStorage.getItem("currentUser"))
-      });
-    }
-
-
+    console.log(window.localStorage);
+      console.log("Got inside");
+      if (window.localStorage.getItem("id") !== this.state.id) {
+        console.log("writing the state");
+        this.setState({
+          id: window.localStorage.getItem("id"),
+          name: window.localStorage.getItem("user")
+        });
+      }
+    
   }
+
+  
 
   redirect(page) {
     if (page === "logout") {
-      this.setState({ token: undefined });
-      window.localStorage.removeItem("token");
+     // this.setState({ id: undefined, name:undefined});
+      window.localStorage.removeItem("id");
+      window.localStorage.removeItem("user");
       window.location.reload();
     } else {
       this.props.history.push(`/${page}`);
@@ -106,7 +114,7 @@ class Header extends React.Component {
   }
   render() {
     this.storageUpdated();
-
+  
     return (
       <div className="z-50 md:h-20 h-16 fixed w-full bg-white border-b-2 flex items-center fixed">
         <img
@@ -149,14 +157,14 @@ class Header extends React.Component {
      </div>
     }
 
-        {!this.state.token ? (
+        {this.state.id ? (
           <div 
             className="flex mr-8 ml-auto"
           >
             <div>
               <div>
             <div className="font-sans-pro hidden md:flex md:pointer-events-none text-2xl font-bold py-2 md:mr-4 md:cursor-default cursor-pointer">
-              Yu
+              {this.state.name}
             </div>
             
             </div>

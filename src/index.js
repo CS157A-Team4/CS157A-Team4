@@ -9,6 +9,7 @@ import Error from './error';
 import Login from './Pages/authentication/login';
 import SignUp from './Pages/authentication/signup';
 import Forget from './Pages/authentication/forget';
+import CodeForReset from './Pages/authentication/codeForReset';
 import Reset from './Pages/authentication/reset';
 import Messages from './Pages/profile/messages';
 import ProfilePosts from './Pages/profile/posts';
@@ -24,6 +25,9 @@ import FriendsRequest from './Pages/friends/friendsList';
 import Create from './Pages/search/create';
 import Post from './Pages/search/post';
 const browserHistory = createBrowserHistory();
+
+//window.localStorage.setItem('loggedIn', false);
+
 ReactDOM.render(
     <BrowserRouter path="/App" history={browserHistory}>
     <div className="bg-blue-new min-h-screen">

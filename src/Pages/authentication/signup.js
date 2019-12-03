@@ -33,8 +33,12 @@ export default function SignUp(props) {
       },
       body: JSON.stringify(user)
     }).then(response => {
-      response.json().then((data) => {
-        console.log(data);
+      response.json().then((info) => {
+        console.log(info);
+        window.localStorage.setItem('id', info.iduser);
+        window.localStorage.setItem('user', info.firstname);
+        window.localStorage.setItem('loggedIn', true);
+        props.history.push('/');
       });
     })
   }
@@ -42,8 +46,9 @@ export default function SignUp(props) {
   return (
       <div className="flex items-center justify-center w-full h-full mt-20">
         <div className="w-full max-w-md">
+        
           <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"> 
-            
+            <label className="block font-bold font-sans-pro text-grey-700 text-2xl rounded font-bold md:text-center mb-1 md:mb-8 pr-4" for="inline-full-name">Sign up</label>
             {/* FIRST NAME */}
             <div className="md:flex md:items-center mb-8">
               <div className="md:w-1/3">
@@ -146,7 +151,6 @@ export default function SignUp(props) {
               </a>
             </div>
           </form>
-          
         </div>
       </div>
   )	

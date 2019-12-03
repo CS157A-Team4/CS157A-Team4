@@ -14,8 +14,6 @@ import Reset from './Pages/authentication/reset';
 import Messages from './Pages/profile/messages';
 import ProfilePosts from './Pages/profile/posts';
 import Profile from './Pages/profile/profile';
-import Cancellation from './Pages/search/cancellation';
-import Confirmation from './Pages/search/confirmation';
 import Search from './Pages/search/search';
 import Header from './header';
 import Footer from './footer';

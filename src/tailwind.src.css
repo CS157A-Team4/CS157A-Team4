@@ -53,5 +53,14 @@ font-family: 'Source Sans Pro', sans-serif;
 }
 
 .border-color-blue-new{
-  border-color: #88C5CC;
+  border-color: rgb(4, 10, 11);
 }
+
+.bg-grey-new {
+  background-color: #334b5d;
+}
+
+.bg-bookie-yellow {
+  background-color: #fed065;
+}
+

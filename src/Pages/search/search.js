@@ -71,7 +71,7 @@ class Search extends React.Component {
                         truncateText="…"
                         text={this.state.message[i].title}
                     /> 
-                        <p className="text-3xl text-gray-900 mb-2">$35</p>
+                        <p className="text-3xl text-gray-900 mb-2">{"$"+this.state.message[i].price}</p>
                         <p className="text-gray-700"> {this.state.message[i].author}</p>
                    </div>
                     <div className="flex justify-between p-4 border-t border-solid border-gray-300 text-gray-700">

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import api from '../../backend/backend';
 
-
 export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -10,7 +9,7 @@ export default function Login(props) {
     return email.length > 0 && password.length > 0;
   }
 
-  async function handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
     
     const user = {
@@ -18,7 +17,7 @@ export default function Login(props) {
       password: password,
     }
 
-    await fetch(api + "/login/submit", {
+    fetch(api + "/login/submit", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -26,9 +25,10 @@ export default function Login(props) {
       },
       body: JSON.stringify(user)
     }).then(response => {
-      response.json()
-      console.log("logging result...")
-      console.log(JSON.stringify(response))
+      response.json().then((data) => {
+        
+        console.log(data);
+    });
     })
   }
     

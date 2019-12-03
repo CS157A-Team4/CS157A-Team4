@@ -11670,6 +11670,14 @@ code {
   background-color: #CEE7EA;
 }
 
+.bg-bookie-grey {
+  background-color: #334b5d;
+}
+
+.bg-bookie-yellow {
+  background-color: #fed065;
+}
+
 .divider {
   width: 1px;
   margin: 6px 0;

@@ -1,35 +1,104 @@
-import React from 'react';
-import logo from '../../logo.svg';
+import React, { useState } from "react";
+import api from '../../backend/backend';
 
-class Login extends React.Component {	
-    constructor(props) {
-        super(props);
-      }
-    goTo(event) {
-        const value = event.target.value;
-        this.props.history.push(`/${value}`);
-      }
-	render() {
-    	return (
-        <div>
-          <div className="App">
-            <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                Bookie's Temporary Login Page
-              </p>
-              <button
-                className="App-link"
-                value = ""
-                onClick={(e) => this.goTo(e)}
-              >
-                Click here to return home
-              </button>
-            </header>
+export default function Login(props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function validateForm() {
+    return email.length > 0 && password.length > 0;
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    
+    const user = {
+      email : email,
+      password: password,
+    }
+
+    fetch(api + "/login/submit", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user)
+    }).then(response => {
+      response.json().then((info) => {
+        console.log("data!")
+        console.log(info.data);
+
+        // "schoolid": "98298298",
+        // "iduser": 35,
+        // "firstname": "PassHash2",
+        // "surname": "Hash2",
+        // "email": "pass@hashtest.com"
+        console.log(info.data[0].iduser);
+        console.log(info.data[0].firstname);
+
+        window.localStorage.setItem('id', info.data[0].iduser);
+        window.localStorage.setItem('user', info.data[0].firstname);
+        window.localStorage.setItem('loggedIn', true);
+        props.history.push('/');
+
+
+      });
+    })
+  }
+    
+  return (
+    <div className="flex items-center justify-center w-full  h-full md:mt-20 mt-6 ">
+      <div className="w-full max-w-md">
+      
+        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <label className="block font-bold font-sans-pro text-grey-700 text-2xl rounded font-bold md:text-center mb-1 md:mb-8 pr-4" for="inline-full-name">Login</label>
+          <div className="md:flex md:items-center mb-8">
+          
+            <div className="md:w-1/3">
+              <label className="block font-bold font-sans-pro text-grey-darker text-xl rounded font-bold md:text-left mb-1 md:mb-0 pr-4" for="inline-full-name">Username</label>
+            </div>
+            {/*  EMAIL  */}
+            <div className="md:w-2/3">
+              < input className="shadow appearance-none rounded w-full py-3 px-4 text-xl font-sans-pro font-bold text-gray-700 leading-tight"
+                id="email"
+                type="email"
+                onChange={e => setEmail(e.target.value)}
+                value={email}
+                placeholder="email" />
+            </div>
           </div>
-        </div>
-		)	
-	}
-}
 
-export default Login;
+          <div className="md:flex md:items-center mb-6">
+            <div className="md:w-1/3">
+              <label className="block font-bold font-sans-pro text-grey-darker text-xl rounded font-bold md:text-left mb-1 md:mb-0 pr-4"
+                for="inline-full-name">Password</label>
+            </div>
+            {/*  PASSWORD  */}
+            <div className="md:w-2/3">
+              < input className="shadow appearance-none rounded w-full py-3 px-4 text-gray-700 font-sans-pro font-bold leading-tight "
+                id="password"
+                type="password"
+                onChange={e => setPassword(e.target.value)}
+                value={password}
+                placeholder="******************" />
+            </div>
+          </div>
+          {/*  BUTTONS  */}
+          <div className="flex items-center justify-between mt-8">
+            <button className="bg-bookie-grey hover:bg-red text-white text-xl font-bold py-2 px-4 rounded"
+              type="button"
+              onClick={handleSubmit}>
+              Sign In
+              </button>
+            <a className="inline-block align-baseline font-bold text-md text-blue-500 hover:text-blue-800" href="/forget">
+              Forgot Password?
+              </a>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  )
+
+}

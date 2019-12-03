@@ -9,6 +9,7 @@ import Error from './error';
 import Login from './Pages/authentication/login';
 import SignUp from './Pages/authentication/signup';
 import Forget from './Pages/authentication/forget';
+import CodeForReset from './Pages/authentication/codeForReset';
 import Reset from './Pages/authentication/reset';
 import Messages from './Pages/profile/messages';
 import ProfilePosts from './Pages/profile/posts';
@@ -28,6 +29,9 @@ import Friends from "./Pages/profile/components/friends";
 import Posts from "./Pages/profile/components/posts";
 import Settings from "./Pages/profile/components/settings";
 const browserHistory = createBrowserHistory();
+
+//window.localStorage.setItem('loggedIn', false);
+
 ReactDOM.render(
     <BrowserRouter path="/App" history={browserHistory}>
     <div className="bg-blue-new min-h-screen max-h-screen scrolling-touch bg-blue-new md:scrolling-auto">

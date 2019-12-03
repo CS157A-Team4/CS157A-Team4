@@ -55,7 +55,7 @@ class Profile extends React.Component {
                     text-gray-700 font-sans-pro font-bold text-justify">Settings</button>
                 </div>
             </div>
-            
+            <div className="w-full"></div>
         </div>
         </div>
 		//)

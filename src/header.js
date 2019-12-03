@@ -54,8 +54,7 @@ class Header extends React.Component {
     let oList = [];
     const options = [
       "Profile",
-      "Friends",
-      "Posts",
+      "Create Post",
       "Logout"
     ];
     options.map(item =>

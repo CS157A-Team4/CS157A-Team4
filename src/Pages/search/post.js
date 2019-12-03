@@ -5,7 +5,9 @@ import bBook from '../../images/anotherbook.png';
 import api from '../../backend/backend';
 import queryString from 'query-string';
 import Infinite from 'react-infinite';
-class Search extends React.Component {	
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+class Post extends React.Component {	
     constructor(props) {
         super(props);
       
@@ -18,15 +20,35 @@ class Search extends React.Component {
         comments:[],
         newComment:'',
         saved: false,
+        error: null
       };
       this.storageUpdated = this.storageUpdated.bind(this);
       this.handleChange = this.handleChange.bind(this);
+    }
+    delete(){
+      console.log("HERe");
+      let ids = {
+        postId: this.state.message.postID,
+        imageId: this.state.message.imageId
+      }
+      console.log(ids);
+          fetch(api+"/posts/delete", {
+            method: 'DELETE',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(ids)
+          })
+          .then(res => res.json())
+          .then(res => {
+            console.log(res);
+          alert(res["message"]);
+        })
     }
     UNSAFE_componentWillMount() {
       this.getParams();
       }
       getParams(){
-        let values = this.props.match.params.id;      
+        let values = this.props.match.params.id;    
+
         fetch(api+"/posts/" +values)
           .then(function (response) {
             console.log("hi");
@@ -35,12 +57,12 @@ class Search extends React.Component {
           .then(function (data) {
               if (data["error"]) {
                   this.setState({
-                      error: data["message"]
+                      error: data["error"]
                   });
                   console.log(data);
               }
               else {
-                    console.log(data[2]);
+                    console.log(data);
                   this.setState({message:data[0][0],comments:data[1]});
                   this.setState({loaded:true});
                   if(data[2].some(e => e.userID == 23)){
@@ -160,16 +182,17 @@ class Search extends React.Component {
         const value = event.target.value;
         this.props.history.push(`/${value}`);
       } 
+    goEdit(e){
+      this.props.history.push(`/editPost/${this.props.match.params.id}`);
+    }
     savePost(e){
         let user = 23;
-        let postId = this.state.message.idposts;
+        let postId = this.state.message.postID;
         let type = "favorite";
-        let imageId = this.state.message.image;
         let newSave = { 
             "userId":user,
             "postType":type,
             "postId":postId,
-            "imageId":imageId 
         }
         fetch(api + "/profile/save", {
             method: "POST",
@@ -182,6 +205,7 @@ class Search extends React.Component {
             return response.json();
           }).then(function (data) {
             if (data["error"]) {
+              console.log(data["error"])
               this.setState({
                 error: data["message"]
               });
@@ -195,9 +219,71 @@ class Search extends React.Component {
           }.bind(this));
     
     }
+    getConfirm = () => {
+      confirmAlert({
+        title: 'Listing Deletion Process',
+        message: 'Are you sure you want to delete this posting?',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () => this.delete()
+          },
+          {
+            label: 'No',
+          }
+        ]
+      });
+    };
+    createRelation(e) {
+      e.preventDefault();
+      var myDate = new Date();
+      var newDate = new Date(myDate.setTime( myDate.getTime() + 3 * 86400000 ));
+      var today = newDate;
+      var dd = today.getDate();
+
+      var mm = today.getMonth()+1; 
+      var yyyy = today.getFullYear();
+      if(dd<10) 
+      {
+          dd='0'+dd;
+      } 
+
+      if(mm<10) 
+      {
+          mm='0'+mm;
+      } 
+      today = +yyyy+'-'+mm+'-'+dd;
+      let user2 = this.state.message.seller;
+      let user1 = 23;
+      let postId = this.state.message.postID;
+      let users = {
+          buyer: user1,
+          seller: user2,
+          postID:postId,
+          date:today
+      };
+      console.log(users);
+      fetch (api+ '/reservations/create', {
+          method:"POST",
+          headers:{
+          'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(users)
+      }).then(results => {
+          return results.json()
+      }).then(data=>{
+          if (data["error"]) {
+              alert(data["message"]);
+              console.log(data["message"])
+          }
+          else{
+              alert(data["message"]);
+          }
+      })
+  }
     unsavePost(e){
         let user = 23;
-        let postId = this.state.message.idposts;
+        let postId = this.state.message.postID;
         let newSave = { 
             "userId":user,
             "postId":postId,
@@ -212,6 +298,7 @@ class Search extends React.Component {
           }).then(function (response) {
             return response.json();
           }).then(function (data) {
+            console.log(data);
             if (data["error"]) {
               this.setState({
                 error: data["message"]
@@ -227,20 +314,29 @@ class Search extends React.Component {
     
     }
 	render() {
+    console.log(this.state);
     	return (
-            this.state.loaded  == true &&(
+            this.state.error !== null ? (
+              <div className="md:flex md:items-center md:justify-center px-6 md:px-0">
+              <div className='md:max-w-xl max-h-full text-center border-solid text-center pt-16'>
+                <p className="text-2xl font-sans-pro text-white font-white font-bold">No Post Information was found, please insure that this post exists. It may or may not have been deleted.</p>
+              </div>
+              </div>
+            )
+            :
+            this.state.loaded  == true && !this.state.error &&(
                 <div className="md:flex md:items-center md:justify-start px-6 md:px-0">
                 <div className='md:max-w-xl max-h-full text-center md:w-3/4 border-solid'>
                     <div className="border-solid w-3/4 md:w-3/5 h-auto bg-white inline-block border-4 mt-8 rounded"style={{border:"6px solid white"}}>
                         <div className="border-solid border-4" style={{border:"6px solid #C2E1E5"}}>
-                <img className= "" style={{border:"6px solid white"}}  alt="postImage" src={this.state.message.image !== "null" && this.state.message.image !== null ? this.state.message.image:logo} />
+                <img className= "" style={{border:"6px solid white"}}  alt="postImage" src={this.state.message.image !== "null" && this.state.message.image !== null && this.state.message.image !== undefined ? this.state.message.image:logo} />
                 </div>
                 </div>
                 </div>
                 <div className= "md:w-1/4 w-full h-auto border-gray-300 mt-8 pr-6 pl-6 pb-6 pt-6 md:pt-0 md:pb-2 md:pr-2 md:pl-2 md:pt-2 bg-blue-new-light rounded mb-4 md:mb-0"> 
-                    <div className="font-sans-pro  bg-white px-2 py-2 rounded mb-2 "> 
-                        <p className="inline-block text-xl font-bold ">Title : </p> 
-                        <p className="inline-block text-2xl ml-1 "> {this.state.message.title}  </p> 
+                    <div className="font-sans-pro h-12 w-auto bg-white pl-2 py rounded mb-2 overflow-x-scroll "> 
+                        <p className="inline-block text-xl font-bold ">Title: </p> 
+                        <p className="inline-block text-2xl  ml-1 "> {this.state.message.title}  </p> 
                     </div>
                     <div className="font-sans-pro bg-white px-2 py-2 rounded mb-2 "> 
                         <p className="inline-block text-xl font-bold ">Author : </p> 
@@ -250,7 +346,7 @@ class Search extends React.Component {
                         <p className="inline-block text-xl font-bold ">Posted by : </p> 
                         <p className="inline-block text-2xl ml-1 "> {this.state.message.firstname + " " + this.state.message.surname}  </p> 
                     </div>
-                    <div className="font-sans-pro  bg-white px-2 py-2 rounded mb-2 "> 
+                    <div className="font-sans-pro flex  bg-white px-2 py-2 rounded mb-2 "> 
                         <p className="inline-block text-xl font-bold ">Posted on : </p> 
                         <p className="inline-block text-2xl ml-1 "> {this.state.message.date.split('T')[0]}  </p> 
                     </div>
@@ -277,8 +373,12 @@ class Search extends React.Component {
                 <div className= "md:w-1/4 w-full md:mt-8 pb-2 md:ml-8 md:pb-0 md:pr-0 md:pl-0 rounded-b-full border border-black"> 
                 {this.state.message.seller !== 23 ?
                     <div className="font-sans-pro text-2xl mb-6 justify-center rounded text-center"> 
-
-                        <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded mb-2 shadow-lg">Send Request to Poster</button>
+                        {
+                          this.state.message.hold !== 1 ?
+                        <button onClick={e =>this.createRelation(e)}className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded mb-2 shadow-lg">Send Request to Poster</button>
+                        :
+                        <button disabled className="bg-gray-400 cursor-default w-full px-2 py-2 rounded mb-2 shadow-lg">Post Currently on Hold</button>
+                        }
                         {this.state.saved !== true?
                         <button onClick={e => this.savePost(e)}className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded  shadow-lg">Save Post for Later</button>
                         :
@@ -287,8 +387,8 @@ class Search extends React.Component {
                         </div>
                         :
                     <div className="font-sans-pro text-2xl mb-6 justify-center rounded text-center"> 
-                        <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded mb-2 shadow-lg">Edit Post</button>
-                        <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded  shadow-lg">Close Post</button>
+                        <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded mb-2 shadow-lg" onClick={(e) => this.goEdit(e)}>Edit Post</button>
+                        <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded  shadow-lg" onClick={()=>this.getConfirm()}>Close Post</button>
                        
                         </div>
                     }
@@ -311,4 +411,4 @@ class Search extends React.Component {
 	}
 }
 
-export default Search;
+export default Post;

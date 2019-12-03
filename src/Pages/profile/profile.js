@@ -21,8 +21,8 @@ class Profile extends React.Component {
 
 
     goTo(event) {
-        const value = event.target.value;
-        this.props.history.push(`/${value}`);
+        const value = event.target.id;
+        this.props.history.push(`/profile/${value}`);
     }
     updateState(e){
         this.setState({status:e.target.id})
@@ -42,26 +42,21 @@ class Profile extends React.Component {
                 </div>
 
                 <div>
-                    <button id="posts" onClick={e=>this.updateState(e)} className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left
+                    <button id="posts" onClick={e=>this.goTo(e)} className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left
                     text-gray-700 font-sans-pro font-bold text-justify">Posts</button>
-                    <button id="friends" onClick={e=>this.updateState(e)}className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left
+                    <button id="friends" onClick={e=>this.goTo(e)}className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left
                     text-gray-700 font-sans-pro font-bold text-justify"
                     >Friends</button>
-                    <button id="settings" onClick={e=>this.updateState(e)}className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left
+                    <button id="friendsR" onClick={e=>this.goTo(e)}className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left
+                    text-gray-700 font-sans-pro font-bold text-justify"
+                    >Friends Request</button>
+                    <button id="settings" onClick={e=>this.goTo(e)}className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left
                     text-gray-700 font-sans-pro font-bold text-justify">Settings</button>
                 </div>
             </div>
             
         </div>
-        {this.state.status === 'friends' &&
-        <Friends/>
-        }
-        {this.state.status === 'settings' &&
-        <Settings/>
-        }
-        {this.state.status === 'posts' &&
-        <Posts/>
-        }
+
         </div>
 		//)
         )

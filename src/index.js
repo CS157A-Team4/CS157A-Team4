@@ -23,6 +23,9 @@ import PasswordChange from './Pages/profile/profile';
 import FriendsRequest from './Pages/friends/friendsRequest';
 import Create from './Pages/search/create';
 import Post from './Pages/search/post';
+import Friends from "./Pages/profile/components/friends";
+import Posts from "./Pages/profile/components/posts";
+import Settings from "./Pages/profile/components/settings";
 const browserHistory = createBrowserHistory();
 ReactDOM.render(
     <BrowserRouter path="/App" history={browserHistory}>
@@ -46,10 +49,13 @@ ReactDOM.render(
             <Route exact path = '/confirmation/:params' component ={Confirmation}  />
             <Route exact path = '/search' component ={Search}  />
             <Route exact path = '/search/:params' component ={Search}  />
-            <Route exact path = '/friends' component ={FriendsList}  />
+            <Route exact path = '/profile/friends' component ={FriendsList}  />
             <Route exact path = '/createPost' component ={Create}  />
-            <Route exact path = '/friendsR' component ={FriendsRequest}  />
+            <Route exact path = '/profile/friendsR' component ={FriendsRequest}  />
             <Route exact path = '/passwordChange' component ={PasswordChange}  />
+            <Route exact path = '/profile/friends' component ={Friends}  />
+            <Route exact path = '/profile/posts' component ={Posts}  />
+            <Route exact path = '/profile/settings' component ={Settings}  />
             <Route component={Error}/>
         </Switch>
         </div>

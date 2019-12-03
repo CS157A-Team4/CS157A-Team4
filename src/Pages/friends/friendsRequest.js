@@ -20,7 +20,7 @@ class Table extends React.Component {
 
     getFriends() {
         let id = window.localStorage.getItem("id");
-        fetch('https://sjsubookietest.herokuapp.com/friends/request/' + id).then(
+        fetch(api+'/friends/request/' + id).then(
             function(response) {
                 return response.json();
             }
@@ -80,7 +80,7 @@ class Table extends React.Component {
             user2: user2,
         };
         console.log(users);
-        fetch ('https://sjsubookietest.herokuapp.com/friends/request/create', {
+        fetch (api+'/friends/request/create', {
             method:"POST",
             headers:{
             'Content-Type': 'application/json'
@@ -108,7 +108,7 @@ class Table extends React.Component {
         let users = {
             id: id,
         };
-        fetch ('https://sjsubookietest.herokuapp.com/friends/delete/', {
+        fetch (api+'/friends/delete/', {
             method:"POST",
             headers:{
                 'Content-Type': 'application/json'

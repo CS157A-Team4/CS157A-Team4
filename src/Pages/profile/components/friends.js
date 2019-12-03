@@ -16,6 +16,7 @@ class Friends extends React.Component {
     }
 
     UNSAFE_componentWillMount() { // call before render
+        
         this.show_friends()
     }
 
@@ -24,7 +25,7 @@ class Friends extends React.Component {
         let user = window.localStorage.getItem("id");
 
         console.log(user)
-        fetch (`https://sjsubookietest.herokuapp.com/friends/getAll/${user}`).then(results => {
+        fetch (api+`/friends/getAll/${user}`).then(results => {
             return results.json()
         }).then(data=>{
             if (data["error"]) {

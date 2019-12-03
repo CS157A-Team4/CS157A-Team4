@@ -118,7 +118,7 @@ class Message extends React.Component {
                 "receiver":receiver,
                 "date":today
             }
-            fetch("https://sjsubookietest.herokuapp.com/messages/send", {
+            fetch(api+"/messages/send", {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',

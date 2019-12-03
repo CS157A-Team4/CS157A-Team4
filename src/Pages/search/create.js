@@ -73,6 +73,10 @@ class Create extends React.Component {
       console.log(this.state.suggestions);
     };
     async componentWillMount(){
+      console.log(window.localStorage.getItem("id"))
+      if(window.localStorage.getItem("id") === null){
+        this.props.history.push('login');  
+    }
       const response = await fetch('https://sjsubookiebackend.herokuapp.com/testapi/courses');
       const courses = await response.json();
       await this.setState({

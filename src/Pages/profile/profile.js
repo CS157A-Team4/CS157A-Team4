@@ -18,7 +18,11 @@ class Profile extends React.Component {
             loaded:false // do not reload page
         };
     }
-
+componentDidMount(){
+    if(window.localStorage.getItem("id") === null){
+        this.props.history.push('login');  
+    }
+}
 
     goTo(event) {
         const value = event.target.id;

@@ -9,8 +9,9 @@ export default function SignUp(props) {
   const [confirmpassword, setConfirmPassword] = useState("");
   const [firstname, setFirstName] = useState("");
   const [surname, setSurName] = useState("");
-
+  let [error, setError] = useState("");
   function handleSubmit(event) {
+    setError("");
     event.preventDefault();
     
     const user = {
@@ -34,11 +35,18 @@ export default function SignUp(props) {
       body: JSON.stringify(user)
     }).then(response => {
       response.json().then((info) => {
+        if(info["error"]){
+          setError(info["message"]);
+          console.log(info);
+
+        }
+        else{
         console.log(info);
         window.localStorage.setItem('id', info.iduser);
         window.localStorage.setItem('user', info.firstname);
         window.localStorage.setItem('loggedIn', true);
         props.history.push('/');
+        }
       });
     })
   }
@@ -138,7 +146,11 @@ export default function SignUp(props) {
                         placeholder="******************"/>
               </div>
             </div>
-
+            {error.length !== 0 &&
+            <div>
+            <p className="text-red-400">{error}</p>
+            </div>
+            }
             {/* BUTTONS */}
             <div className="flex items-center justify-between mt-8">
               <button className="bg-bookie-grey hover:bg-red text-white text-xl font-bold py-2 px-4 rounded" 

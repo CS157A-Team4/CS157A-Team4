@@ -189,12 +189,10 @@ class Post extends React.Component {
         let user = 23;
         let postId = this.state.message.postID;
         let type = "favorite";
-        let imageId = this.state.message.image;
         let newSave = { 
             "userId":user,
             "postType":type,
             "postId":postId,
-            "imageId":imageId 
         }
         fetch(api + "/profile/save", {
             method: "POST",

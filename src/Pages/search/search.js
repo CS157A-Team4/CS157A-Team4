@@ -144,8 +144,8 @@ class Search extends React.Component {
       }
 	render() {
     	return (
-        <div className="text-center items-center justify-center align-start w-full flex font-sans-pro  md:pl-10 md:pr-10">
-          <div className="w-full h-full md:mt-4 mt-8">
+        <div className="text-center bg-blue-new items-center justify-center align-start w-full flex font-sans-pro  overflow-auto  md:pl-10 md:pr-10">
+          <div className="w-full h-full md:mt-4 mt-8 overflow-auto  ">
           {window.innerWidth < 768 &&
           <div className="items-center justify-center flex">
         <div className="bg-white w-2/3 border rounded p-4">
@@ -167,16 +167,16 @@ class Search extends React.Component {
          type="text"
          onChange={this.handleChange}
        />
-     <div className="mt-4 flex justify-center">
+     <div className="mt-4 flex justify-center ">
      <div className="w-1/2 bg-blue-new hover:bg-teal-600 h-14 text-2xl hover:bg-blue text-white font-bold font-sans-pro py-4 px-4 rounded cursor-pointer" onClick={() => this.search()} value="Search">Search</div>
      </div>
      </div>
      </div>
 
     }
-            <div className="md:pt-10 ">
+            <div className="md:pt-10 overflow-auto ">
             {this.state.loaded &&
-              <div className="flex flex-wrap justify-center">
+              <div className="flex flex-wrap overflow-auto justify-center">
               {this.loadBoxes()}
               </div>}
               {this.state.loaded && this.state.message.length == 0 &&

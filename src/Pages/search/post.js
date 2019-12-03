@@ -338,9 +338,9 @@ class Post extends React.Component {
                 </div>
                 </div>
                 <div className= "md:w-1/4 w-full h-auto border-gray-300 mt-8 pr-6 pl-6 pb-6 pt-6 md:pt-0 md:pb-2 md:pr-2 md:pl-2 md:pt-2 bg-blue-new-light rounded mb-4 md:mb-0"> 
-                    <div className="font-sans-pro h-12 w-auto bg-white pl-2 py rounded mb-2 overflow-x-scroll "> 
+                    <div className="font-sans-pro h-12 w-auto bg-white px-2 py-2 text-start rounded mb-2 overflow-x-scroll "> 
                         <p className="inline-block text-xl font-bold ">Title: </p> 
-                        <p className="inline-block text-2xl  ml-1 "> {this.state.message.title}  </p> 
+                        <p className="inline-block text-2xl ml-1 "> {this.state.message.title}  </p> 
                     </div>
                     <div className="font-sans-pro bg-white px-2 py-2 rounded mb-2 "> 
                         <p className="inline-block text-xl font-bold ">Author : </p> 

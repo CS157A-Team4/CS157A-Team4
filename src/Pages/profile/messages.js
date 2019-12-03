@@ -59,8 +59,9 @@ class Message extends React.Component {
 
     loadMessages(){
         let messages = [];
+
         for(let x in this.state.m){
-            let bg = this.state.m[x].sender === window.localStorage.getItem("id")? "bg-white" : "bg-blue-new-light";
+            let bg = this.state.m[x].sender.toString() === window.localStorage.getItem("id")? "bg-white" : "bg-blue-new-light";
             bg+= " leading-snug py-2 px-2 border border-solid mt-1 rounded"
             messages.push(
                 <div ref={(ref) => this.newMessage = ref}  id={this.state.m[x].messageID} class={bg}>

@@ -51,8 +51,6 @@ class Profile extends React.Component {
                     <button id="friendsR" onClick={e=>this.goTo(e)}className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left
                     text-gray-700 font-sans-pro font-bold text-justify"
                     >Friends Request</button>
-                    <button id="settings" onClick={e=>this.goTo(e)}className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left
-                    text-gray-700 font-sans-pro font-bold text-justify">Settings</button>
                 </div>
             </div>
 

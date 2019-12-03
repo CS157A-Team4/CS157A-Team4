@@ -45,6 +45,7 @@ export default function Forgot(props) {
                 type="email"
                 onChange={e => setEmail(e.target.value)}
                 value={email}
+                required
                 placeholder="email" />
             </div>
           </div>

@@ -46,6 +46,7 @@ export default function Reset(props) {
                 type="email"
                 onChange={e => setEmail(e.target.value)}
                 value={email}
+                required
                 placeholder="_ _ _ _ _" />
             </div>
           </div>

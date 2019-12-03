@@ -24,9 +24,6 @@ class App extends React.Component {
   goTo(event) {
     this.props.history.push(`/createPost`);
   }
-  componentWillMount(){
-    
-  }
   handleChange(event) {
     this.setState({
       [event.target.id]: event.target.value

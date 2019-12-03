@@ -24,14 +24,17 @@ import FriendsRequest from './Pages/friends/friendsRequest';
 import Create from './Pages/search/create';
 import Post from './Pages/search/post';
 import Edit from './Pages/search/edit';
+import Friends from "./Pages/profile/components/friends";
+import Posts from "./Pages/profile/components/posts";
+import Settings from "./Pages/profile/components/settings";
 const browserHistory = createBrowserHistory();
 ReactDOM.render(
     <BrowserRouter path="/App" history={browserHistory}>
-    <div className="bg-blue-new min-h-screen max-h-screen">
+    <div className="bg-blue-new min-h-screen max-h-screen scrolling-touch bg-blue-new md:scrolling-auto">
     <Header/>
     <Footer/>
 
-    <div className="md:pt-20 pt-16 scrolling-touch h-full bg-blue-new md:scrolling-auto"/>
+    <div className="md:pt-20 pt-16 h-screen">
         <Switch>
             <Route exact path = '/' component ={App}  />
             <Route exact path = '/login' component ={Login}  />
@@ -39,7 +42,7 @@ ReactDOM.render(
             <Route exact path = '/reset' component ={Reset}  />
             <Route exact path = '/signup' component ={SignUp}  />
             <Route exact path = '/messages' component ={Messages}  />
-            <Route exact path = '/messages/:params' component ={Messages}  />
+            <Route exact path = '/messages/:id' component ={Messages}  />
             <Route exact path = '/posts' component ={ProfilePosts}  />
             <Route exact path = '/post/:id' component ={Post}  />
             <Route exact path = '/profile' component ={Profile}  />
@@ -47,13 +50,17 @@ ReactDOM.render(
             <Route exact path = '/confirmation/:params' component ={Confirmation}  />
             <Route exact path = '/search' component ={Search}  />
             <Route exact path = '/search/:params' component ={Search}  />
-            <Route exact path = '/friends' component ={FriendsList}  />
+            <Route exact path = '/profile/friends' component ={FriendsList}  />
             <Route exact path = '/createPost' component ={Create}  />
-            <Route exact path = '/editPost/:id' component ={Edit}  />
-            <Route exact path = '/friendsR' component ={FriendsRequest}  />
+            <Route exact path = '/editPost/:id' component ={Edit}  />           
+            <Route exact path = '/profile/friendsR' component ={FriendsRequest}  />
             <Route exact path = '/passwordChange' component ={PasswordChange}  />
+            <Route exact path = '/profile/friends' component ={Friends}  />
+            <Route exact path = '/profile/posts' component ={Posts}  />
+            <Route exact path = '/profile/settings' component ={Settings}  />
             <Route component={Error}/>
         </Switch>
+        </div>
     </div>
     </BrowserRouter>, document.getElementById('root'));
     

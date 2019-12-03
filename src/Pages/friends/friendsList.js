@@ -19,7 +19,7 @@ class Table extends React.Component {
     }
 
     getFriends() {
-        let id = 23;
+        let id = window.localStorage.getItem("id");
         fetch('https://sjsubookietest.herokuapp.com/friends/list/' + id).then(
             function(response) {
                 return response.json();

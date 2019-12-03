@@ -22,7 +22,7 @@ class Posts extends React.Component {
 
     show_post() {
         console.log("test show posts!!!");
-        let user = 23;
+        let user = window.localStorage.getItem("id");
 
         console.log(user)
         fetch (`https://sjsubookietest.herokuapp.com/profile/getAll/${user}`).then(results => {

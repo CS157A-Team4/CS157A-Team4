@@ -48,8 +48,6 @@ ReactDOM.render(
             <Route exact path = '/posts' component ={ProfilePosts}  />
             <Route exact path = '/post/:id' component ={Post}  />
             <Route exact path = '/profile' component ={Profile}  />
-            <Route exact path = '/cancellation/:params' component ={Cancellation}  />
-            <Route exact path = '/confirmation/:params' component ={Confirmation}  />
             <Route exact path = '/search' component ={Search}  />
             <Route exact path = '/search/:params' component ={Search}  />
             <Route exact path = '/profile/friends' component ={FriendsList}  />

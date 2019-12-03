@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../../images/curious_cat.png';
 import api from '../../backend/backend';
 import Select from 'react-select';
+import Autosuggest from 'react-autosuggest';
 
 const options = [
     { value: 'Brand New', label: 'Brand New' },
@@ -11,6 +12,8 @@ const options = [
     { value: 'Poor', label: 'Poor' },
 
   ];
+
+
 class Create extends React.Component {	
     constructor(props) {
         super(props);
@@ -22,17 +25,61 @@ class Create extends React.Component {
         error:null,
         author: '',
         bookname: '',
-        condition: '',
         course: '',
         description:'',
         price: 0,
         poster: 23,
+        value: '',
+        suggestions: [],
+        courseList:[],
+        selected:[]
       };
       this.storageUpdated = this.storageUpdated.bind(this);
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      
     }
-
+    getSuggestions = value => {
+      const inputValue = value.trim().toLowerCase();
+      const inputLength = inputValue.length;
+    
+      return inputLength === 0 ? [] : this.state.courseList.filter(lang =>
+        lang.courseId.toLowerCase().slice(0, inputLength) === inputValue
+      );
+    };
+    getSuggestionValue = suggestion => suggestion.courseId;
+  
+  // Use your imagination to render suggestions.
+  renderSuggestion = suggestion => (
+    <div>
+      {suggestion.courseId}
+    </div>
+  );
+    onChange = (event, { newValue }) => {
+      this.setState({
+        value: newValue,
+        course: newValue
+      });
+    };
+    onSuggestionsClearRequested = () => {
+      this.setState({
+        suggestions: []
+      });
+    };
+    onSuggestionsFetchRequested = ({ value }) => {
+      this.setState({
+        suggestions: this.getSuggestions(value)
+      });
+      console.log(this.state.suggestions);
+    };
+    async componentWillMount(){
+      const response = await fetch('https://sjsubookiebackend.herokuapp.com/testapi/courses');
+      const courses = await response.json();
+      await this.setState({
+        courseList:courses.message
+      });
+      console.log(this.state.courseList);
+    }
     storageUpdated() {
       if (window.localStorage.getItem("token") !== this.state.token) {
         this.setState({
@@ -41,14 +88,16 @@ class Create extends React.Component {
         });
       }
     }
-
-    newSelect = (condition) => {
-        this.setState({ condition: condition.value });
-        console.log(`Option selected:`, condition);
-    }
     handleChange(event) {
       this.setState({
         [event.target.id]: event.target.value
+      });
+    }
+    onSelectChanged(value) {
+      console.log(value.value);
+      this.setState({
+        selected: value,
+        condition: value.value
       });
     }
     handleSubmit(event) {
@@ -101,6 +150,7 @@ class Create extends React.Component {
               alert(data["message"])
             } else {
                 window.alert("Successfully made a sales post.");
+                this.props.history.push(`/post/${data.insertId}`);
             }
           });
     } 
@@ -132,6 +182,14 @@ class Create extends React.Component {
     
 
 	render() {
+    let value = this.state.value;
+    const inputProps = {
+      placeholder: 'Course',
+      value,
+      onChange: this.onChange
+    };
+
+
     	return (
         <div className="font-sans-pro md:pl-10 md:pr-10 md:pt-12">
           <div className="w-full h-full ">
@@ -140,7 +198,7 @@ class Create extends React.Component {
     <p className="text-gray-800 text-3xl text-center font-bold">Create a Post</p>
     <div className="md:flex md:justify-between ">
     <div className="w-full">
-      <label className=" block text-medium text-gray-00" for="bookname">Book Title</label>
+      <label className="block text-medium text-gray-00" for="bookname">Book Title</label>
       <input className=" w-full block mr-auto px-5 py-1 h-12 text-gray-700 bg-gray-200 rounded"  onChange= {(e) =>this.handleChange(e)} id="bookname" name="bookname" type="text" required placeholder="Ex: Defense Against the Dark Arts" aria-label="Book"/>
     </div>
     <div className="md:w-1/3 md:px-2 w-full">
@@ -153,11 +211,20 @@ class Create extends React.Component {
     <div className="md:w-1/3 w-full flex-none">
     <label className="block text-medium text-gray-00" for="condition">Condition</label>
       <input onChange= {(e) =>this.handleChange(e)} name="condition" id="condition" className="hidden block bg-gray-200 h-12 w-full md:w-auto rounded px-5 py-1"></input>
-      <Select required onChange={this.newSelect} name="condition" id="condition" className="col-md-8 col-offset-4 flex-none"options = {options} />
+      <Select required value={this.state.selected} onChange={this.onSelectChanged.bind(this)} name="condition" id="condition" className="col-md-8 col-offset-4 flex-none"options = {options} />
     </div>
-    <div className="md:w-1/3 md:px-2 w-full">
-    <label for="course" className=" block text-gray-00 font-bold font-medium">Course</label>
-      <input onChange= {(e) =>this.handleChange(e)} name="course" id="course" className="block bg-gray-200 h-12 w-full md:w-auto rounded px-5 py-1" ></input>
+    <div className="md:w-1/3 md:px-2 w-full h-12">
+    <label for="course" className=" block text-gray-00 font-bold font-medium ">Course</label>
+    <Autosuggest
+        suggestions={this.state.suggestions}
+        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+        getSuggestionValue={this.getSuggestionValue}
+        renderSuggestion={this.renderSuggestion}
+        inputProps={inputProps}
+        className="h-full"
+      />
+      {/* <input onChange= {(e) =>this.handleChange(e)} name="course" id="course" className="block bg-gray-200 h-12 w-full md:w-auto rounded px-5 py-1" ></input> */}
     </div>
     <div className="md:w-1/3 md:px-2 w-full">
     <label for="price" className="block text-gray-00 font-bold font-medium">Price (USD)</label>

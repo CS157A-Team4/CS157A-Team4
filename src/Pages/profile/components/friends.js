@@ -21,7 +21,7 @@ class Friends extends React.Component {
 
     show_friends() {
         console.log("test show friends!!!");
-        let user = 23;
+        let user = window.localStorage.getItem("id");
 
         console.log(user)
         fetch (`https://sjsubookietest.herokuapp.com/friends/getAll/${user}`).then(results => {

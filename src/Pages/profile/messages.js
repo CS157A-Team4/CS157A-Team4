@@ -20,7 +20,7 @@ class Message extends React.Component {
         console.log("test show messages!!!");
         console.log(this.props.match.params);
         let receiver = this.props.match.params.id;
-        let sender = 23;
+        let sender = window.localStorage.getItem("id");
         let users = {
             receiver: receiver,
             sender: sender,
@@ -60,7 +60,7 @@ class Message extends React.Component {
     loadMessages(){
         let messages = [];
         for(let x in this.state.m){
-            let bg = this.state.m[x].sender === 23? "bg-white" : "bg-blue-new-light";
+            let bg = this.state.m[x].sender === window.localStorage.getItem("id")? "bg-white" : "bg-blue-new-light";
             bg+= " leading-snug py-2 px-2 border border-solid mt-1 rounded"
             messages.push(
                 <div ref={(ref) => this.newMessage = ref}  id={this.state.m[x].messageID} class={bg}>
@@ -84,7 +84,7 @@ class Message extends React.Component {
         if(e.keyCode == 13 && e.shiftKey == false) {
             e.preventDefault();
             let message = this.state.newMessage;
-            let sender = 23;
+            let sender = window.localStorage.getItem("id");
             let receiver = this.props.match.params.id;
             if(this.state.newMessage == ''){
                 window.alert("No Messages found");

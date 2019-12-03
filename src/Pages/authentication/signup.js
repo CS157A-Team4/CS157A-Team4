@@ -44,7 +44,7 @@ export default function SignUp(props) {
   }
 	
   return (
-      <div className="flex items-center justify-center w-full h-full mt-20">
+      <div className="flex items-center justify-center w-full h-full">
         <div className="w-full max-w-md">
         
           <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"> 

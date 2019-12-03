@@ -16,7 +16,7 @@ class Table extends React.Component {
     }
 
     getFriends() {
-        let id = 23;
+        let id = window.localStorage.getItem("id");
         fetch('https://sjsubookietest.herokuapp.com/friends/request/' + id).then(
             function(response) {
                 return response.json();
@@ -71,7 +71,7 @@ class Table extends React.Component {
         console.log("test request!!")
         e.preventDefault();
         let user2 = e.target.id;
-        let user1 = 23;
+        let user1 = window.localStorage.getItem("id");
         let users = {
             user1: user1,
             user2: user2,

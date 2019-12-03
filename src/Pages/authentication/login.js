@@ -27,20 +27,8 @@ export default function Login(props) {
       body: JSON.stringify(user)
     }).then(response => {
       response.json()
-      console.log(response)
-    })
-    .then(data => {
-      //data.json()
-      //console.log(data)
-      //const resData = JSON.parse(data)
-      //console.log("resData:")
-      //console.log(resData)
-      //console.log("data: " + JSON.stringify(data))
-      //console.log(typeof data)
-
-      // if(resData.data.length != 0){
-      //   console.log("Account logged in!")
-      // }
+      console.log("logging result...")
+      console.log(JSON.stringify(response))
     })
   }
     

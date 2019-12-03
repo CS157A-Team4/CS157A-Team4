@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from "../../logo.svg";
-
+import Column from '../../column'
 class Table extends React.Component {
     constructor(props) {
         super(props);
@@ -43,7 +43,6 @@ class Table extends React.Component {
 
             return (
                 <tr className="border-b-2 border-aqua " key={relationshipId}>
-                    <td className="py-4 px-6 text-center border-grey-light">{relationshipId}</td>
                     <td className="py-4 px-6 text-center border-b border-grey-light">{user1}</td>
                     <td className="py-4 px-6 text-center border-b border-grey-light">{user2}</td>
                     <td className="py-4 px-6 text-center border-b border-grey-light">{firstname}</td>
@@ -67,7 +66,7 @@ class Table extends React.Component {
             )
         })
     }
-    
+
     createRelation(e) {
         console.log("test request!!")
         e.preventDefault();
@@ -136,33 +135,11 @@ class Table extends React.Component {
         return(
             this.state.loaded && (
             <div className="flex w-full h-full">
-                <div className="w-1/5 flex flex-col bg-white h-full">
-                    <div className="w-0 md:w-full lg:w-full h-0 md:h-full overflow-y-hidden bg-white shadow-lg">
-                        <div className="p-5 bg-white sticky flex justify-center items-center  bg-gray-200">
-                            <p className="border-t p-3  w-full text-center text-xl text-gray-800 round-full bg-blue-new
-                    font-sans-pro font-bold">
-                                Your Profile</p>
-                        </div>
-
-                        <div>
-                            <button id="posts" onClick={e=>this.goTo(e)} className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left
-                    text-gray-700 font-sans-pro font-bold text-justify">Posts</button>
-                            <button id="friends" onClick={e=>this.goTo(e)}className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left
-                    text-gray-700 font-sans-pro font-bold text-justify"
-                            >Friends</button>
-                            <button id="friendsR" onClick={e=>this.goTo(e)}className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left
-                    text-gray-700 font-sans-pro font-bold text-justify"
-                            >Friends Request</button>
-                            <button id="settings" onClick={e=>this.goTo(e)}className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left
-                    text-gray-700 font-sans-pro font-bold text-justify">Settings</button>
-
-                        </div>
-                    </div>
-                </div>
+                <Column/>
 
                     <div className="font-sans-pro text-2xl w-full">
                     <div className="flex justify-center">
-                        <h1 className="py-4 px-6 bg-grey-lightest font-bold font-sans-pro
+                        <h1 className="py-4 px-6 text-4xl text-white bg-grey-lightest font-bold font-sans-pro
                     border-b border-grey-light">
                             Friends Request List Table
                         </h1>
@@ -171,8 +148,7 @@ class Table extends React.Component {
                         <table className="table-fixed  bg-white w-auto rounded" id='friends' >
                             <thead>
                             <tr>
-                                <th className="py-4 px-6 bg-grey-lightest text-center font-bold font-sans-pro
-                        border-b border-grey-light">ID</th>
+
                                 <th className="py-4 px-6 bg-grey-lightest text-center font-bold font-sans-pro
                         border-b border-grey-light">User1</th>
                                 <th className="py-4 px-6 bg-grey-lightest text-center font-bold font-sans-pro

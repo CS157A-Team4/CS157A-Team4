@@ -28,7 +28,7 @@ class Create extends React.Component {
         course: '',
         description:'',
         price: 0,
-        poster: 23,
+        poster: window.localStorage.getItem("id"),
         value: '',
         suggestions: [],
         courseList:[],
@@ -133,7 +133,7 @@ class Create extends React.Component {
             description: this.state.description,
             image: this.state.image,
             price: this.state.price,
-            poster: 23,
+            poster: this.state.poster,
             date: today,
         };
 

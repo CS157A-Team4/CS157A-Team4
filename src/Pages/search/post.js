@@ -44,7 +44,11 @@ class Post extends React.Component {
           alert(res["message"]);
         })
     }
-    UNSAFE_componentWillMount() {
+    UNSAFE_componentWillMount() {// call before render
+    if(window.localStorage.getItem("id") === null){
+        this.props.history.push('login');  
+    }
+        
       this.getParams();
       }
       getParams(){

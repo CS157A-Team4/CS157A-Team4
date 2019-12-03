@@ -51,7 +51,7 @@ class Table extends React.Component {
                     <td className="py-4 px-6 text-center border-b border-grey-light">{surname}</td>
                     <button id={user2}
                             className="bg-blue-new hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-full mr-1"
-                            onClick={e => this.sendMessage}
+                            onClick={e => this.sendMessage(e)}
                     >
                         Message
                     </button>
@@ -59,6 +59,11 @@ class Table extends React.Component {
 
             )
         })
+    }
+
+    sendMessage(event) {
+        const value = event.target.id;
+        this.props.history.push(`/messages/${value}`);
     }
     goTo(event) {
         const value = event.target.id;

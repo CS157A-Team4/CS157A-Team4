@@ -41,7 +41,7 @@ ReactDOM.render(
             <Route exact path = '/reset' component ={Reset}  />
             <Route exact path = '/signup' component ={SignUp}  />
             <Route exact path = '/messages' component ={Messages}  />
-            <Route exact path = '/messages/:param ' component ={Messages}  />
+            <Route exact path = '/messages/:id' component ={Messages}  />
             <Route exact path = '/posts' component ={ProfilePosts}  />
             <Route exact path = '/post/:id' component ={Post}  />
             <Route exact path = '/profile' component ={Profile}  />

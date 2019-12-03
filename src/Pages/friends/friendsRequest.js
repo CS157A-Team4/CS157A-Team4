@@ -76,7 +76,7 @@ class Table extends React.Component {
             user1: user1,
             user2: user2,
         };
-        console.log(users)
+        console.log(users);
         fetch ('https://sjsubookietest.herokuapp.com/friends/request/create', {
             method:"POST",
             headers:{

@@ -62,7 +62,7 @@ class Posts extends React.Component {
         for (let i =0; i< data.length; i++) {
 
             boxes.push(
-                <div className="max-w-sm mx-auto md:mr-4 md:ml-4 rounded-lg font-bold" onClick={(e)=> this.goToPosts(data[i].postID)}>
+                <div className="max-w-sm mx-auto md:mr-4 md:ml-4 rounded-lg font-bold" onClick={(e)=> this.goToPosts(data[i].postID? data[i].postID:data[i].postid)}>
                     <div className="w-full sm:w-full lg:w-full py-6 ">
                         <div className="bg-white w-64 shadow-2xl rounded-lg rounded cursor-pointer">
                             <div className="bg-cover bg-center justify-center flex h-56 p-4 w-auto overflow-hidden">
@@ -107,12 +107,13 @@ class Posts extends React.Component {
 
             <div className="flex w-full h-full font-sans-pro">
                 <Column/>
-                { this.state.loaded &&
                 <div className="w-full overflow-auto">
+                { this.state.loaded &&
+                <div className="w-full overflow-auto mt-4 ml-8">
                     {
                         this.state.saved.length > 0 &&
                         <div>
-                            <div className="text-3xl font-sans-pro font-bold ml-8">Posts You Saved</div>
+                            <div className="text-3xl font-sans-pro font-bold ml-8 text-white">Posts You Saved</div>
                             <div className="flex flex-wrap justify-start text-center">
                                 {this.loadBoxes(this.state.saved)}
                             </div>
@@ -121,7 +122,7 @@ class Posts extends React.Component {
                     {
                         this.state.holds.length > 0 &&
                         <div>
-                            <div className="text-3xl font-sans-pro font-bold ml-8">Holds You Had</div>
+                            <div className="text-3xl font-sans-pro font-bold ml-8 text-white">Posts on Holds</div>
                             <div className="flex flex-wrap justify-start text-center">
                                 {this.loadBoxes(this.state.holds)}
                             </div>
@@ -129,7 +130,7 @@ class Posts extends React.Component {
                     }
                     {
                         this.state.posts.length > 0 && <div>
-                            <div className="text-3xl font-sans-pro font-bold ml-8">Posts You Had</div>
+                            <div className="text-3xl font-sans-pro font-bold ml-8 text-white">Posts You Made</div>
                             <div className="flex flex-wrap justify-start text-center">
                                 {this.loadBoxes(this.state.posts)}
                             </div>
@@ -137,6 +138,7 @@ class Posts extends React.Component {
                     }
                 </div>
                 }
+                </div>
             </div>
         )
 

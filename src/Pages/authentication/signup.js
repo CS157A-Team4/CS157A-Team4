@@ -146,11 +146,13 @@ export default function SignUp(props) {
                         placeholder="******************"/>
               </div>
             </div>
+            <div className="h-4">
             {error.length !== 0 &&
-            <div>
+
             <p className="text-red-400">{error}</p>
-            </div>
             }
+                        </div>
+
             {/* BUTTONS */}
             <div className="flex items-center justify-between mt-8">
               <button className="bg-bookie-grey hover:bg-red text-white text-xl font-bold py-2 px-4 rounded" 

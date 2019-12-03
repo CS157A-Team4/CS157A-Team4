@@ -20,7 +20,7 @@ class Profile extends React.Component {
     }
 componentDidMount(){
     if(window.localStorage.getItem("id") === null){
-        this.props.history.push('login');  
+        this.props.history.push('/login');  
     }
 }
 

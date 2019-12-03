@@ -9,8 +9,9 @@ export default function SignUp(props) {
   const [confirmpassword, setConfirmPassword] = useState("");
   const [firstname, setFirstName] = useState("");
   const [surname, setSurName] = useState("");
-
+  let [error, setError] = useState("");
   function handleSubmit(event) {
+    setError("");
     event.preventDefault();
     
     const user = {
@@ -34,11 +35,18 @@ export default function SignUp(props) {
       body: JSON.stringify(user)
     }).then(response => {
       response.json().then((info) => {
+        if(info["error"]){
+          setError(info["message"]);
+          console.log(info);
+
+        }
+        else{
         console.log(info);
         window.localStorage.setItem('id', info.iduser);
         window.localStorage.setItem('user', info.firstname);
         window.localStorage.setItem('loggedIn', true);
         props.history.push('/');
+        }
       });
     })
   }
@@ -60,6 +68,7 @@ export default function SignUp(props) {
                         type="text" 
                         onChange={e => setFirstName(e.target.value)}
                         value={firstname}
+                        required
                         placeholder="First Name"/>
               </div>
             </div>
@@ -75,6 +84,7 @@ export default function SignUp(props) {
                         type="text"
                         onChange={e => setSurName(e.target.value)}
                         value={surname}
+                        required
                         placeholder="Last Name"/>
               </div>
             </div>
@@ -90,6 +100,7 @@ export default function SignUp(props) {
                         type="text"
                         onChange={e => setEmail(e.target.value)}
                         value={email} 
+                        required
                         placeholder="Email"/>
               </div>
             </div>
@@ -105,6 +116,7 @@ export default function SignUp(props) {
                         type="text"
                         onChange={e => setSchoolId(e.target.value)}
                         value={schoolid} 
+                        required
                         placeholder="123456789"/>
               </div>
             </div>
@@ -120,6 +132,7 @@ export default function SignUp(props) {
                         type="password"
                         onChange={e => setPassword(e.target.value)}
                         value={password}
+                        required
                         placeholder="******************"/>
               </div>
             </div>
@@ -135,9 +148,16 @@ export default function SignUp(props) {
                         type="password" 
                         onChange={e => setConfirmPassword(e.target.value)}
                         value={confirmpassword}
+                        required
                         placeholder="******************"/>
               </div>
             </div>
+            <div className="h-4">
+            {error.length !== 0 &&
+
+            <p className="text-red-400">{error}</p>
+            }
+                        </div>
 
             {/* BUTTONS */}
             <div className="flex items-center justify-between mt-8">

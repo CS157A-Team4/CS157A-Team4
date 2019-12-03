@@ -33,6 +33,9 @@ class Edit extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
     }
     UNSAFE_componentWillMount() {
+      if(window.localStorage.getItem("id") === null){
+        this.props.history.push('/login');  
+    }
         this.getParams();
         }
         getParams(){
@@ -51,16 +54,21 @@ class Edit extends React.Component {
                 }
                 else {
                       console.log(data[2]);
+                      if(data[0][0]["seller"].toString() !== window.localStorage.getItem("id")){
+                        window.alert("This is not your post!! Or post does not exist");
+                        this.props.history.push("/");
+                      }
                     this.setState({message:data[0][0],comments:data[1]});
                     Object.entries(data[0][0]).forEach(([key, value]) => {
                         this.setState({[key]:value});
                      });
+                    console.log(data[0][0]["seller"])
                     this.setState({loaded:true});
                     console.log(data[2]);
                     if(data[2].some(e => e.userID == window.localStorage.getItem("id"))){
                         this.setState({saved:true});
                     }
-
+                    
                     console.log(this.state);                    
                 }
         

@@ -4,6 +4,7 @@ import api from '../../backend/backend';
 export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
@@ -11,7 +12,7 @@ export default function Login(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    
+    setError("");
     const user = {
       email : email,
       password: password,
@@ -26,6 +27,12 @@ export default function Login(props) {
       body: JSON.stringify(user)
     }).then(response => {
       response.json().then((info) => {
+        if(info["error"]){
+            console.log("error");
+            setError(info["message"]);
+            console.log(info);
+        }
+        else{
         console.log("data!")
         console.log(info.data);
 
@@ -42,12 +49,13 @@ export default function Login(props) {
         window.localStorage.setItem('loggedIn', true);
         props.history.push('/');
 
-
+        }
       });
     })
   }
     
   return (
+    
     <div className="flex items-center justify-center w-full  h-full  ">
       <div className="w-full max-w-md">
       
@@ -65,6 +73,7 @@ export default function Login(props) {
                 type="email"
                 onChange={e => setEmail(e.target.value)}
                 value={email}
+                required
                 placeholder="email" />
             </div>
           </div>
@@ -81,9 +90,17 @@ export default function Login(props) {
                 type="password"
                 onChange={e => setPassword(e.target.value)}
                 value={password}
+                required
                 placeholder="******************" />
             </div>
+
           </div>
+          <div className="h-4">
+            {error.length !== 0 &&
+
+            <p className="text-red-400">{error}</p>
+            }
+                        </div>
           {/*  BUTTONS  */}
           <div className="flex items-center justify-between mt-8">
             <button className="bg-bookie-grey hover:bg-red text-white text-xl font-bold py-2 px-4 rounded"

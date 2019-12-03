@@ -66,7 +66,7 @@ class Post extends React.Component {
                     console.log(data);
                   this.setState({message:data[0][0],comments:data[1]});
                   this.setState({loaded:true});
-                  if(data[2].some(e => e.userID == 23)){
+                  if(data[2].some(e => e.userID == window.localStorage.getItem("id"))){
                       this.setState({saved:true});
                   }
                   console.log(this.state);
@@ -111,7 +111,7 @@ class Post extends React.Component {
         if(e.keyCode == 13 && e.shiftKey == false) {
             e.preventDefault();
             let comment = this.state.newComment
-            let commentor = 23;
+            let commentor = window.localStorage.getItem("id");
             let postId = this.props.match.params.id;
             if(this.state.newComment == ''){
                 window.alert("No Comment found");
@@ -187,7 +187,7 @@ class Post extends React.Component {
 
     }
     savePost(e){
-        let user = 23;
+        let user = window.localStorage.getItem("id");
         let postId = this.state.message.postID;
         let type = "favorite";
         let newSave = { 
@@ -256,7 +256,7 @@ class Post extends React.Component {
       } 
       today = +yyyy+'-'+mm+'-'+dd;
       let user2 = this.state.message.seller;
-      let user1 = 23;
+      let user1 = window.localStorage.getItem("id");
       let postId = this.state.message.postID;
       let users = {
           buyer: user1,
@@ -284,7 +284,7 @@ class Post extends React.Component {
       })
   }
     unsavePost(e){
-        let user = 23;
+        let user = window.localStorage.getItem("id");
         let postId = this.state.message.postID;
         let newSave = { 
 
@@ -374,7 +374,7 @@ class Post extends React.Component {
                     </div>
                 </div> 
                 <div className= "md:w-1/4 w-full md:mt-8 pb-2 md:ml-8 md:pb-0 md:pr-0 md:pl-0 rounded-b-full border border-black"> 
-                {this.state.message.seller !== 23 ?
+                {this.state.message.seller !== window.localStorage.getItem("id") ?
                     <div className="font-sans-pro text-2xl mb-6 justify-center rounded text-center"> 
                         {
                           this.state.message.hold !== 1 ?

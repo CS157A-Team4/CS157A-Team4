@@ -137,7 +137,7 @@ class Footer extends React.Component {
       <Menu styles={burgerStuff} isOpen={this.state.menuOpen} onStateChange={(state) => this.handleStateChange(state)} width={ '40%' } right slide disableAutoFocus className="z-40 bg-white border-l-2 items-center h-full text-center font-bold justify-center text-bold txt-xl w-full right-0 font-sans-pro">
         <div className="mt-8">
         <div className="text-2xl p-1 w-full">
-        {!this.state.token ? "Jonathan":"Hello"}
+        {!this.state.token ? window.localStorage.getItem("user"):"Hello"}
         </div>
         <div className="justify-center flex ">
           <hr className="w-1/3 border border-blue-new mb-2"/>

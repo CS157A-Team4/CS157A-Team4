@@ -26,7 +26,7 @@ class Edit extends React.Component {
         course: '',
         description:'',
         price: 0,
-        poster: 23,
+        poster: window.localStorage.getItem("id"),
       };
       this.storageUpdated = this.storageUpdated.bind(this);
       this.handleChange = this.handleChange.bind(this);
@@ -57,7 +57,7 @@ class Edit extends React.Component {
                      });
                     this.setState({loaded:true});
                     console.log(data[2]);
-                    if(data[2].some(e => e.userID == 23)){
+                    if(data[2].some(e => e.userID == window.localStorage.getItem("id"))){
                         this.setState({saved:true});
                     }
 
@@ -117,7 +117,7 @@ class Edit extends React.Component {
             description: this.state.body,
             image: this.state.image,
             price: this.state.price,
-            poster: 23,
+            poster: this.state.poster,
             date: today,
             id: this.state.postID,
             imageId: this.state.imageId

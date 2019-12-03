@@ -42,7 +42,7 @@ class Header extends React.Component {
      // this.setState({ id: undefined, name:undefined});
       window.localStorage.removeItem("id");
       window.localStorage.removeItem("user");
-      window.location.reload();
+      this.props.history.push(`/`);
     } else {
       this.props.history.push(`/${page}`);
     }

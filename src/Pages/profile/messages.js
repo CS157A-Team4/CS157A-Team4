@@ -134,7 +134,7 @@ class Message extends React.Component {
                     this.setState({m:data["message"],newMessage:''});
                     var notes = this.refs.aMessage;
                     notes.value = ""; // Unset the value
-                    this.newData.scrollIntoView({ behavior: "auto" });
+                    this.newMessage.scrollIntoView({ behavior: "auto" });
                 }
             }.bind(this));
         }

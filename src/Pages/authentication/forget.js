@@ -25,7 +25,7 @@ export default function Forgot(props) {
 
       });
     })
-    props.history.push('/reset');
+    props.history.push('/');
   }
     
   return (

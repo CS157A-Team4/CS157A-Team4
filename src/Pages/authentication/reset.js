@@ -34,7 +34,7 @@ export default function Reset(props) {
       <div className="w-full max-w-md">
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <label className="block font-bold font-sans-pro text-grey-700 text-2xl rounded font-bold md:text-center mb-1 md:mb-6 pr-4" for="inline-full-name">Enter code</label>
-          <label className="block font-sans-pro text-grey-darker text-l rounded md:text-left mb-1 md:mb-6 pr-4" for="inline-full-name">No problem, just enter your email and we'll send you a reset code.</label>
+          <label className="block font-sans-pro text-grey-darker text-l rounded md:text-left mb-1 md:mb-6 pr-4" for="inline-full-name">Enter the code emailed to you to reset your password.</label>
           <div className="md:flex md:items-center mb-8">
             <div className="md:w-1/3">
               <label className="block font-bold font-sans-pro text-grey-darker text-xl rounded font-bold md:text-left mb-1 md:mb-0 pr-4" for="inline-full-name">Username</label>
@@ -50,7 +50,6 @@ export default function Reset(props) {
             </div>
           </div>
 
-          
           {/*  BUTTONS  */}
           <div className="flex items-center justify-between mt-8">
             <button className="bg-bookie-grey hover:bg-red text-white text-xl font-bold py-2 px-4 rounded"
@@ -63,9 +62,7 @@ export default function Reset(props) {
               </a>
           </div>
         </form>
-
       </div>
     </div>
   )
-
 }

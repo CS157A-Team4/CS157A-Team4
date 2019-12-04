@@ -1,6 +1,7 @@
 import React from 'react';
 import Column from "../../../column";
 import logo from "../../../images/curious_cat.png";
+import api from '../../../backend/backend';
 
 class Posts extends React.Component {
     constructor(props) {

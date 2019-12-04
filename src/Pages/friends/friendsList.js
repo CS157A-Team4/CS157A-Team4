@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from "../../logo.svg";
 import Column from "../../column";
+import api from '../../backend/backend';
 
 class Table extends React.Component {
     constructor(props) {

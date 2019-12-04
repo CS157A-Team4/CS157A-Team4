@@ -1,5 +1,6 @@
 import React from 'react';
 import Column from "../../../column";
+import api from '../../../backend/backend';
 
 class Friends extends React.Component {
     constructor(props) {

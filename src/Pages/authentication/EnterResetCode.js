@@ -63,9 +63,12 @@ export default function EnterResetCode(props) {
                 required/>
             </div>
           </div>
-          {error.length !== 0 &&
+          <div className="h-4">
+            {error.length !== 0 &&
+
             <p className="text-red-400">{error}</p>
-          }
+            }
+          </div>
 
           {/*  BUTTONS  */}
           <div className="flex items-center justify-between mt-8">

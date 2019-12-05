@@ -11,7 +11,10 @@ export default function ResetPassword(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    
+    if(newPassword !== newPasswordConfirm){
+      setError("Passwords do not match");
+      return;
+    }
     const password = {
       newPassword : newPassword,
       email: email

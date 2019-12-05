@@ -10,10 +10,16 @@ export default function SignUp(props) {
   const [firstname, setFirstName] = useState("");
   const [surname, setSurName] = useState("");
   let [error, setError] = useState("");
+  
   function handleSubmit(event) {
     setError("");
     event.preventDefault();
     
+    if(password != confirmpassword || password == ""){
+      setError("Passwords do not match or are missing.")
+      return
+    }
+
     const user = {
       email : email,
       firstname: firstname,
@@ -38,14 +44,13 @@ export default function SignUp(props) {
         if(info["error"]){
           setError(info["message"]);
           console.log(info);
-
         }
         else{
-        console.log(info);
-        window.localStorage.setItem('id', info.iduser);
-        window.localStorage.setItem('user', info.firstname);
-        window.localStorage.setItem('loggedIn', true);
-        props.history.push('/');
+          console.log(info);
+          window.localStorage.setItem('id', info.iduser);
+          window.localStorage.setItem('user', info.firstname);
+          window.localStorage.setItem('loggedIn', true);
+          props.history.push('/');
         }
       });
     })
@@ -154,8 +159,7 @@ export default function SignUp(props) {
             </div>
             <div className="h-4">
             {error.length !== 0 &&
-
-            <p className="text-red-400">{error}</p>
+              <p className="text-red-400">{error}</p>
             }
                         </div>
 

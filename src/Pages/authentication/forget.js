@@ -3,7 +3,8 @@ import api from '../../backend/backend';
 
 export default function Forgot(props) {
   const [email, setEmail] = useState("");
-
+  let [error, setError] = useState("");
+  
   function handleSubmit(event) {
     event.preventDefault();
     
@@ -11,7 +12,7 @@ export default function Forgot(props) {
       email : email,
     }
 
-    fetch(api + "/login/forgot", {
+    fetch(api + "/forgotpassword", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -22,10 +23,22 @@ export default function Forgot(props) {
       response.json().then((data) => {
         console.log("data!")
         console.log(data);
+        if(!data["error"]){
+
+          console.log(data["error"])
+          console.log(data["message"])
+          window.localStorage.setItem('passResetEmail', user.email);
+          props.history.push('/enterResetCode');
+        }
+        else{
+          setError(data["message"]);
+        }
 
       });
     })
-    props.history.push('/');
+    
+    
+    
   }
     
   return (
@@ -49,8 +62,9 @@ export default function Forgot(props) {
                 placeholder="email" />
             </div>
           </div>
-
-          
+          {error.length !== 0 &&
+            <p className="text-red-400">{error}</p>
+          }
           {/*  BUTTONS  */}
           <div className="flex items-center justify-between mt-8">
             <button className="bg-bookie-grey hover:bg-red text-white text-xl font-bold py-2 px-4 rounded"

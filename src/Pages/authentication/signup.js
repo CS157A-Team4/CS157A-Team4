@@ -11,14 +11,34 @@ export default function SignUp(props) {
   const [surname, setSurName] = useState("");
   let [error, setError] = useState("");
   
+
+  function checkInvalidForms(){
+    if(firstname == ""){
+      setError("Please enter a first name.")
+      return true
+    }else if(surname == ""){
+      setError("Please enter a last name.")
+      return true
+    } else if(schoolid == ""){
+      setError("Please enter a school id")
+      return true
+    } else if(email == ""){
+      setError("Please enter an email.")
+      return true
+    }else if(password != confirmpassword || password == ""){
+      setError("Passwords do not match or are missing.")
+      return true
+    }
+    return false
+  }
+
   function handleSubmit(event) {
     setError("");
     event.preventDefault();
     
-    if(password != confirmpassword || password == ""){
-      setError("Passwords do not match or are missing.")
+    // Checks forms for valid input
+    if(checkInvalidForms())
       return
-    }
 
     const user = {
       email : email,
@@ -32,7 +52,10 @@ export default function SignUp(props) {
     console.log("User being created:")
     console.log(JSON.stringify(user))
 
-    fetch(api + "/signup/submit", {
+    
+    
+    // CHECKS KEYS
+    fetch(api + "/signup/checkkeys", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -47,10 +70,48 @@ export default function SignUp(props) {
         }
         else{
           console.log(info);
-          window.localStorage.setItem('id', info.iduser);
-          window.localStorage.setItem('user', info.firstname);
-          window.localStorage.setItem('loggedIn', true);
-          props.history.push('/');
+          console.log("Stringified: == " + JSON.stringify(info))
+          // INSERTS USER IF KEYS ARE UNIQUE
+          fetch(api + "/signup/insert", {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user)
+          }).then(response => {
+            response.json().then((info) => {
+              if(info["error"]){
+                setError(info["message"]);
+                console.log(info);
+              }else{
+               
+                console.log(info);
+                console.log("Stringified: == " + JSON.stringify(info))
+                
+                // GETS IDUSER
+                fetch(api + "/signup/getiduser", {
+                  method: "POST",
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(user)
+                }).then(response => {
+                  response.json().then((info) => {
+                    if(info["error"]){
+                      setError(info["message"]);
+                      console.log(info);
+                    }else{
+                      window.localStorage.setItem('id', info.iduser);
+                      window.localStorage.setItem('user', info.firstname);
+                      window.localStorage.setItem('loggedIn', true);
+                      props.history.push('/');
+                    }
+                  })
+              })
+            }})
+          })
         }
       });
     })

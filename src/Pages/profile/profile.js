@@ -41,7 +41,7 @@ componentDidMount(){
         <div className="w-1/5 flex flex-col bg-white h-full ">
             <div className="w-0 md:w-full lg:w-full h-0 md:h-full overflow-y-hidden bg-white shadow-lg">
                 <div className="p-5 bg-white sticky flex justify-center items-center  bg-gray-200">
-                    <p className="border-t p-3  w-full text-center text-xl text-gray-800 round-full bg-blue-new
+                    <p className="border-t p-3  w-full text-center text-xl text-white round-full bg-blue-new
                     font-sans-pro font-bold">
                        Your Profile</p>
                 </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from "../../logo.svg";
 import Column from "../../column";
+import api from '../../backend/backend';
 
 class Table extends React.Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class Table extends React.Component {
     // load friends data
     getFriends() {
         let id = window.localStorage.getItem("id");
-        fetch('https://sjsubookietest.herokuapp.com/friends/list/' + id).then(
+        fetch(api+'/friends/list/' + id).then(
             function(response) {
                 return response.json();
             }

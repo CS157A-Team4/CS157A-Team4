@@ -1,6 +1,7 @@
 import React from 'react';
 import Column from "../../../column";
 import logo from "../../../images/curious_cat.png";
+import api from '../../../backend/backend';
 
 class Posts extends React.Component {
     constructor(props) {
@@ -29,7 +30,7 @@ class Posts extends React.Component {
         let user = window.localStorage.getItem("id");
 
         console.log(user)
-        fetch (`https://sjsubookietest.herokuapp.com/profile/getAll/${user}`).then(results => {
+        fetch (api+`profile/getAll/${user}`).then(results => {
             return results.json()
         }).then(data=>{
             if (data["error"]) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../../logo.svg';
 import Column from "../../column";
-
+import api from '../../backend/backend';
 class Message extends React.Component {	
     constructor(props) {
         super(props);
@@ -31,7 +31,7 @@ class Message extends React.Component {
             sender: sender,
         };
         console.log(users)
-        fetch ('https://sjsubookietest.herokuapp.com/messages/getMessages', {
+        fetch (api+'/messages/getMessages', {
             method:"POST",
             headers:{
                 'Content-Type': 'application/json'
@@ -118,7 +118,7 @@ class Message extends React.Component {
                 "receiver":receiver,
                 "date":today
             }
-            fetch("https://sjsubookietest.herokuapp.com/messages/send", {
+            fetch(api+"/messages/send", {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',

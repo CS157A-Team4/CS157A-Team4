@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from "../../logo.svg";
-import Column from '../../column'
+import Column from '../../column';
+import api from '../../backend/backend';
+
 class Table extends React.Component {
     constructor(props) {
         super(props);
@@ -20,7 +22,7 @@ class Table extends React.Component {
 
     getFriends() {
         let id = window.localStorage.getItem("id");
-        fetch('https://sjsubookietest.herokuapp.com/friends/request/' + id).then(
+        fetch(api+'/friends/request/' + id).then(
             function(response) {
                 return response.json();
             }
@@ -80,7 +82,7 @@ class Table extends React.Component {
             user2: user2,
         };
         console.log(users);
-        fetch ('https://sjsubookietest.herokuapp.com/friends/request/create', {
+        fetch (api+'/friends/request/create', {
             method:"POST",
             headers:{
             'Content-Type': 'application/json'
@@ -108,7 +110,7 @@ class Table extends React.Component {
         let users = {
             id: id,
         };
-        fetch ('https://sjsubookietest.herokuapp.com/friends/delete/', {
+        fetch (api+'/friends/delete/', {
             method:"POST",
             headers:{
                 'Content-Type': 'application/json'
@@ -136,10 +138,9 @@ class Table extends React.Component {
 
     render() {
         return(
-            this.state.loaded && (
+
             <div className="flex w-full h-full">
                 <Column/>
-
                     <div className="font-sans-pro text-2xl w-full">
                     <div className="flex justify-center">
                         <h1 className="py-4 px-6 text-4xl text-white bg-grey-lightest font-bold font-sans-pro
@@ -171,7 +172,7 @@ class Table extends React.Component {
                     </div>
                 </div>
             </div>
-            )
+            
         )
     }
 }

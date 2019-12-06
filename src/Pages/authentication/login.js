@@ -10,49 +10,89 @@ export default function Login(props) {
     return email.length > 0 && password.length > 0;
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    setError("");
-    const user = {
-      email : email,
-      password: password,
+  function checkInvalidForms(){
+    if(email == ""){
+      setError("Please enter an email.")
+      return true
+    }else if(password == ""){
+      setError("Please enter a password.")
+      return true
     }
-
-    fetch(api + "/login/submit", {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(user)
-    }).then(response => {
-      response.json().then((info) => {
-        if(info["error"]){
-            console.log("error");
-            setError(info["message"]);
-            console.log(info);
-        }
-        else{
-        console.log("data!")
-        console.log(info.data);
-
-        // "schoolid": "98298298",
-        // "iduser": 35,
-        // "firstname": "PassHash2",
-        // "surname": "Hash2",
-        // "email": "pass@hashtest.com"
-        console.log(info.data[0].iduser);
-        console.log(info.data[0].firstname);
-
-        window.localStorage.setItem('id', info.data[0].iduser);
-        window.localStorage.setItem('user', info.data[0].firstname);
-        window.localStorage.setItem('loggedIn', true);
-        props.history.push('/');
-
-        }
-      });
-    })
+    return false
   }
+
+function handleSubmit(event) {
+  event.preventDefault();
+  setError("");
+  const user = {
+    email : email,
+    password: password,
+  }
+
+  // Checks forms for valid input
+  if(checkInvalidForms())
+    return
+
+  // CHECKS EMAIL
+  fetch(api + "/login/checkemail", {
+    method: "POST",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(user)
+  }).then(response => {
+    response.json().then((info) => {
+      if(info["error"]){
+        setError(info["message"]);
+        console.log(info);
+      }
+      else{
+        console.log(info);
+        console.log("Stringified: == " + JSON.stringify(info))
+        
+        // CHECKS PASSWORD 
+        fetch(api + "/login/checkpassword", {
+          method: "POST",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(user)
+        }).then(response => {
+          response.json().then((info) => {
+            if(info["error"]){
+              setError(info["message"]);
+              
+            }else{
+             
+              // GETS USER INFO
+              fetch(api + "/login/getinfo", {
+                method: "POST",
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(user)
+              }).then(response => {
+                response.json().then((info) => {
+                  if(info["error"]){
+                    setError(info["message"]);
+                    console.log(info);
+                  }else{
+                    window.localStorage.setItem('id', info.data[0].iduser);
+                    window.localStorage.setItem('user', info.data[0].firstname);
+                    window.localStorage.setItem('loggedIn', true);
+                    props.history.push('/');
+                  }
+                })
+            })
+          }})
+        })
+      }
+    });
+  })
+}
     
   return (
     
@@ -117,5 +157,4 @@ export default function Login(props) {
       </div>
     </div>
   )
-
 }

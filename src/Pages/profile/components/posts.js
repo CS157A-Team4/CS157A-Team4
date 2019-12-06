@@ -75,7 +75,7 @@ class Posts extends React.Component {
                             </div>
                             <div className="p-4 pt-0">
                                 <p className="overflow-auto uppercase tracking-wide text-sm font-bold text-gray-700 mb-2">{data[i].title}</p>
-                                <p className="text-3xl text-gray-900 mb-2">$35</p>
+                                <p className="text-3xl text-gray-900 mb-2">${data[i].price}</p>
                                 <p className="text-gray-700"> {data[i].author}</p>
                             </div>
                             <div className="flex justify-between p-4 border-t border-solid border-gray-300 text-gray-700">

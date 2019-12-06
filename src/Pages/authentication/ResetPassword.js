@@ -11,6 +11,10 @@ export default function ResetPassword(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    if(newPassword.length === 0 || newPasswordConfirm.length === 0){
+      setError("One of the passwords is empty");
+      return;
+    }
     if(newPassword !== newPasswordConfirm){
       setError("Passwords do not match");
       return;

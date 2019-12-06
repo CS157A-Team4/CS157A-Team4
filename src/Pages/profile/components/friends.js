@@ -19,6 +19,7 @@ class Friends extends React.Component {
         this.show_friends()
     }
 
+    // load data
     show_friends() {
         console.log("test show friends!!!");
         let user = window.localStorage.getItem("id");

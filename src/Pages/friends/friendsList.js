@@ -21,6 +21,7 @@ class Table extends React.Component {
         this.getFriends()
     }
 
+    // load friends data
     getFriends() {
         let id = window.localStorage.getItem("id");
         fetch('https://sjsubookietest.herokuapp.com/friends/list/' + id).then(

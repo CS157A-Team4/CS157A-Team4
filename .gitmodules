@@ -1,0 +1,3 @@
+[submodule "SJSUBookieBackEnd"]
+	path = SJSUBookieBackEnd
+	url = https://github.com/CS157A-Team4/SJSUBookieBackEnd

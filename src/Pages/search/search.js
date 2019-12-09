@@ -5,6 +5,7 @@ import bBook from '../../images/anotherbook.png';
 import api from '../../backend/backend';
 import queryString from 'query-string';
 import TextTruncate from 'react-text-truncate'; // recommend
+import ReactLoading from 'react-loading';
 class Search extends React.Component {	
     constructor(props) {
         super(props);
@@ -175,7 +176,8 @@ class Search extends React.Component {
 
     }
             <div className="md:pt-10 overflow-auto ">
-            {this.state.loaded &&
+            {
+              this.state.loaded &&
               <div className="flex flex-wrap overflow-auto justify-center">
               {this.loadBoxes()}
               </div>}
@@ -185,6 +187,12 @@ class Search extends React.Component {
                 <p className="text-red-500 text-xl font-bold font-sans-pro"> No search results loaded for your query. <br></br> Please try another search.</p>
               </div>
               </div>}
+              {
+                this.state.loaded === false &&
+                <div className="flex justify-center items-center w-full h-full">
+              <ReactLoading type={"bars"} color={"#fff"} height={'20%'} width={'20%'} />
+              </div>
+              }
             </div>  
           </div>
         </div>

@@ -5,5 +5,4 @@ const api = process.env.NODE_ENV === "production" ? "https://sjsubookiebackend.h
 console.log(api);
 //const api = "https://sjsubookietest.herokuapp.com";
 //const api = "https://sjsubookielogin.herokuapp.com"
-
 export default api

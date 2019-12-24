@@ -156,9 +156,9 @@ class Message extends React.Component {
             <div className="flex w-full h-full">
                 <Column/>
                 {this.state.loaded ? (
-                <div className="w-full relative font-sans-pro rounded shadow-lg bg-blue-new py-2 ">
+                <div className="w-full relative font-sans-pro h-full rounded shadow-lg bg-blue-new py-2 ">
                     {/*<p className="text-2xl font-bold text-center font-sans-pro mb-2 border-b border-solid border-gray-300">Comments</p>*/}
-                    <div className="px-4  overflow-auto pb-10 scrolling-touch md:scrolling-auto">
+                    <div className="px-4  overflow-auto h-full pb-10 scrolling-touch md:scrolling-auto">
                         {this.loadMessages()}
                     </div>
                     <form className="w-full md:block flex flex-row" ref={el => this.myFormRef = el} >

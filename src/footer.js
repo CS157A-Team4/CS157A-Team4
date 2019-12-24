@@ -44,7 +44,8 @@ class Footer extends React.Component {
     this.state = {
       bookname:'',
       course:'',
-      token:false,
+      id:'',
+      user:'',
       menuOpen:false,
     };
     this.storageUpdated = this.storageUpdated.bind(this);
@@ -52,10 +53,11 @@ class Footer extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   storageUpdated() {
-    if (window.localStorage.getItem("token") !== this.state.token) {
+    console.log(window.localStorage);
+    if (window.localStorage.getItem("id") !== this.state.id) {
       this.setState({
-        token: window.localStorage.getItem("token"),
-        user: JSON.parse(window.localStorage.getItem("currentUser"))
+        id: window.localStorage.getItem("id"),
+        user: window.localStorage.getItem("user")
       });
     }
   }
@@ -63,8 +65,9 @@ class Footer extends React.Component {
   redirect(page) {
     this.closeMenu();
     if (page === "logout") {
-      this.setState({ token: undefined });
-      window.localStorage.removeItem("token");
+      this.setState({ token: undefined, user:undefined });
+      window.localStorage.removeItem("id");
+      window.localStorage.removeItem("user");
       window.location.reload();
     } else {
       this.props.history.push(`/${page}`);
@@ -83,12 +86,10 @@ class Footer extends React.Component {
   }
   createOptions = () => {
     let oList = [];
-    const options = !this.state.token?
+    const options = this.state.id?
     [
       "Profile",
-      "Messages",
       "Create Post",
-      "Posts",
       "Search",
       "Logout",
       
@@ -96,7 +97,7 @@ class Footer extends React.Component {
     :
     [
       "Login",
-      "SignUp"
+      "Sign Up"
     ];
     options.map(item =>
       oList.push(
@@ -137,7 +138,7 @@ class Footer extends React.Component {
       <Menu styles={burgerStuff} isOpen={this.state.menuOpen} onStateChange={(state) => this.handleStateChange(state)} width={ '40%' } right slide disableAutoFocus className="z-40 bg-white border-l-2 items-center h-full text-center font-bold justify-center text-bold txt-xl w-full right-0 font-sans-pro">
         <div className="mt-8">
         <div className="text-2xl p-1 w-full">
-        {!this.state.token ? window.localStorage.getItem("user"):"Hello"}
+        {this.state.id ? window.localStorage.getItem("user"):"Hello"}
         </div>
         <div className="justify-center flex ">
           <hr className="w-1/3 border border-blue-new mb-2"/>

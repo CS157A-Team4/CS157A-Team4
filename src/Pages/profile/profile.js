@@ -37,8 +37,10 @@ componentDidMount(){
     	return (
 
             // this.state.loaded && (
+                window.innerWidth > 768 ? (
                 <div className="flex w-full h-full">
-        <div className="w-1/5 flex flex-col bg-white h-full ">
+                    
+        <div className="md:w-1/5 w-full flex flex-col bg-white h-full ">
             <div className="w-0 md:w-full lg:w-full h-0 md:h-full overflow-y-hidden bg-white shadow-lg">
                 <div className="p-5 bg-white sticky flex justify-center items-center  bg-gray-200">
                     <p className="border-t p-3  w-full text-center text-xl text-white round-full bg-blue-new
@@ -60,7 +62,21 @@ componentDidMount(){
 
         </div>
                     <div className="w-full"></div>
-        </div>
+                    
+        </div>):
+        (
+            <div className="w-full h-full items-center">
+                <button id="posts" onClick={e=>this.goTo(e)} className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-center
+                    text-gray-700 font-sans-pro font-bold"
+                    >Posts</button>
+                <button id="friends" onClick={e=>this.goTo(e)}className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-center
+                    text-gray-700 font-sans-pro font-bold"
+                    >Friends</button>
+                <button id="friendsR" onClick={e=>this.goTo(e)}className="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-center
+                    text-gray-700 font-sans-pro font-bold"
+                    >Friends Request</button>
+            </div>
+        )
 		//)
         )
 	}

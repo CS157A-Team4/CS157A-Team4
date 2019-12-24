@@ -48,23 +48,22 @@ class Table extends React.Component {
 
             return (
                 <tr className="border-b-2 border-aqua " key={relationshipId}>
-                    <td className="py-4 px-6 text-center border-b border-grey-light">{user1}</td>
-                    <td className="py-4 px-6 text-center border-b border-grey-light">{user2}</td>
-                    <td className="py-4 px-6 text-center border-b border-grey-light">{firstname}</td>
-                    <td className="py-4 px-6 text-center border-b border-grey-light">{surname}</td>
+                    <td className="py-4 px-6 text-center border-b border-grey-light">{firstname.charAt(0).toUpperCase() + firstname.slice(1)}</td>
+                    <td className="py-4 px-6 text-center border-b border-grey-light">{surname.charAt(0).toUpperCase() + surname.slice(1)}</td>
                     <td className="py-4 px-6 text-center border-b border-grey-light">
                         <button id={user1}
                         className="bg-green-400 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-l-full mr-1"
                         onClick={e => this.createRelation(e)}
                         >
-                        Accept
+                            {window.innerWidth > 768 ? "Accept" : "Y"}
+
                     </button>
 
                         <button id={relationshipId}
                             className="bg-red-300 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-r-full ml-1"
                         onClick={e => this.deleteRelationship(e)}
                         >
-                            Delete
+                            {window.innerWidth > 768 ? "Delete" : "N"}
                         </button>
                     </td>
                 </tr>
@@ -138,25 +137,21 @@ class Table extends React.Component {
 
     render() {
         return(
-
-            <div className="flex w-full h-full">
+            this.state.loaded &&
+            <div className="flex w-full h-full overflow-auto-y">
                 <Column/>
-                    <div className="font-sans-pro text-2xl w-full">
+                
+                <div className="font-sans-pro text-2xl w-full">
                     <div className="flex justify-center">
                         <h1 className="py-4 px-6 text-4xl text-white bg-grey-lightest font-bold font-sans-pro
                     border-b border-grey-light">
-                            Friends Request List Table
+                            Friend Requests Table
                         </h1>
                     </div>
-                    <div className="flex justify-center h-full w-full">
-                        <table className="table-fixed  bg-white w-auto rounded" id='friends' >
+                    <div className="flex justify-center">
+                        <table className="table-auto bg-white w-auto rounded" id='friends' >
                             <thead>
                             <tr>
-
-                                <th className="py-4 px-6 bg-grey-lightest text-center font-bold font-sans-pro
-                        border-b border-grey-light">User1</th>
-                                <th className="py-4 px-6 bg-grey-lightest text-center font-bold font-sans-pro
-                        border-b border-grey-light">User2</th>
                                 <th className="py-4 px-6 bg-grey-lightest text-center font-bold font-sans-pro
                         border-b border-grey-light">First Name</th>
                                 <th className="py-4 px-6 bg-grey-lightest text-center font-bold font-sans-pro

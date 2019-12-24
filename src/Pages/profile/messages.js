@@ -158,12 +158,21 @@ class Message extends React.Component {
                 {this.state.loaded ? (
                 <div className="w-full relative font-sans-pro rounded shadow-lg bg-blue-new py-2 ">
                     {/*<p className="text-2xl font-bold text-center font-sans-pro mb-2 border-b border-solid border-gray-300">Comments</p>*/}
-                    <div className="px-4 h-full overflow-auto pb-10 scrolling-touch md:scrolling-auto">
+                    <div className="px-4  overflow-auto pb-10 scrolling-touch md:scrolling-auto">
                         {this.loadMessages()}
                     </div>
-                    <form ref={el => this.myFormRef = el} >
-                        <textarea ref="aMessage" name="body" onChange={this.handleChange} id="newMessage" value={this.props.newMessage} onKeyDown={this.onEnterPress} placeholder="Add a comment" className="appearance-none w-full bg-gray-100 bottom-0 absolute rounded-full border h-10 px-2 pt-3 text-lg"></textarea>
+                    <form className="w-full md:block flex flex-row" ref={el => this.myFormRef = el} >
+                           
                     </form>
+                    <div class="flex flex-row bg-gray-200">
+                    <textarea ref="aMessage" name="body" onChange={this.handleChange} id="newMessage" value={this.props.newMessage} onKeyDown={this.onEnterPress} placeholder="Add a comment" className="appearance-none md:w-full w-3/4 bg-gray-100 bottom-0 absolute rounded-full border h-10 px-2 pt-3 text-lg">
+                            </textarea>  
+                            <button 
+                            className="md:hidden appearance-none w-1/4 bg-gray-100 bottom-0 right-0 absolute 
+                            border h-10 items-center text-center font-bold text-lg hover:bg-gray-400"
+                            onClick={() => this.show_message()}
+                            >Refresh</button>
+                    </div>
                 </div>
                 ):(
                     <div className="w-full relative font-sans-pro rounded shadow-lg bg-blue-new py-2 ">

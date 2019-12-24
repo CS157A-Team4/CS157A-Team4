@@ -1123,6 +1123,9 @@ table {
   background-color: transparent;
 }
 
+.hover\:bg-bookie-grey-light:hover {
+  background-color:#45667e;
+}
 .hover\:bg-black:hover {
   background-color: #000;
 }
@@ -11655,6 +11658,9 @@ code {
   width: 3.5rem;
 }
 
+.md\:h-160{
+  height: 40rem;
+}
 .h-14 {
   height: 3.5rem;
 }

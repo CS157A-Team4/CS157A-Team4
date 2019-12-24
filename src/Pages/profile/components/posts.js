@@ -2,6 +2,8 @@ import React from 'react';
 import Column from "../../../column";
 import logo from "../../../images/curious_cat.png";
 import api from '../../../backend/backend';
+import { Accordion, AccordionItem } from 'react-sanfona';
+import {TinyButton as ScrollUpButton} from "react-scroll-up-button"; //Add this line Here
 
 class Posts extends React.Component {
     constructor(props) {
@@ -111,37 +113,53 @@ class Posts extends React.Component {
     	return (
 
             <div className="flex w-full h-full font-sans-pro">
+                                <ScrollUpButton    
+            style={{backgroundColor:"white", fill:"#88C5CC"}}
+            />
                 <Column/>
                 <div className="w-full overflow-auto">
+
                 { this.state.loaded &&
-                <div className="w-full overflow-auto mt-4 ml-8">
+                <div className="w-full overflow-auto  px-4 py-4">
+                        <Accordion>
+
                     {
                         this.state.saved.length > 0 &&
+                            <AccordionItem duration={1000} titleClassName="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left
+                            text-gray-700 font-sans-pro font-bold text-justify" title={`Posts You Saved`} expanded={false}>
                         <div>
-                            <div className="text-3xl font-sans-pro font-bold ml-8 text-white">Posts You Saved</div>
                             <div className="flex flex-wrap justify-start text-center">
                                 {this.loadBoxes(this.state.saved)}
                             </div>
                         </div>
+                        </AccordionItem>
                     }
-                    {
-                        this.state.holds.length > 0 &&
+                    {this.state.holds.length > 0 &&
+                        <AccordionItem duration={1000} titleClassName="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left
+                        text-gray-700 font-sans-pro font-bold text-justify" title={`Posts On Hold`} expanded={false}>
                         <div>
-                            <div className="text-3xl font-sans-pro font-bold ml-8 text-white">Posts on Holds</div>
                             <div className="flex flex-wrap justify-start text-center">
                                 {this.loadBoxes(this.state.holds)}
                             </div>
                         </div>
+                        </AccordionItem>
                     }
                     {
-                        this.state.posts.length > 0 && <div>
-                            <div className="text-3xl font-sans-pro font-bold ml-8 text-white">Posts You Made</div>
+                        this.state.posts.length > 0 && 
+                        <AccordionItem duration={1000} titleClassName="hover:bg-gray-400 bg-gray-200 border-t-2 p-4 w-full text-xl text-left
+                        text-gray-700 font-sans-pro font-bold text-justify" title={`Posts You've Made`} expanded={false}>
+
+                        <div>
                             <div className="flex flex-wrap justify-start text-center">
                                 {this.loadBoxes(this.state.posts)}
                             </div>
                         </div>
+                        </AccordionItem>
                     }
-                </div>
+                    
+                    </Accordion>
+                    </div>
+                    
                 }
                 </div>
             </div>

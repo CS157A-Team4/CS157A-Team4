@@ -49,11 +49,11 @@ export default function ResetPassword(props) {
     <div className="flex items-center justify-center w-full  h-full md:mt-0 mt-6 ">
       <div className="w-full max-w-md">
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-          <label className="block font-bold font-sans-pro text-grey-700 text-2xl rounded font-bold md:text-center mb-1 md:mb-6 pr-4" for="inline-full-name">Choose a new password</label>
+          <label className="block font-bold font-sans-pro text-grey-700 text-2xl rounded font-bold text-center mb-6 pr-4" for="inline-full-name">Choose a new password</label>
           {/*  NEW PASSWORD  */}
           <div className="md:flex md:items-center mb-8">
             <div className="md:w-1/3">
-              <label className="block font-bold font-sans-pro text-grey-darker text-xl rounded font-bold md:text-left mb-1 md:mb-0 pr-4" for="inline-full-name">New Password:</label>
+              <label className="md:block hidden font-bold font-sans-pro text-grey-darker text-xl rounded font-bold md:text-left mb-2 md:mb-0 pr-4" for="inline-full-name">New Password:</label>
             </div>
             <div className="md:w-2/3">
               < input className="shadow appearance-none rounded w-full py-3 px-4 text-xl font-sans-pro font-bold text-gray-700 leading-tight"
@@ -61,7 +61,7 @@ export default function ResetPassword(props) {
                 type="password"
                 onChange={e => setNewPassword(e.target.value)}
                 value={newPassword}
-                placeholder="************"
+                placeholder="New Password"
                 required/>
             </div>
           </div>
@@ -69,7 +69,7 @@ export default function ResetPassword(props) {
           {/*  CONFIRM NEW PASSWORD  */}
           <div className="md:flex md:items-center mb-8">
             <div className="md:w-1/3">
-              <label className="block font-bold font-sans-pro text-grey-darker text-xl rounded font-bold md:text-left mb-1 md:mb-0 pr-4" for="inline-full-name">Confirm:</label>
+              <label className="md:block hidden font-bold font-sans-pro text-grey-darker text-xl rounded font-bold md:text-left mb-2 md:mb-0 pr-4" for="inline-full-name">Confirm:</label>
             </div>
             <div className="md:w-2/3">
               < input className="shadow appearance-none rounded w-full py-3 px-4 text-xl font-sans-pro font-bold text-gray-700 leading-tight"
@@ -77,19 +77,19 @@ export default function ResetPassword(props) {
                 type="password"
                 onChange={e => setNewPasswordConfirm(e.target.value)}
                 value={newPasswordConfirm}
-                placeholder="************"
+                placeholder="Reconfirm New Password"
                 required/>
             </div>
           </div>
           <div className="h-4">
             {error.length !== 0 &&
 
-            <p className="text-red-400">{error}</p>
+            <p className="text-red-400 font-bold">{error}</p>
             }
           </div>
           {/*  BUTTONS  */}
           <div className="flex items-center justify-between mt-8">
-            <button className="bg-bookie-grey hover:bg-red text-white text-xl font-bold py-2 px-4 rounded"
+            <button className="bg-bookie-grey hover:bg-bookie-grey-light text-white text-xl font-bold py-2 px-4 rounded"
               type="button"
               onClick={handleSubmit}>
               Send

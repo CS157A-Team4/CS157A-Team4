@@ -25,7 +25,7 @@ class Column extends React.Component {
 
         console.log(this.props.match.url)
         return (
-            <div className="w-1/5 flex flex-col bg-white h-full">
+            <div className="w-1/5 flex flex-col bg-white h-full md:block hidden">
                 <div className="w-0 md:w-full lg:w-full h-0 md:h-full overflow-y-hidden bg-white shadow-lg">
                     <div className="p-5 bg-white sticky flex justify-center items-center  bg-gray-200">
                         <p className="border-t p-3  w-full text-center text-xl text-white round-full bg-blue-new

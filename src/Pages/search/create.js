@@ -195,11 +195,11 @@ class Create extends React.Component {
 
 
     	return (
-        <div className="font-sans-pro md:pl-10 md:pr-10 md:pt-12">
-          <div className="w-full h-full ">
+        <div className="font-sans-pro md:pl-10 md:pr-10 md:pt-12 overflow-y-auto h-full ">
+          <div className="w-full h-full  ">
           <div className="leading-loose flex justify-center px-8">
   <form onSubmit={this.handleSubmit} className="md:w-1/2 w-full m-4 p-10 bg-white rounded shadow-xl font-bold">
-    <p className="text-gray-800 text-3xl text-center font-bold">Create a Post</p>
+    <p className="text-gray-800 text-3xl text-center font-bold">Create A Post</p>
     <div className="md:flex md:justify-between ">
     <div className="w-full">
       <label className="block text-medium text-gray-00" for="bookname">Book Title</label>

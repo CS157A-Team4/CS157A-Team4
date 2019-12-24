@@ -10,7 +10,8 @@ class Table extends React.Component {
             data : [],
             friends: [
 
-            ]
+            ],
+            loaded:false
         };
     }
 
@@ -32,7 +33,7 @@ class Table extends React.Component {
         ).then(
             function(data){
                 console.log(data);
-                this.setState({friends:data});
+                this.setState({friends:data,loaded:true});
                 console.log(this.state);
             }.bind(this)
         )
@@ -77,6 +78,7 @@ class Table extends React.Component {
 
     render() {
         return(
+            this.state.loaded &&
             <div className="flex w-full h-full">
                 <Column/>
                 <div className="w-full font-sans-pro text-2xl">
@@ -107,7 +109,6 @@ class Table extends React.Component {
                             </table>
                         </div>
                     </div>
-
             </div>
 
 

@@ -6,6 +6,8 @@ import api from '../../backend/backend';
 import queryString from 'query-string';
 import TextTruncate from 'react-text-truncate'; // recommend
 import ReactLoading from 'react-loading';
+import {TinyButton as ScrollUpButton} from "react-scroll-up-button"; //Add this line Here
+
 class Search extends React.Component {	
     constructor(props) {
         super(props);
@@ -15,6 +17,7 @@ class Search extends React.Component {
         course:'',
         token:false,
         loaded:false,
+        loading:false,
         message:[],
       };
       this.storageUpdated = this.storageUpdated.bind(this);
@@ -115,6 +118,7 @@ class Search extends React.Component {
         let querystring = `?bname=${bname}`
         +`&course=${course}`;
         console.log(querystring);
+        this.setState({loading:true})
         fetch(api+"/testapi/search" +querystring, {
           method: "GET",
           headers: {
@@ -128,14 +132,15 @@ class Search extends React.Component {
         .then(function (data) {
             if (data["error"]) {
                 this.setState({
-                    error: data["message"]
+                    error: data["message"],
+                    loading:false
                 });
                 console.log(data);
             }
             else {
               console.log(data);
                 this.setState({message:data});
-                this.setState({loaded:true});
+                this.setState({loaded:true,loading:false});
                 console.log(this.state);
             }
     
@@ -147,6 +152,11 @@ class Search extends React.Component {
     	return (
         <div className="text-center bg-blue-new items-center justify-center align-start w-full flex font-sans-pro  overflow-auto  md:pl-10 md:pr-10">
           <div className="w-full h-full md:mt-4 mt-8 overflow-auto  ">
+          <div className="bg-white">
+            <ScrollUpButton    
+            style={{backgroundColor:"white", fill:"#88C5CC"}}
+            />
+          </div>
           {window.innerWidth < 768 &&
           <div className="items-center justify-center flex">
         <div className="bg-white w-2/3 border rounded p-4">
@@ -188,7 +198,7 @@ class Search extends React.Component {
               </div>
               </div>}
               {
-                this.state.loaded === false &&
+                this.state.loading === true &&
                 <div className="flex justify-center items-center w-full h-full">
               <ReactLoading type={"bars"} color={"#fff"} height={'20%'} width={'20%'} />
               </div>

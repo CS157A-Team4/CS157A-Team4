@@ -75,7 +75,8 @@ class Post extends React.Component {
                   }
                   console.log(this.state);
                   this.scrollToBottom();
-                  
+                  window.scrollTo(0, 0);
+
               }
       
           }.bind(this))
@@ -174,8 +175,10 @@ class Post extends React.Component {
     scrollToBottom = () => {
         if(this.newData !== undefined && this.newData !== null){
             this.newData.scrollIntoView({ behavior: "auto" });
+            this.theImage.scrollIntoView({ behavior: "auto" });
+
         }
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
     }
     componentDidUpdate() {
         if(this.newData !== undefined){
@@ -325,7 +328,7 @@ class Post extends React.Component {
     console.log(this.state.message.seller);
     	return (
             this.state.error !== null ? (
-              <div className="md:flex md:items-center md:justify-center px-6 md:px-0">
+              <div className="md:flex md:items-center md:justify-center px-6 md:px-0 h-full">
               <div className='md:max-w-xl max-h-full text-center border-solid text-center pt-16'>
                 <p className="text-2xl font-sans-pro text-white font-white font-bold">No Post Information was found, please insure that this post exists. It may or may not have been deleted.</p>
               </div>
@@ -333,16 +336,16 @@ class Post extends React.Component {
             )
             :
             this.state.loaded  == true && !this.state.error &&(
-                <div className="md:flex md:items-center md:justify-start px-6 md:px-0">
-                <div className='md:max-w-xl max-h-full text-center md:w-3/4 border-solid'>
-                    <div className="border-solid w-3/4 md:w-3/5 h-auto bg-white inline-block border-4 mt-8 rounded"style={{border:"6px solid white"}}>
-                        <div className="border-solid border-4" style={{border:"6px solid #C2E1E5"}}>
-                <img className= "" style={{border:"6px solid white"}}  alt="postImage" src={this.state.message.image !== "null" && this.state.message.image !== null && this.state.message.image !== undefined ? this.state.message.image:logo} />
-                </div>
-                </div>
-                </div>
-                <div className= "md:w-1/4 w-full h-auto border-gray-300 mt-8 pr-6 pl-6 pb-6 pt-6 md:pt-0 md:pb-2 md:pr-2 md:pl-2 md:pt-2 bg-blue-new-light rounded mb-4 md:mb-0"> 
-                    <div className="font-sans-pro h-12 w-auto bg-white px-2 py-2 text-start rounded mb-2 overflow-x-scroll "> 
+                <div className="md:flex md:items-center md:justify-start px-6 md:px-0 overflow-y-auto h-full ">
+                    <div ref={(ref) => this.theImage = ref} className='md:max-w-xl max-h-full text-center md:w-3/4 border-solid mb-4'>
+                        <div className="border-solid w-3/4 md:w-3/5 h-auto bg-white inline-block border-4 mt-8 rounded"style={{border:"6px solid white"}}>
+                            <div className="border-solid border-4" style={{border:"6px solid #C2E1E5"}}>
+                                <img  className= "" style={{border:"6px solid white"}}  alt="postImage" src={this.state.message.image !== "null" && this.state.message.image !== null && this.state.message.image !== undefined ? this.state.message.image:logo} />
+                            </div>
+                        </div>
+                    </div>
+                <div className= "md:w-1/4 w-full h-auto border-gray-300 pr-6 pl-6 pb-6 pt-6 md:pt-0 md:mt-1 md:pb-2 md:pr-2 md:pl-2 md:pt-2 bg-blue-new-light rounded mb-4 md:mb-0"> 
+                    <div className="font-sans-pro h-12 w-auto bg-white px-2 py-2 text-start rounded mb-2 overflow-y-scroll "> 
                         <p className="inline-block text-xl font-bold ">Title: </p> 
                         <p className="inline-block text-2xl ml-1 "> {this.state.message.title}  </p> 
                     </div>
@@ -373,12 +376,12 @@ class Post extends React.Component {
 
                         </div>
                     </div>
-                    <div className="font-sans-pro text-2xl bg-white px-2 py-2 rounded md:mb-0 shadow-lg"> 
+                    <div className="font-sans-pro text-xl bg-white px-2 py-2 rounded md:mb-0 shadow-lg"> 
                         <p className="inline-block font-bold "> Asking Price: </p> 
                         <p className="inline-block ml-1 "> ${this.state.message.price}  </p> 
                     </div>
                 </div> 
-                <div className= "md:w-1/4 w-full md:mt-8 pb-2 md:ml-8 md:pb-0 md:pr-0 md:pl-0 rounded-b-full border border-black"> 
+                <div className= "md:w-1/4 w-full  pb-2 md:ml-8 md:pb-0 md:pr-0 md:pl-0 rounded-b-full border border-black"> 
                 {this.state.message.seller.toString() !== window.localStorage.getItem("id") ?
                     <div className="font-sans-pro text-2xl mb-6 justify-center rounded text-center"> 
                         {
@@ -396,7 +399,7 @@ class Post extends React.Component {
                         :
                     <div className="font-sans-pro text-2xl mb-6 justify-center rounded text-center"> 
                         <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded mb-2 shadow-lg" onClick={(e) => this.goEdit(e)}>Edit Post</button>
-                        <button className="bg-white cursor-pointer hover:bg-gray-300 w-full px-2 py-2 rounded  shadow-lg" onClick={()=>this.getConfirm()}>Close Post</button>
+                        <button className="bg-white cursor-pointer z-50 hover:bg-gray-300 w-full px-2 py-2 rounded  shadow-lg" onClick={()=>this.getConfirm()}>Close Post</button>
                     </div>
                 }
 
@@ -411,7 +414,9 @@ class Post extends React.Component {
                         </div>
                     </div>
                 </div>)
+                
         )
+       
     }
 }
 

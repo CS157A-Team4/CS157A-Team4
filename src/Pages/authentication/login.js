@@ -96,7 +96,7 @@ function handleSubmit(event) {
     
   return (
     
-    <div className="flex text-center mt-16 justify-center w-full items-center h-full px-4 ">
+    <div className="flex text-center justify-center w-full items-center h-full px-4 ">
       <div className="w-full max-w-md items-center">
       
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8">

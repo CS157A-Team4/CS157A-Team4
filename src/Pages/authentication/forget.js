@@ -45,7 +45,7 @@ export default function Forgot(props) {
   }
     
   return (
-    <div className="flex items-center justify-center w-full  mt-20 md:h-full md:mt-0 ">
+    <div className="flex items-center justify-center w-full  h-full md:mt-0 ">
       <div className="w-full max-w-md">
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <label className="block font-bold font-sans-pro text-grey-700 text-2xl rounded font-bold text-center mb-6 pr-4" for="inline-full-name">Forgot password?</label>

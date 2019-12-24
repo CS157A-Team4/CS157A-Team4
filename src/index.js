@@ -36,7 +36,7 @@ ReactDOM.render(
     <Header/>
     <Footer/>
 
-    <div className="md:pt-20 pt-20 md:h-screen">
+    <div className="md:pt-20 pt-16 md:h-screen">
         <Switch>
             <Route exact path = '/' component ={App}  />
             <Route exact path = '/login' component ={Login}  />

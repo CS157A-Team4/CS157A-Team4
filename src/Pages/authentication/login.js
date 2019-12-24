@@ -96,10 +96,10 @@ function handleSubmit(event) {
     
   return (
     
-    <div className="flex items-center text-center justify-center w-full  h-full  ">
-      <div className="w-full max-w-md">
+    <div className="flex text-center justify-center w-full items-center md:h-full px-4 ">
+      <div className="w-full max-w-md items-center">
       
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8">
         <label className="block font-bold font-sans-pro text-grey-700 text-2xl rounded font-bold md:text-center mb-8 pr-4" for="inline-full-name">Login</label>
           <div className="md:flex md:items-center mb-8">
           

@@ -56,7 +56,7 @@ export default function ResetPassword(props) {
               <label className="md:block hidden font-bold font-sans-pro text-grey-darker text-xl rounded font-bold md:text-left mb-2 md:mb-0 pr-4" for="inline-full-name">New Password:</label>
             </div>
             <div className="md:w-2/3">
-              < input className="shadow appearance-none rounded w-full py-3 px-4 text-xl font-sans-pro font-bold text-gray-700 leading-tight"
+              < input className="shadow appearance-none border border-blue-new rounded w-full py-3 px-4 text-xl font-sans-pro font-bold text-gray-700 leading-tight"
                 id="newpassword"
                 type="password"
                 onChange={e => setNewPassword(e.target.value)}
@@ -72,7 +72,7 @@ export default function ResetPassword(props) {
               <label className="md:block hidden font-bold font-sans-pro text-grey-darker text-xl rounded font-bold md:text-left mb-2 md:mb-0 pr-4" for="inline-full-name">Confirm:</label>
             </div>
             <div className="md:w-2/3">
-              < input className="shadow appearance-none rounded w-full py-3 px-4 text-xl font-sans-pro font-bold text-gray-700 leading-tight"
+              < input className="shadow appearance-none border border-blue-new rounded w-full py-3 px-4 text-xl font-sans-pro font-bold text-gray-700 leading-tight"
                 id="newpasswordconfirm"
                 type="password"
                 onChange={e => setNewPasswordConfirm(e.target.value)}

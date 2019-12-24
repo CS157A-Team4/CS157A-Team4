@@ -51,7 +51,7 @@ class App extends React.Component {
   render() {return (
     <div className="App bg-transparent h-full ">
         <div className="w-full text-center flex justify-center font-sans-pro  md:text-xl font-bold">
-        <img src={background} className="md:h-160 h-3/4 w-full light-filter z-0 object-cover"></img>
+        <img src={background} className="md:h-160 h-128 w-full light-filter z-0 object-cover"></img>
        
           <div className="absolute mt-48 z-10 w-full flex flex-wrap justify-center">
           <div class=" flex w-1/2 flex-row flex-wrap justify-center">

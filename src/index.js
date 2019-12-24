@@ -32,11 +32,11 @@ const browserHistory = createBrowserHistory();
 
 ReactDOM.render(
     <BrowserRouter path="/App" history={browserHistory}>
-    <div className="bg-blue-new min-h-screen max-h-screen scrolling-touch bg-blue-new md:scrolling-auto">
+    <div className="bg-blue-new min-h-screen max-h-screen scrolling-touch bg-blue-new md:h-screen md:scrolling-auto">
     <Header/>
     <Footer/>
 
-    <div className="md:pt-20 pt-16 h-screen">
+    <div className="md:pt-20 pt-20 md:h-screen">
         <Switch>
             <Route exact path = '/' component ={App}  />
             <Route exact path = '/login' component ={Login}  />

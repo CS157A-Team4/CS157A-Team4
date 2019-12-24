@@ -153,7 +153,7 @@ class Message extends React.Component {
     }
 	render() {
     	return (
-            <div className="flex w-full h-full">
+            <div className="flex w-full">
                 <Column/>
                 {this.state.loaded ? (
                 <div className="w-full relative font-sans-pro rounded shadow-lg bg-blue-new py-2 ">

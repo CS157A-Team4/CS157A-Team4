@@ -153,7 +153,7 @@ class Message extends React.Component {
     }
 	render() {
     	return (
-            <div className="flex w-full h-full">
+            <div className="flex flex-col w-full h-full">
                 <Column/>
                 {this.state.loaded ? (
                 <div className="w-full relative font-sans-pro h-full rounded shadow-lg bg-blue-new py-2 ">
@@ -164,11 +164,11 @@ class Message extends React.Component {
                     <form className="w-full md:block flex flex-row" ref={el => this.myFormRef = el} >
                            
                     </form>
-                    <div class="flex flex-row bg-gray-200">
-                    <textarea ref="aMessage" name="body" onChange={this.handleChange} id="newMessage" value={this.props.newMessage} onKeyDown={this.onEnterPress} placeholder="Add a comment" className="appearance-none md:w-full w-3/4 bg-gray-100 bottom-0 absolute rounded-full border h-10 px-2 pt-3 text-lg">
+                    <div class="flex flex-row bottom-0 sticky w-full bg-transparent">
+                    <textarea ref="aMessage" name="body" onChange={this.handleChange} id="newMessage" value={this.props.newMessage} onKeyDown={this.onEnterPress} placeholder="Add a comment" className="appearance-none md:w-full w-3/4 bg-gray-100  rounded-full border h-10 px-2 pt-3 text-lg">
                             </textarea>  
                             <button 
-                            className="md:hidden appearance-none w-1/4 bg-gray-100 bottom-0 right-0 absolute 
+                            className="md:hidden appearance-none w-1/4 bg-gray-100  
                             border h-10 items-center text-center font-bold text-lg hover:bg-gray-400"
                             onClick={() => this.show_message()}
                             >Refresh</button>

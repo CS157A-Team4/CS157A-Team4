@@ -5,6 +5,9 @@ import bBook from '../../images/anotherbook.png';
 import api from '../../backend/backend';
 import queryString from 'query-string';
 import TextTruncate from 'react-text-truncate'; // recommend
+import ReactLoading from 'react-loading';
+import {TinyButton as ScrollUpButton} from "react-scroll-up-button"; //Add this line Here
+
 class Search extends React.Component {	
     constructor(props) {
         super(props);
@@ -14,6 +17,7 @@ class Search extends React.Component {
         course:'',
         token:false,
         loaded:false,
+        loading:false,
         message:[],
       };
       this.storageUpdated = this.storageUpdated.bind(this);
@@ -103,7 +107,7 @@ class Search extends React.Component {
     return boxes;
       }
       search() {
-        const bname = this.state.bookname === undefined? '':this.state.bookname.replace(/\s/g, '');
+        const bname = this.state.bookname === undefined? '':this.state.bookname.replace(/\s/g, ' ');
         const course = this.state.course === undefined? '':this.state.course.replace(/\s/g, '');
         this.setState({message:[],loaded:false});
         this.props.history.push(`/search?bname=${bname}&course=${course}`);
@@ -114,6 +118,7 @@ class Search extends React.Component {
         let querystring = `?bname=${bname}`
         +`&course=${course}`;
         console.log(querystring);
+        this.setState({loading:true})
         fetch(api+"/testapi/search" +querystring, {
           method: "GET",
           headers: {
@@ -127,14 +132,15 @@ class Search extends React.Component {
         .then(function (data) {
             if (data["error"]) {
                 this.setState({
-                    error: data["message"]
+                    error: data["message"],
+                    loading:false
                 });
                 console.log(data);
             }
             else {
               console.log(data);
                 this.setState({message:data});
-                this.setState({loaded:true});
+                this.setState({loaded:true,loading:false});
                 console.log(this.state);
             }
     
@@ -144,8 +150,13 @@ class Search extends React.Component {
       }
 	render() {
     	return (
-        <div className="text-center items-center justify-center align-start w-full flex font-sans-pro  md:pl-10 md:pr-10">
-          <div className="w-full h-full md:mt-4 mt-8">
+        <div className="text-center bg-blue-new items-center justify-center align-start w-full flex font-sans-pro  overflow-auto  md:pl-10 md:pr-10">
+          <div className="w-full h-full md:mt-4 mt-8 overflow-auto  ">
+          <div className="bg-white">
+            <ScrollUpButton    
+            style={{backgroundColor:"white", fill:"#88C5CC"}}
+            />
+          </div>
           {window.innerWidth < 768 &&
           <div className="items-center justify-center flex">
         <div className="bg-white w-2/3 border rounded p-4">
@@ -167,16 +178,17 @@ class Search extends React.Component {
          type="text"
          onChange={this.handleChange}
        />
-     <div className="mt-4 flex justify-center">
+     <div className="mt-4 flex justify-center ">
      <div className="w-1/2 bg-blue-new hover:bg-teal-600 h-14 text-2xl hover:bg-blue text-white font-bold font-sans-pro py-4 px-4 rounded cursor-pointer" onClick={() => this.search()} value="Search">Search</div>
      </div>
      </div>
      </div>
 
     }
-            <div className="md:pt-10 ">
-            {this.state.loaded &&
-              <div className="flex flex-wrap justify-center">
+            <div className="md:pt-10 overflow-auto ">
+            {
+              this.state.loaded &&
+              <div className="flex flex-wrap overflow-auto justify-center">
               {this.loadBoxes()}
               </div>}
               {this.state.loaded && this.state.message.length == 0 &&
@@ -185,6 +197,12 @@ class Search extends React.Component {
                 <p className="text-red-500 text-xl font-bold font-sans-pro"> No search results loaded for your query. <br></br> Please try another search.</p>
               </div>
               </div>}
+              {
+                this.state.loading === true &&
+                <div className="flex justify-center items-center w-full h-full">
+              <ReactLoading type={"bars"} color={"#fff"} height={'20%'} width={'20%'} />
+              </div>
+              }
             </div>  
           </div>
         </div>

@@ -9,12 +9,11 @@ import Error from './error';
 import Login from './Pages/authentication/login';
 import SignUp from './Pages/authentication/signup';
 import Forget from './Pages/authentication/forget';
-import Reset from './Pages/authentication/reset';
+import EnterResetCode from './Pages/authentication/EnterResetCode';
+import ResetPassword from './Pages/authentication/ResetPassword';
 import Messages from './Pages/profile/messages';
 import ProfilePosts from './Pages/profile/posts';
 import Profile from './Pages/profile/profile';
-import Cancellation from './Pages/search/cancellation';
-import Confirmation from './Pages/search/confirmation';
 import Search from './Pages/search/search';
 import Header from './header';
 import Footer from './footer';
@@ -24,36 +23,45 @@ import FriendsRequest from './Pages/friends/friendsRequest';
 import Create from './Pages/search/create';
 import Post from './Pages/search/post';
 import Edit from './Pages/search/edit';
+import Friends from "./Pages/profile/components/friends";
+import Posts from "./Pages/profile/components/posts";
+import Settings from "./Pages/profile/components/settings";
 const browserHistory = createBrowserHistory();
+
+//window.localStorage.setItem('loggedIn', false);
+
 ReactDOM.render(
     <BrowserRouter path="/App" history={browserHistory}>
-    <div className="bg-blue-new min-h-screen max-h-screen">
+    <div className="bg-blue-new min-h-screen max-h-screen scrolling-touch bg-blue-new md:h-screen md:scrolling-auto">
     <Header/>
     <Footer/>
 
-    <div className="md:pt-20 pt-16 scrolling-touch h-full bg-blue-new md:scrolling-auto"/>
+    <div className="md:pt-20 pt-16 max-h-full h-screen">
         <Switch>
             <Route exact path = '/' component ={App}  />
             <Route exact path = '/login' component ={Login}  />
             <Route exact path = '/forget' component ={Forget}  />
-            <Route exact path = '/reset' component ={Reset}  />
+            <Route exact path = '/enterresetcode' component ={EnterResetCode}  />
+            <Route exact path = '/resetpassword' component ={ResetPassword}  />
             <Route exact path = '/signup' component ={SignUp}  />
             <Route exact path = '/messages' component ={Messages}  />
-            <Route exact path = '/messages/:params' component ={Messages}  />
+            <Route exact path = '/messages/:id' component ={Messages}  />
             <Route exact path = '/posts' component ={ProfilePosts}  />
             <Route exact path = '/post/:id' component ={Post}  />
             <Route exact path = '/profile' component ={Profile}  />
-            <Route exact path = '/cancellation/:params' component ={Cancellation}  />
-            <Route exact path = '/confirmation/:params' component ={Confirmation}  />
             <Route exact path = '/search' component ={Search}  />
             <Route exact path = '/search/:params' component ={Search}  />
-            <Route exact path = '/friends' component ={FriendsList}  />
+            <Route exact path = '/profile/friends' component ={FriendsList}  />
             <Route exact path = '/createPost' component ={Create}  />
-            <Route exact path = '/editPost/:id' component ={Edit}  />
-            <Route exact path = '/friendsR' component ={FriendsRequest}  />
+            <Route exact path = '/editPost/:id' component ={Edit}  />           
+            <Route exact path = '/profile/friendsR' component ={FriendsRequest}  />
             <Route exact path = '/passwordChange' component ={PasswordChange}  />
+            <Route exact path = '/profile/friends' component ={Friends}  />
+            <Route exact path = '/profile/posts' component ={Posts}  />
+            <Route exact path = '/profile/settings' component ={Settings}  />
             <Route component={Error}/>
         </Switch>
+        </div>
     </div>
     </BrowserRouter>, document.getElementById('root'));
     

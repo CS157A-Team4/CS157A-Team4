@@ -1,8 +1,10 @@
 # CS157A-4-Project
 DBMS Project
 
-Site Accessible Here:
-https://condescending-tesla-e0016b.netlify.com/
+Website Accessible Here:
+
+https://sjsubookie.netlify.com
+
 
 Current Project Proposal:
 https://docs.google.com/document/d/1NbTtIF2xDePtYl5zj4VCOusULzU8NrjqBQLD32Sk6BI/edit
@@ -35,4 +37,10 @@ https://docs.google.com/document/d/1dzUgF7gITpsxFTwmovOXmv1yA-LYFA5DrXRjsS3dRy0/
 
 
 
+Dec/10/2019
+
+Our "Final Project Report" pdf file is in the Documents folder and also uploaded to Canvas.
+
+Also, the following is the GoogleDoc link for the "Final Project Report":
+https://docs.google.com/document/d/1lidvnCUp9RpzX9T2PoNOOeRjDSIt2n4qYnbqphICCpM/edit?usp=sharing
 

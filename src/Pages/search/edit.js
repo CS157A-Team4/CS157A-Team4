@@ -26,13 +26,16 @@ class Edit extends React.Component {
         course: '',
         description:'',
         price: 0,
-        poster: 23,
+        poster: window.localStorage.getItem("id"),
       };
       this.storageUpdated = this.storageUpdated.bind(this);
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
     UNSAFE_componentWillMount() {
+      if(window.localStorage.getItem("id") === null){
+        this.props.history.push('/login');  
+    }
         this.getParams();
         }
         getParams(){
@@ -51,16 +54,21 @@ class Edit extends React.Component {
                 }
                 else {
                       console.log(data[2]);
+                      if(data[0][0]["seller"].toString() !== window.localStorage.getItem("id")){
+                        window.alert("This is not your post!! Or post does not exist");
+                        this.props.history.push("/");
+                      }
                     this.setState({message:data[0][0],comments:data[1]});
                     Object.entries(data[0][0]).forEach(([key, value]) => {
                         this.setState({[key]:value});
                      });
+                    console.log(data[0][0]["seller"])
                     this.setState({loaded:true});
                     console.log(data[2]);
-                    if(data[2].some(e => e.userID == 23)){
+                    if(data[2].some(e => e.userID == window.localStorage.getItem("id"))){
                         this.setState({saved:true});
                     }
-
+                    
                     console.log(this.state);                    
                 }
         
@@ -117,7 +125,7 @@ class Edit extends React.Component {
             description: this.state.body,
             image: this.state.image,
             price: this.state.price,
-            poster: 23,
+            poster: this.state.poster,
             date: today,
             id: this.state.postID,
             imageId: this.state.imageId
@@ -170,8 +178,8 @@ class Edit extends React.Component {
 
 	render() {
     	return (
-        <div className="font-sans-pro md:pl-10 md:pr-10 md:pt-12">
-          <div className="w-full h-full ">
+        <div className="font-sans-pro md:pl-10 md:pr-10 md:pt-12 overflow-y-auto h-full">
+          <div className="w-full h-full">
           <div className="leading-loose flex justify-center px-8">
   <form onSubmit={this.handleSubmit} className="md:w-1/2 w-full m-4 p-10 bg-white rounded shadow-xl font-bold">
     <p className="text-gray-800 text-3xl text-center font-bold">Edit a Post</p>

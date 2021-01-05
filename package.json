@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@kunukn/react-collapse": "^2.2.7",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "blob-util": "^2.0.2",
     "docker": "^1.0.0",
     "history": "^4.9.0",
